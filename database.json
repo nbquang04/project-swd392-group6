@@ -1,0 +1,2789 @@
+{
+  "user": [
+    {
+      "id": "1",
+      "name": "abc",
+      "phone": "0961416137",
+      "email": "abc@fpt.edu.vn",
+      "password": "123456",
+      "address": "13 ngo 2 nguyen thi dinh",
+      "role": "admin",
+      "status": "admin",
+      "created_at": "2025-03-26"
+    },
+    {
+      "id": "6",
+      "name": "Nguyễn Văn An",
+      "phone": "0987654321",
+      "email": "nguyenvanan@gmail.com",
+      "password": "123456",
+      "address": "123 Đường ABC, Quận 1, TP.HCM",
+      "role": "user",
+      "status": "Active",
+      "created_at": "2025-01-15"
+    },
+    {
+      "id": "7",
+      "name": "Trần Thị Bình",
+      "phone": "0123456789",
+      "email": "tranthibinh@gmail.com",
+      "password": "123456",
+      "address": "456 Đường XYZ, Quận 3, TP.HCM",
+      "role": "user",
+      "status": "Active",
+      "created_at": "2025-02-20"
+    },
+    {
+      "id": "8",
+      "name": "lenomi",
+      "phone": "12341234",
+      "email": "nminh.main@gmail.com",
+      "password": "hello123",
+      "address": "safasdfqwer",
+      "role": "customer",
+      "status": "Active",
+      "created_at": "2025-08-07",
+      "gender": ""
+    },
+    {
+      "id": "9",
+      "name": "hello",
+      "phone": "1234457365",
+      "email": "hello@gmail.com",
+      "password": "hello123",
+      "address": "bn",
+      "role": "admin",
+      "status": "admin",
+      "created_at": "2025-08-07"
+    },
+    {
+      "id": "11",
+      "name": "qnboke04",
+      "phone": "0974067698",
+      "email": "quangnb221204@gmail.com",
+      "password": "qnboke04",
+      "address": "any where",
+      "role": "customer",
+      "status": "Active",
+      "created_at": "2025-08-10",
+      "gender": "Nam"
+    },
+    {
+      "id": "12",
+      "name": "123",
+      "phone": "123456789",
+      "email": "nauphiateamse1807@gmail.com",
+      "password": "123456",
+      "address": "Đại Học FPT",
+      "role": "admin",
+      "status": "admin",
+      "created_at": "2025-08-12"
+    },
+    {
+      "id": "13",
+      "name": "Pham Minh",
+      "phone": "123456789",
+      "email": "phaminh1909@gmail.com",
+      "password": "123456",
+      "address": "Đại Học FPT",
+      "role": "customer",
+      "status": "Active",
+      "created_at": "2025-08-13",
+      "gender": "Nam"
+    },
+    {
+      "id": "14",
+      "name": "Test Disabled User",
+      "phone": "987654321",
+      "email": "disabled@test.com",
+      "password": "123456",
+      "address": "Test Address",
+      "role": "user",
+      "status": "Disabled",
+      "created_at": "2025-08-15"
+    }
+  ],
+  "tokens": [
+    {
+      "id": "1",
+      "user_id": "5",
+      "access_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI1Iiwicm9sZSI6ImFkbWluIiwiaWF0IjoxNzM1MjY0MDAwLCJleHAiOjE3MzUyNjQ5MDB9.example",
+      "refresh_token": "refresh_token_example_1",
+      "expires_at": "2025-01-27T10:00:00Z",
+      "created_at": "2025-01-27T09:45:00Z"
+    },
+    {
+      "id": "1754627519509",
+      "user_id": "10",
+      "access_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiIxMCIsImVtYWlsIjoibmF1cGhpYXRlYW1zZTE4MDdAZ21haWwuY29tIiwicm9sZSI6ImN1c3RvbWVyIiwiaWF0IjoxNzU0NjI3NTE5LCJleHAiOjE3NTQ2Mjg0MTl9.eW91ci1zdXBlci1zZWNyZXQtand0LWtleS1jaGFuZ2UtaW4tcHJvZHVjdGlvbnsidXNlcklkIjoiMTAiLCJlbWFpbCI6Im5hdXBoaWF0ZWFtc2UxODA3QGdtYWlsLmNvbSIsInJvbGUiOiJjdXN0b21lciIsImlhdCI6MTc1NDYyNzUxOSwiZXhwIjoxNzU0NjI4NDE5fQ==",
+      "refresh_token": "refresh_aovju7rut_1754627519509",
+      "expires_at": "2025-08-08T04:46:59.509Z",
+      "created_at": "2025-08-08T04:31:59.509Z"
+    },
+    {
+      "id": "1754632487997",
+      "user_id": "10",
+      "access_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiIxMCIsImVtYWlsIjoibmF1cGhpYXRlYW1zZTE4MDdAZ21haWwuY29tIiwicm9sZSI6ImN1c3RvbWVyIiwiaWF0IjoxNzU0NjMyNDg3LCJleHAiOjE3NTU5Mjg0ODd9.eW91ci1zdXBlci1zZWNyZXQtand0LWtleS1jaGFuZ2UtaW4tcHJvZHVjdGlvbnsidXNlcklkIjoiMTAiLCJlbWFpbCI6Im5hdXBoaWF0ZWFtc2UxODA3QGdtYWlsLmNvbSIsInJvbGUiOiJjdXN0b21lciIsImlhdCI6MTc1NDYzMjQ4NywiZXhwIjoxNzU1OTI4NDg3fQ==",
+      "refresh_token": "refresh_jxdx5t58z_1754632487996",
+      "expires_at": "2025-08-08T06:09:47.997Z",
+      "created_at": "2025-08-08T05:54:47.997Z"
+    },
+    {
+      "id": "1754818598936",
+      "user_id": "11",
+      "access_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiIxMSIsImVtYWlsIjoicXVhbmduYjIyMTIwNEBnbWFpbC5jb20iLCJyb2xlIjoiY3VzdG9tZXIiLCJpYXQiOjE3NTQ4MTg1OTgsImV4cCI6MTc1NjExNDU5OH0=.eW91ci1zdXBlci1zZWNyZXQtand0LWtleS1jaGFuZ2UtaW4tcHJvZHVjdGlvbnsidXNlcklkIjoiMTEiLCJlbWFpbCI6InF1YW5nbmIyMjEyMDRAZ21haWwuY29tIiwicm9sZSI6ImN1c3RvbWVyIiwiaWF0IjoxNzU0ODE4NTk4LCJleHAiOjE3NTYxMTQ1OTh9",
+      "refresh_token": "refresh_4pvhzp9le_1754818598935",
+      "expires_at": "2025-08-10T09:51:38.936Z",
+      "created_at": "2025-08-10T09:36:38.936Z"
+    },
+    {
+      "id": "1754822238568",
+      "user_id": "11",
+      "access_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiIxMSIsImVtYWlsIjoicXVhbmduYjIyMTIwNEBnbWFpbC5jb20iLCJyb2xlIjoiY3VzdG9tZXIiLCJpYXQiOjE3NTQ4MjIyMzgsImV4cCI6MTc1NjExODIzOH0=.eW91ci1zdXBlci1zZWNyZXQtand0LWtleS1jaGFuZ2UtaW4tcHJvZHVjdGlvbnsidXNlcklkIjoiMTEiLCJlbWFpbCI6InF1YW5nbmIyMjEyMDRAZ21haWwuY29tIiwicm9sZSI6ImN1c3RvbWVyIiwiaWF0IjoxNzU0ODIyMjM4LCJleHAiOjE3NTYxMTgyMzh9",
+      "refresh_token": "refresh_dr7b6vgn1_1754822238568",
+      "expires_at": "2025-08-10T10:52:18.568Z",
+      "created_at": "2025-08-10T10:37:18.568Z"
+    },
+    {
+      "id": "1754905231655",
+      "user_id": "11",
+      "access_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiIxMSIsImVtYWlsIjoicXVhbmduYjIyMTIwNEBnbWFpbC5jb20iLCJyb2xlIjoiY3VzdG9tZXIiLCJpYXQiOjE3NTQ5MDUyMzEsImV4cCI6MTc1NjIwMTIzMX0=.eW91ci1zdXBlci1zZWNyZXQtand0LWtleS1jaGFuZ2UtaW4tcHJvZHVjdGlvbnsidXNlcklkIjoiMTEiLCJlbWFpbCI6InF1YW5nbmIyMjEyMDRAZ21haWwuY29tIiwicm9sZSI6ImN1c3RvbWVyIiwiaWF0IjoxNzU0OTA1MjMxLCJleHAiOjE3NTYyMDEyMzF9",
+      "refresh_token": "refresh_76hpcujhv_1754905231654",
+      "expires_at": "2025-08-11T09:55:31.655Z",
+      "created_at": "2025-08-11T09:40:31.655Z"
+    },
+    {
+      "id": "1754990627497",
+      "user_id": "12",
+      "access_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiIxMiIsImVtYWlsIjoibmF1cGhpYXRlYW1zZTE4MDdAZ21haWwuY29tIiwicm9sZSI6ImFkbWluIiwibmFtZSI6IjEyMyIsInBob25lIjoiMTIzNDU2Nzg5IiwiYWRkcmVzcyI6IsSQ4bqhaSBI4buNYyBGUFQiLCJpYXQiOjE3NTQ5OTA2MjcsImV4cCI6MTc1NjI4NjYyN30=.eW91ci1zdXBlci1zZWNyZXQtand0LWtleS1jaGFuZ2UtaW4tcHJvZHVjdGlvbnsidXNlcklkIjoiMTIiLCJlbWFpbCI6Im5hdXBoaWF0ZWFtc2UxODA3QGdtYWlsLmNvbSIsInJvbGUiOiJhZG1pbiIsIm5hbWUiOiIxMjMiLCJwaG9uZSI6IjEyMzQ1Njc4OSIsImFkZHJlc3MiOiLEkOG6oWkgSOG7jWMgRlBUIiwiaWF0IjoxNzU0OTkwNjI3LCJleHAiOjE3NTYyODY2Mjd9",
+      "refresh_token": "refresh_fuprm7ufg_1754990627497",
+      "expires_at": "2025-08-12T09:38:47.497Z",
+      "created_at": "2025-08-12T09:23:47.497Z",
+      "remember_me": true
+    },
+    {
+      "id": "1754990870547",
+      "user_id": "12",
+      "access_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiIxMiIsImVtYWlsIjoibmF1cGhpYXRlYW1zZTE4MDdAZ21haWwuY29tIiwicm9sZSI6ImFkbWluIiwibmFtZSI6IjEyMyIsInBob25lIjoiMTIzNDU2Nzg5IiwiYWRkcmVzcyI6IsSQ4bqhaSBI4buNYyBGUFQiLCJpYXQiOjE3NTQ5OTA4NzAsImV4cCI6MTc1NjI4Njg3MH0=.eW91ci1zdXBlci1zZWNyZXQtand0LWtleS1jaGFuZ2UtaW4tcHJvZHVjdGlvbnsidXNlcklkIjoiMTIiLCJlbWFpbCI6Im5hdXBoaWF0ZWFtc2UxODA3QGdtYWlsLmNvbSIsInJvbGUiOiJhZG1pbiIsIm5hbWUiOiIxMjMiLCJwaG9uZSI6IjEyMzQ1Njc4OSIsImFkZHJlc3MiOiLEkOG6oWkgSOG7jWMgRlBUIiwiaWF0IjoxNzU0OTkwODcwLCJleHAiOjE3NTYyODY4NzB9",
+      "refresh_token": "refresh_v4v5nnsmp_1754990870546",
+      "expires_at": "2025-08-12T09:42:50.547Z",
+      "created_at": "2025-08-12T09:27:50.547Z",
+      "remember_me": false
+    },
+    {
+      "id": "1755049659918",
+      "user_id": "13",
+      "access_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiIxMyIsImVtYWlsIjoicGhhbWluaDE5MDlAZ21haWwuY29tIiwicm9sZSI6ImN1c3RvbWVyIiwibmFtZSI6InBoYW1pbmgxOTA5IiwicGhvbmUiOiIxMjM0NTY3ODkiLCJhZGRyZXNzIjoixJDhuqFpIEjhu41jIEZQVCIsImlhdCI6MTc1NTA0OTY1OSwiZXhwIjoxNzU2MzQ1NjU5fQ==.eW91ci1zdXBlci1zZWNyZXQtand0LWtleS1jaGFuZ2UtaW4tcHJvZHVjdGlvbnsidXNlcklkIjoiMTMiLCJlbWFpbCI6InBoYW1pbmgxOTA5QGdtYWlsLmNvbSIsInJvbGUiOiJjdXN0b21lciIsIm5hbWUiOiJwaGFtaW5oMTkwOSIsInBob25lIjoiMTIzNDU2Nzg5IiwiYWRkcmVzcyI6IsSQ4bqhaSBI4buNYyBGUFQiLCJpYXQiOjE3NTUwNDk2NTksImV4cCI6MTc1NjM0NTY1OX0=",
+      "refresh_token": "refresh_58k2k9mu7_1755049659918",
+      "expires_at": "2025-08-13T02:02:39.918Z",
+      "created_at": "2025-08-13T01:47:39.918Z",
+      "remember_me": true
+    },
+    {
+      "id": "1755062609395",
+      "user_id": "13",
+      "access_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiIxMyIsImVtYWlsIjoicGhhbWluaDE5MDlAZ21haWwuY29tIiwicm9sZSI6ImN1c3RvbWVyIiwibmFtZSI6IlBoYW0gTWluaCIsInBob25lIjoiMTIzNDU2Nzg5IiwiYWRkcmVzcyI6IsSQ4bqhaSBI4buNYyBGUFQiLCJpYXQiOjE3NTUwNjI2MDksImV4cCI6MTc1NjM1ODYwOX0=.eW91ci1zdXBlci1zZWNyZXQtand0LWtleS1jaGFuZ2UtaW4tcHJvZHVjdGlvbnsidXNlcklkIjoiMTMiLCJlbWFpbCI6InBoYW1pbmgxOTA5QGdtYWlsLmNvbSIsInJvbGUiOiJjdXN0b21lciIsIm5hbWUiOiJQaGFtIE1pbmgiLCJwaG9uZSI6IjEyMzQ1Njc4OSIsImFkZHJlc3MiOiLEkOG6oWkgSOG7jWMgRlBUIiwiaWF0IjoxNzU1MDYyNjA5LCJleHAiOjE3NTYzNTg2MDl9",
+      "refresh_token": "refresh_wtfvrerrm_1755062609395",
+      "expires_at": "2025-08-13T05:38:29.395Z",
+      "created_at": "2025-08-13T05:23:29.395Z",
+      "remember_me": true
+    },
+    {
+      "id": "1755062799540",
+      "user_id": "13",
+      "access_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiIxMyIsImVtYWlsIjoicGhhbWluaDE5MDlAZ21haWwuY29tIiwicm9sZSI6ImN1c3RvbWVyIiwibmFtZSI6IlBoYW0gTWluaCIsInBob25lIjoiMTIzNDU2Nzg5IiwiYWRkcmVzcyI6IsSQ4bqhaSBI4buNYyBGUFQiLCJpYXQiOjE3NTUwNjI3OTksImV4cCI6MTc1NjM1ODc5OX0=.eW91ci1zdXBlci1zZWNyZXQtand0LWtleS1jaGFuZ2UtaW4tcHJvZHVjdGlvbnsidXNlcklkIjoiMTMiLCJlbWFpbCI6InBoYW1pbmgxOTA5QGdtYWlsLmNvbSIsInJvbGUiOiJjdXN0b21lciIsIm5hbWUiOiJQaGFtIE1pbmgiLCJwaG9uZSI6IjEyMzQ1Njc4OSIsImFkZHJlc3MiOiLEkOG6oWkgSOG7jWMgRlBUIiwiaWF0IjoxNzU1MDYyNzk5LCJleHAiOjE3NTYzNTg3OTl9",
+      "refresh_token": "refresh_1j7870xkl_1755062799539",
+      "expires_at": "2025-08-13T05:41:39.540Z",
+      "created_at": "2025-08-13T05:26:39.540Z",
+      "remember_me": false
+    },
+    {
+      "id": "1755071640325",
+      "user_id": "9",
+      "access_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI5IiwiZW1haWwiOiJoZWxsb0BnbWFpbC5jb20iLCJyb2xlIjoiYWRtaW4iLCJuYW1lIjoiaGVsbG8iLCJwaG9uZSI6IjEyMzQ0NTczNjUiLCJhZGRyZXNzIjoiYm4iLCJpYXQiOjE3NTUwNzE2NDAsImV4cCI6MTc1NjM2NzY0MH0=.eW91ci1zdXBlci1zZWNyZXQtand0LWtleS1jaGFuZ2UtaW4tcHJvZHVjdGlvbnsidXNlcklkIjoiOSIsImVtYWlsIjoiaGVsbG9AZ21haWwuY29tIiwicm9sZSI6ImFkbWluIiwibmFtZSI6ImhlbGxvIiwicGhvbmUiOiIxMjM0NDU3MzY1IiwiYWRkcmVzcyI6ImJuIiwiaWF0IjoxNzU1MDcxNjQwLCJleHAiOjE3NTYzNjc2NDB9",
+      "refresh_token": "refresh_1ey9kl7vw_1755071640324",
+      "expires_at": "2025-08-13T08:09:00.324Z",
+      "created_at": "2025-08-13T07:54:00.325Z",
+      "remember_me": false
+    },
+    {
+      "id": "1755071700325",
+      "user_id": "8",
+      "access_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI4IiwiZW1haWwiOiJubWluaC5tYWluQGdtYWlsLmNvbSIsInJvbGUiOiJjdXN0b21lciIsIm5hbWUiOiJsZW5vbWkiLCJwaG9uZSI6IjEyMzQxMjM0IiwiYWRkcmVzcyI6InNhZmFzZGZxd2VyIiwiaWF0IjoxNzU1MDcxNzAwLCJleHAiOjE3NTYzNjc3MDB9.eW91ci1zdXBlci1zZWNyZXQtand0LWtleS1jaGFuZ2UtaW4tcHJvZHVjdGlvbnsidXNlcklkIjoiOCIsImVtYWlsIjoibm1pbmgubWFpbkBnbWFpbC5jb20iLCJyb2xlIjoiY3VzdG9tZXIiLCJuYW1lIjoibGVub21pIiwicGhvbmUiOiIxMjM0MTIzNCIsImFkZHJlc3MiOiJzYWZhc2RmcXdlciIsImlhdCI6MTc1NTA3MTcwMCwiZXhwIjoxNzU2MzY3NzAwfQ==",
+      "refresh_token": "refresh_iin9re8cu_1755071700324",
+      "expires_at": "2025-08-13T08:10:00.325Z",
+      "created_at": "2025-08-13T07:55:00.325Z",
+      "remember_me": false
+    },
+    {
+      "id": "1755072996078",
+      "user_id": "8",
+      "access_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI4IiwiZW1haWwiOiJubWluaC5tYWluQGdtYWlsLmNvbSIsInJvbGUiOiJjdXN0b21lciIsIm5hbWUiOiJsZW5vbWkiLCJwaG9uZSI6IjEyMzQxMjM0IiwiYWRkcmVzcyI6InNhZmFzZGZxd2VyIiwiaWF0IjoxNzU1MDcyOTk2LCJleHAiOjE3NTYzNjg5OTZ9.eW91ci1zdXBlci1zZWNyZXQtand0LWtleS1jaGFuZ2UtaW4tcHJvZHVjdGlvbnsidXNlcklkIjoiOCIsImVtYWlsIjoibm1pbmgubWFpbkBnbWFpbC5jb20iLCJyb2xlIjoiY3VzdG9tZXIiLCJuYW1lIjoibGVub21pIiwicGhvbmUiOiIxMjM0MTIzNCIsImFkZHJlc3MiOiJzYWZhc2RmcXdlciIsImlhdCI6MTc1NTA3Mjk5NiwiZXhwIjoxNzU2MzY4OTk2fQ==",
+      "refresh_token": "refresh_godd33g0t_1755072996078",
+      "expires_at": "2025-08-13T08:31:36.078Z",
+      "created_at": "2025-08-13T08:16:36.078Z",
+      "remember_me": false
+    },
+    {
+      "id": "1755087191276",
+      "user_id": "9",
+      "access_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI5IiwiZW1haWwiOiJoZWxsb0BnbWFpbC5jb20iLCJyb2xlIjoiYWRtaW4iLCJuYW1lIjoiaGVsbG8iLCJwaG9uZSI6IjEyMzQ0NTczNjUiLCJhZGRyZXNzIjoiYm4iLCJpYXQiOjE3NTUwODcxOTEsImV4cCI6MTc1NjM4MzE5MX0=.eW91ci1zdXBlci1zZWNyZXQtand0LWtleS1jaGFuZ2UtaW4tcHJvZHVjdGlvbnsidXNlcklkIjoiOSIsImVtYWlsIjoiaGVsbG9AZ21haWwuY29tIiwicm9sZSI6ImFkbWluIiwibmFtZSI6ImhlbGxvIiwicGhvbmUiOiIxMjM0NDU3MzY1IiwiYWRkcmVzcyI6ImJuIiwiaWF0IjoxNzU1MDg3MTkxLCJleHAiOjE3NTYzODMxOTF9",
+      "refresh_token": "refresh_rqwec4h29_1755087191167",
+      "expires_at": "2025-08-13T12:28:11.167Z",
+      "created_at": "2025-08-13T12:13:11.276Z",
+      "remember_me": false
+    },
+    {
+      "id": "1755087591158",
+      "user_id": "9",
+      "access_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI5IiwiZW1haWwiOiJoZWxsb0BnbWFpbC5jb20iLCJyb2xlIjoiYWRtaW4iLCJuYW1lIjoiaGVsbG8iLCJwaG9uZSI6IjEyMzQ0NTczNjUiLCJhZGRyZXNzIjoiYm4iLCJpYXQiOjE3NTUwODc1OTEsImV4cCI6MTc1NjM4MzU5MX0=.eW91ci1zdXBlci1zZWNyZXQtand0LWtleS1jaGFuZ2UtaW4tcHJvZHVjdGlvbnsidXNlcklkIjoiOSIsImVtYWlsIjoiaGVsbG9AZ21haWwuY29tIiwicm9sZSI6ImFkbWluIiwibmFtZSI6ImhlbGxvIiwicGhvbmUiOiIxMjM0NDU3MzY1IiwiYWRkcmVzcyI6ImJuIiwiaWF0IjoxNzU1MDg3NTkxLCJleHAiOjE3NTYzODM1OTF9",
+      "refresh_token": "refresh_mujgcto9q_1755087591158",
+      "expires_at": "2025-08-13T12:34:51.158Z",
+      "created_at": "2025-08-13T12:19:51.158Z",
+      "remember_me": false
+    },
+    {
+      "id": "1755090570746",
+      "user_id": "1",
+      "access_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiIxIiwiZW1haWwiOiJhYmNAZnB0LmVkdS52biIsInJvbGUiOiJhZG1pbiIsIm5hbWUiOiJhYmMiLCJwaG9uZSI6IjA5NjE0MTYxMzciLCJhZGRyZXNzIjoiMTMgbmdvIDIgbmd1eWVuIHRoaSBkaW5oIiwiaWF0IjoxNzU1MDkwNTcwLCJleHAiOjE3NTYzODY1NzB9.eW91ci1zdXBlci1zZWNyZXQtand0LWtleS1jaGFuZ2UtaW4tcHJvZHVjdGlvbnsidXNlcklkIjoiMSIsImVtYWlsIjoiYWJjQGZwdC5lZHUudm4iLCJyb2xlIjoiYWRtaW4iLCJuYW1lIjoiYWJjIiwicGhvbmUiOiIwOTYxNDE2MTM3IiwiYWRkcmVzcyI6IjEzIG5nbyAyIG5ndXllbiB0aGkgZGluaCIsImlhdCI6MTc1NTA5MDU3MCwiZXhwIjoxNzU2Mzg2NTcwfQ==",
+      "refresh_token": "refresh_el11uii2c_1755090570746",
+      "expires_at": "2025-08-13T13:24:30.746Z",
+      "created_at": "2025-08-13T13:09:30.746Z",
+      "remember_me": true
+    },
+    {
+      "id": "1755105849979",
+      "user_id": "1",
+      "access_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiIxIiwiZW1haWwiOiJhYmNAZnB0LmVkdS52biIsInJvbGUiOiJhZG1pbiIsIm5hbWUiOiJhYmMiLCJwaG9uZSI6IjA5NjE0MTYxMzciLCJhZGRyZXNzIjoiMTMgbmdvIDIgbmd1eWVuIHRoaSBkaW5oIiwiaWF0IjoxNzU1MTA1ODQ5LCJleHAiOjE3NTY0MDE4NDl9.eW91ci1zdXBlci1zZWNyZXQtand0LWtleS1jaGFuZ2UtaW4tcHJvZHVjdGlvbnsidXNlcklkIjoiMSIsImVtYWlsIjoiYWJjQGZwdC5lZHUudm4iLCJyb2xlIjoiYWRtaW4iLCJuYW1lIjoiYWJjIiwicGhvbmUiOiIwOTYxNDE2MTM3IiwiYWRkcmVzcyI6IjEzIG5nbyAyIG5ndXllbiB0aGkgZGluaCIsImlhdCI6MTc1NTEwNTg0OSwiZXhwIjoxNzU2NDAxODQ5fQ==",
+      "refresh_token": "refresh_fbyazuu5s_1755105849979",
+      "expires_at": "2025-08-13T17:39:09.979Z",
+      "created_at": "2025-08-13T17:24:09.979Z",
+      "remember_me": true
+    },
+    {
+      "id": "1755107406208",
+      "user_id": "1",
+      "access_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiIxIiwiZW1haWwiOiJhYmNAZnB0LmVkdS52biIsInJvbGUiOiJhZG1pbiIsIm5hbWUiOiJhYmMiLCJwaG9uZSI6IjA5NjE0MTYxMzciLCJhZGRyZXNzIjoiMTMgbmdvIDIgbmd1eWVuIHRoaSBkaW5oIiwiaWF0IjoxNzU1MTA3NDA2LCJleHAiOjE3NTY0MDM0MDZ9.eW91ci1zdXBlci1zZWNyZXQtand0LWtleS1jaGFuZ2UtaW4tcHJvZHVjdGlvbnsidXNlcklkIjoiMSIsImVtYWlsIjoiYWJjQGZwdC5lZHUudm4iLCJyb2xlIjoiYWRtaW4iLCJuYW1lIjoiYWJjIiwicGhvbmUiOiIwOTYxNDE2MTM3IiwiYWRkcmVzcyI6IjEzIG5nbyAyIG5ndXllbiB0aGkgZGluaCIsImlhdCI6MTc1NTEwNzQwNiwiZXhwIjoxNzU2NDAzNDA2fQ==",
+      "refresh_token": "refresh_22jcevcce_1755107406208",
+      "expires_at": "2025-08-13T18:05:06.208Z",
+      "created_at": "2025-08-13T17:50:06.208Z",
+      "remember_me": true
+    },
+    {
+      "id": "1755138707545",
+      "user_id": "1",
+      "access_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiIxIiwiZW1haWwiOiJhYmNAZnB0LmVkdS52biIsInJvbGUiOiJhZG1pbiIsIm5hbWUiOiJhYmMiLCJwaG9uZSI6IjA5NjE0MTYxMzciLCJhZGRyZXNzIjoiMTMgbmdvIDIgbmd1eWVuIHRoaSBkaW5oIiwiaWF0IjoxNzU1MTM4NzA3LCJleHAiOjE3NTY0MzQ3MDd9.eW91ci1zdXBlci1zZWNyZXQtand0LWtleS1jaGFuZ2UtaW4tcHJvZHVjdGlvbnsidXNlcklkIjoiMSIsImVtYWlsIjoiYWJjQGZwdC5lZHUudm4iLCJyb2xlIjoiYWRtaW4iLCJuYW1lIjoiYWJjIiwicGhvbmUiOiIwOTYxNDE2MTM3IiwiYWRkcmVzcyI6IjEzIG5nbyAyIG5ndXllbiB0aGkgZGluaCIsImlhdCI6MTc1NTEzODcwNywiZXhwIjoxNzU2NDM0NzA3fQ==",
+      "refresh_token": "refresh_901h20oav_1755138707545",
+      "expires_at": "2025-08-14T02:46:47.545Z",
+      "created_at": "2025-08-14T02:31:47.545Z",
+      "remember_me": false
+    },
+    {
+      "id": "1755140739474",
+      "user_id": "11",
+      "access_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiIxMSIsImVtYWlsIjoicXVhbmduYjIyMTIwNEBnbWFpbC5jb20iLCJyb2xlIjoiY3VzdG9tZXIiLCJuYW1lIjoicW5ib2tlMDQiLCJwaG9uZSI6IjA5NzQwNjc2OTgiLCJhZGRyZXNzIjoiYW55IHdoZXJlIiwiaWF0IjoxNzU1MTQwNzM5LCJleHAiOjE3NTY0MzY3Mzl9.eW91ci1zdXBlci1zZWNyZXQtand0LWtleS1jaGFuZ2UtaW4tcHJvZHVjdGlvbnsidXNlcklkIjoiMTEiLCJlbWFpbCI6InF1YW5nbmIyMjEyMDRAZ21haWwuY29tIiwicm9sZSI6ImN1c3RvbWVyIiwibmFtZSI6InFuYm9rZTA0IiwicGhvbmUiOiIwOTc0MDY3Njk4IiwiYWRkcmVzcyI6ImFueSB3aGVyZSIsImlhdCI6MTc1NTE0MDczOSwiZXhwIjoxNzU2NDM2NzM5fQ==",
+      "refresh_token": "refresh_2cjlr79y3_1755140739474",
+      "expires_at": "2025-08-14T03:20:39.474Z",
+      "created_at": "2025-08-14T03:05:39.474Z",
+      "remember_me": false
+    },
+    {
+      "id": "1755141598501",
+      "user_id": "11",
+      "access_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiIxMSIsImVtYWlsIjoicXVhbmduYjIyMTIwNEBnbWFpbC5jb20iLCJyb2xlIjoiY3VzdG9tZXIiLCJuYW1lIjoicW5ib2tlMDQiLCJwaG9uZSI6IjA5NzQwNjc2OTgiLCJhZGRyZXNzIjoiYW55IHdoZXJlIiwiaWF0IjoxNzU1MTQxNTk4LCJleHAiOjE3NTY0Mzc1OTh9.eW91ci1zdXBlci1zZWNyZXQtand0LWtleS1jaGFuZ2UtaW4tcHJvZHVjdGlvbnsidXNlcklkIjoiMTEiLCJlbWFpbCI6InF1YW5nbmIyMjEyMDRAZ21haWwuY29tIiwicm9sZSI6ImN1c3RvbWVyIiwibmFtZSI6InFuYm9rZTA0IiwicGhvbmUiOiIwOTc0MDY3Njk4IiwiYWRkcmVzcyI6ImFueSB3aGVyZSIsImlhdCI6MTc1NTE0MTU5OCwiZXhwIjoxNzU2NDM3NTk4fQ==",
+      "refresh_token": "refresh_ieznzolv3_1755141598501",
+      "expires_at": "2025-08-14T03:34:58.501Z",
+      "created_at": "2025-08-14T03:19:58.501Z",
+      "remember_me": false
+    },
+    {
+      "id": "1755141895231",
+      "user_id": "1",
+      "access_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiIxIiwiZW1haWwiOiJhYmNAZnB0LmVkdS52biIsInJvbGUiOiJhZG1pbiIsIm5hbWUiOiJhYmMiLCJwaG9uZSI6IjA5NjE0MTYxMzciLCJhZGRyZXNzIjoiMTMgbmdvIDIgbmd1eWVuIHRoaSBkaW5oIiwiaWF0IjoxNzU1MTQxODk1LCJleHAiOjE3NTY0Mzc4OTV9.eW91ci1zdXBlci1zZWNyZXQtand0LWtleS1jaGFuZ2UtaW4tcHJvZHVjdGlvbnsidXNlcklkIjoiMSIsImVtYWlsIjoiYWJjQGZwdC5lZHUudm4iLCJyb2xlIjoiYWRtaW4iLCJuYW1lIjoiYWJjIiwicGhvbmUiOiIwOTYxNDE2MTM3IiwiYWRkcmVzcyI6IjEzIG5nbyAyIG5ndXllbiB0aGkgZGluaCIsImlhdCI6MTc1NTE0MTg5NSwiZXhwIjoxNzU2NDM3ODk1fQ==",
+      "refresh_token": "refresh_l2rgam1y2_1755141895230",
+      "expires_at": "2025-08-14T03:39:55.231Z",
+      "created_at": "2025-08-14T03:24:55.231Z",
+      "remember_me": false
+    },
+    {
+      "id": "1755141918634",
+      "user_id": "11",
+      "access_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiIxMSIsImVtYWlsIjoicXVhbmduYjIyMTIwNEBnbWFpbC5jb20iLCJyb2xlIjoiY3VzdG9tZXIiLCJuYW1lIjoicW5ib2tlMDQiLCJwaG9uZSI6IjA5NzQwNjc2OTgiLCJhZGRyZXNzIjoiYW55IHdoZXJlIiwiaWF0IjoxNzU1MTQxOTE4LCJleHAiOjE3NTY0Mzc5MTh9.eW91ci1zdXBlci1zZWNyZXQtand0LWtleS1jaGFuZ2UtaW4tcHJvZHVjdGlvbnsidXNlcklkIjoiMTEiLCJlbWFpbCI6InF1YW5nbmIyMjEyMDRAZ21haWwuY29tIiwicm9sZSI6ImN1c3RvbWVyIiwibmFtZSI6InFuYm9rZTA0IiwicGhvbmUiOiIwOTc0MDY3Njk4IiwiYWRkcmVzcyI6ImFueSB3aGVyZSIsImlhdCI6MTc1NTE0MTkxOCwiZXhwIjoxNzU2NDM3OTE4fQ==",
+      "refresh_token": "refresh_h9r2ibo40_1755141918633",
+      "expires_at": "2025-08-14T03:40:18.634Z",
+      "created_at": "2025-08-14T03:25:18.634Z",
+      "remember_me": false
+    },
+    {
+      "id": "1755142733144",
+      "user_id": "1",
+      "access_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiIxIiwiZW1haWwiOiJhYmNAZnB0LmVkdS52biIsInJvbGUiOiJhZG1pbiIsIm5hbWUiOiJhYmMiLCJwaG9uZSI6IjA5NjE0MTYxMzciLCJhZGRyZXNzIjoiMTMgbmdvIDIgbmd1eWVuIHRoaSBkaW5oIiwiaWF0IjoxNzU1MTQyNzMzLCJleHAiOjE3NTY0Mzg3MzN9.eW91ci1zdXBlci1zZWNyZXQtand0LWtleS1jaGFuZ2UtaW4tcHJvZHVjdGlvbnsidXNlcklkIjoiMSIsImVtYWlsIjoiYWJjQGZwdC5lZHUudm4iLCJyb2xlIjoiYWRtaW4iLCJuYW1lIjoiYWJjIiwicGhvbmUiOiIwOTYxNDE2MTM3IiwiYWRkcmVzcyI6IjEzIG5nbyAyIG5ndXllbiB0aGkgZGluaCIsImlhdCI6MTc1NTE0MjczMywiZXhwIjoxNzU2NDM4NzMzfQ==",
+      "refresh_token": "refresh_5fdqzfj3i_1755142733143",
+      "expires_at": "2025-08-14T03:53:53.144Z",
+      "created_at": "2025-08-14T03:38:53.144Z",
+      "remember_me": true
+    },
+    {
+      "id": "1755143038025",
+      "user_id": "13",
+      "access_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiIxMyIsImVtYWlsIjoicGhhbWluaDE5MDlAZ21haWwuY29tIiwicm9sZSI6ImN1c3RvbWVyIiwibmFtZSI6IlBoYW0gTWluaCIsInBob25lIjoiMTIzNDU2Nzg5IiwiYWRkcmVzcyI6IsSQ4bqhaSBI4buNYyBGUFQiLCJpYXQiOjE3NTUxNDMwMzgsImV4cCI6MTc1NjQzOTAzOH0=.eW91ci1zdXBlci1zZWNyZXQtand0LWtleS1jaGFuZ2UtaW4tcHJvZHVjdGlvbnsidXNlcklkIjoiMTMiLCJlbWFpbCI6InBoYW1pbmgxOTA5QGdtYWlsLmNvbSIsInJvbGUiOiJjdXN0b21lciIsIm5hbWUiOiJQaGFtIE1pbmgiLCJwaG9uZSI6IjEyMzQ1Njc4OSIsImFkZHJlc3MiOiLEkOG6oWkgSOG7jWMgRlBUIiwiaWF0IjoxNzU1MTQzMDM4LCJleHAiOjE3NTY0MzkwMzh9",
+      "refresh_token": "refresh_auy4pw1t9_1755143038025",
+      "expires_at": "2025-08-14T03:58:58.025Z",
+      "created_at": "2025-08-14T03:43:58.025Z",
+      "remember_me": false
+    },
+    {
+      "id": "1755143336284",
+      "user_id": "1",
+      "access_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiIxIiwiZW1haWwiOiJhYmNAZnB0LmVkdS52biIsInJvbGUiOiJhZG1pbiIsIm5hbWUiOiJhYmMiLCJwaG9uZSI6IjA5NjE0MTYxMzciLCJhZGRyZXNzIjoiMTMgbmdvIDIgbmd1eWVuIHRoaSBkaW5oIiwiaWF0IjoxNzU1MTQzMzM2LCJleHAiOjE3NTY0MzkzMzZ9.eW91ci1zdXBlci1zZWNyZXQtand0LWtleS1jaGFuZ2UtaW4tcHJvZHVjdGlvbnsidXNlcklkIjoiMSIsImVtYWlsIjoiYWJjQGZwdC5lZHUudm4iLCJyb2xlIjoiYWRtaW4iLCJuYW1lIjoiYWJjIiwicGhvbmUiOiIwOTYxNDE2MTM3IiwiYWRkcmVzcyI6IjEzIG5nbyAyIG5ndXllbiB0aGkgZGluaCIsImlhdCI6MTc1NTE0MzMzNiwiZXhwIjoxNzU2NDM5MzM2fQ==",
+      "refresh_token": "refresh_6zqtpdi5f_1755143336283",
+      "expires_at": "2025-08-14T04:03:56.283Z",
+      "created_at": "2025-08-14T03:48:56.284Z",
+      "remember_me": true
+    },
+    {
+      "id": "1755148117013",
+      "user_id": "1",
+      "access_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiIxIiwiZW1haWwiOiJhYmNAZnB0LmVkdS52biIsInJvbGUiOiJhZG1pbiIsIm5hbWUiOiJhYmMiLCJwaG9uZSI6IjA5NjE0MTYxMzciLCJhZGRyZXNzIjoiMTMgbmdvIDIgbmd1eWVuIHRoaSBkaW5oIiwiaWF0IjoxNzU1MTQ4MTE3LCJleHAiOjE3NTY0NDQxMTd9.eW91ci1zdXBlci1zZWNyZXQtand0LWtleS1jaGFuZ2UtaW4tcHJvZHVjdGlvbnsidXNlcklkIjoiMSIsImVtYWlsIjoiYWJjQGZwdC5lZHUudm4iLCJyb2xlIjoiYWRtaW4iLCJuYW1lIjoiYWJjIiwicGhvbmUiOiIwOTYxNDE2MTM3IiwiYWRkcmVzcyI6IjEzIG5nbyAyIG5ndXllbiB0aGkgZGluaCIsImlhdCI6MTc1NTE0ODExNywiZXhwIjoxNzU2NDQ0MTE3fQ==",
+      "refresh_token": "refresh_uzvnxkh1q_1755148117013",
+      "expires_at": "2025-08-14T05:23:37.013Z",
+      "created_at": "2025-08-14T05:08:37.013Z",
+      "remember_me": true
+    },
+    {
+      "id": "1758988732015",
+      "user_id": "1",
+      "access_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiIxIiwiZW1haWwiOiJhYmNAZnB0LmVkdS52biIsInJvbGUiOiJhZG1pbiIsIm5hbWUiOiJhYmMiLCJwaG9uZSI6IjA5NjE0MTYxMzciLCJhZGRyZXNzIjoiMTMgbmdvIDIgbmd1eWVuIHRoaSBkaW5oIiwiaWF0IjoxNzU4OTg4NzMyLCJleHAiOjE3NjAyODQ3MzJ9.eW91ci1zdXBlci1zZWNyZXQtand0LWtleS1jaGFuZ2UtaW4tcHJvZHVjdGlvbnsidXNlcklkIjoiMSIsImVtYWlsIjoiYWJjQGZwdC5lZHUudm4iLCJyb2xlIjoiYWRtaW4iLCJuYW1lIjoiYWJjIiwicGhvbmUiOiIwOTYxNDE2MTM3IiwiYWRkcmVzcyI6IjEzIG5nbyAyIG5ndXllbiB0aGkgZGluaCIsImlhdCI6MTc1ODk4ODczMiwiZXhwIjoxNzYwMjg0NzMyfQ==",
+      "refresh_token": "refresh_dsv7lyegs_1758988732015",
+      "expires_at": "2025-09-27T16:13:52.015Z",
+      "created_at": "2025-09-27T15:58:52.015Z",
+      "remember_me": false
+    },
+    {
+      "id": "1758991954026",
+      "user_id": "1",
+      "access_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiIxIiwiZW1haWwiOiJhYmNAZnB0LmVkdS52biIsInJvbGUiOiJhZG1pbiIsIm5hbWUiOiJhYmMiLCJwaG9uZSI6IjA5NjE0MTYxMzciLCJhZGRyZXNzIjoiMTMgbmdvIDIgbmd1eWVuIHRoaSBkaW5oIiwiaWF0IjoxNzU4OTkxOTU0LCJleHAiOjE3NjAyODc5NTR9.eW91ci1zdXBlci1zZWNyZXQtand0LWtleS1jaGFuZ2UtaW4tcHJvZHVjdGlvbnsidXNlcklkIjoiMSIsImVtYWlsIjoiYWJjQGZwdC5lZHUudm4iLCJyb2xlIjoiYWRtaW4iLCJuYW1lIjoiYWJjIiwicGhvbmUiOiIwOTYxNDE2MTM3IiwiYWRkcmVzcyI6IjEzIG5nbyAyIG5ndXllbiB0aGkgZGluaCIsImlhdCI6MTc1ODk5MTk1NCwiZXhwIjoxNzYwMjg3OTU0fQ==",
+      "refresh_token": "refresh_aqig4vbds_1758991954026",
+      "expires_at": "2025-09-27T17:07:34.026Z",
+      "created_at": "2025-09-27T16:52:34.026Z",
+      "remember_me": false
+    },
+    {
+      "id": "1758993686993",
+      "user_id": "6",
+      "access_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2IiwiZW1haWwiOiJuZ3V5ZW52YW5hbkBnbWFpbC5jb20iLCJyb2xlIjoidXNlciIsIm5hbWUiOiJOZ3V54buFbiBWxINuIEFuIiwicGhvbmUiOiIwOTg3NjU0MzIxIiwiYWRkcmVzcyI6IjEyMyDEkMaw4budbmcgQUJDLCBRdeG6rW4gMSwgVFAuSENNIiwiaWF0IjoxNzU4OTkzNjg2LCJleHAiOjE3NjAyODk2ODZ9.eW91ci1zdXBlci1zZWNyZXQtand0LWtleS1jaGFuZ2UtaW4tcHJvZHVjdGlvbnsidXNlcklkIjoiNiIsImVtYWlsIjoibmd1eWVudmFuYW5AZ21haWwuY29tIiwicm9sZSI6InVzZXIiLCJuYW1lIjoiTmd1eeG7hW4gVsSDbiBBbiIsInBob25lIjoiMDk4NzY1NDMyMSIsImFkZHJlc3MiOiIxMjMgxJDGsOG7nW5nIEFCQywgUXXhuq1uIDEsIFRQLkhDTSIsImlhdCI6MTc1ODk5MzY4NiwiZXhwIjoxNzYwMjg5Njg2fQ==",
+      "refresh_token": "refresh_ri9qy88iy_1758993686992",
+      "expires_at": "2025-09-27T17:36:26.993Z",
+      "created_at": "2025-09-27T17:21:26.993Z",
+      "remember_me": false
+    }
+  ],
+  "category": [
+    {
+      "id": "1",
+      "name": "Giày",
+      "description": "Các mẫu giày thời trang, thể thao.",
+      "image": "https://media.istockphoto.com/id/1129866093/vi/anh/ch%E1%BA%A1y-xuy%C3%AAn-qu%E1%BB%91c-gia-v%C3%A0o-s%C3%A1ng-s%E1%BB%9Bm.jpg?s=612x612&w=0&k=20&c=B6zlZPYQTieIUP_2SzWJUALd92o9madWX0ntiw3bgwI="
+    },
+    {
+      "id": "2",
+      "name": "Dép",
+      "description": "Dép thời trang, tiện dụng.",
+      "image": "https://down-vn.img.susercontent.com/file/sg-11134201-7rdwg-mcvkv938t4y6e5.webp"
+    },
+    {
+      "id": "3",
+      "name": "Phụ kiện",
+      "description": "Phụ kiện thời trang đi kèm.",
+      "image": "https://file.hstatic.net/200000472237/file/kinh-doanh-phu-kien-thoi-trang_af0ca3c1d96348c1acadee1c0ff98931_grande.png"
+    }
+  ],
+  "products": [
+    {
+      "id": "66e168fc",
+      "name": "Dép quai ngang Adidas",
+      "description": "Dép thời trang, chất liệu cao su êm ái ",
+      "category_id": "2",
+      "images": [
+        "https://down-vn.img.susercontent.com/file/vn-11134207-7ra0g-m8emv2y50c3o44.webp"
+      ],
+      "created_at": "2025-07-30T09:42:07.459747Z",
+      "updated_at": "2025-08-14T01:40:34.642Z",
+      "variants": [
+        {
+          "sku": "SL-AD-RED-38",
+          "price": 350000,
+          "cost_price": 250000,
+          "stock_quantity": 20,
+          "images": [
+            "https://down-vn.img.susercontent.com/file/vn-11134207-7ra0g-m8d5zl5sa0zr88.webp"
+          ],
+          "color_code": "#000000",
+          "size": 38
+        },
+        {
+          "sku": "SL-AD-BLK-40",
+          "price": 350000,
+          "cost_price": 250000,
+          "stock_quantity": 15,
+          "images": [
+            "https://down-vn.img.susercontent.com/file/vn-11134207-7ra0g-m8emv2y535he6b.webp"
+          ],
+          "color_code": "#D3D3D3",
+          "size": 40
+        }
+      ],
+      "status": "Inactive"
+    },
+    {
+      "id": "8a1000d9",
+      "name": "Dép Levi's",
+      "description": "Dép mềm, thoáng khí phù hợp đi trong nhà",
+      "category_id": "2",
+      "images": [
+        "https://cdn.storims.com/api/v2/image/resize?path=https://storage.googleapis.com/storims_cdn/storims/uploads/f3837512346cc0658a3f341d3bd6d48a.jpeg&format=jpeg"
+      ],
+      "created_at": "2025-07-30T09:42:07.460014Z",
+      "updated_at": "2025-07-30T09:42:07.460023Z",
+      "variants": [
+        {
+          "sku": "SL-LV-GRN-39",
+          "color_code": "#000000",
+          "size": 39,
+          "price": 270000,
+          "cost_price": 200000,
+          "stock_quantity": 10,
+          "images": [
+            "https://dohieuus.com/wp-content/uploads/2023/06/26.png"
+          ]
+        },
+        {
+          "sku": "SL-LV-GRN-41",
+          "color_code": "#FFFFFF",
+          "size": 41,
+          "price": 270000,
+          "cost_price": 200000,
+          "stock_quantity": 12,
+          "images": [
+            "https://images-cdn.ubuy.co.in/6754ff3ad96ede4f8166c6fd-levis-womens-3d-slide-slip-on-sandal.jpg"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "a6952125",
+      "name": "Túi đeo chéo thời trang",
+      "description": "Phụ kiện túi nhỏ gọn, tiện lợi",
+      "category_id": "3",
+      "images": [
+        "https://down-vn.img.susercontent.com/file/vn-11134207-7r98o-lzmk9qy6g9lt23.webp"
+      ],
+      "created_at": "2025-07-30T09:42:07.460375Z",
+      "updated_at": "2025-07-30T09:42:07.460386Z",
+      "variants": [
+        {
+          "sku": "PK-BAG-BLU-STD",
+          "color_code": "#FFFFFF",
+          "size": "Standard",
+          "price": 450000,
+          "cost_price": 300000,
+          "stock_quantity": 25,
+          "images": [
+            "https://down-vn.img.susercontent.com/file/vn-11134207-7r98o-lzmk9qy6c1n19e.webp"
+          ]
+        },
+        {
+          "sku": "PK-BAG-BLK-STD",
+          "color_code": "#000000",
+          "size": "Standard",
+          "price": 450000,
+          "cost_price": 300000,
+          "stock_quantity": 30,
+          "images": [
+            "https://down-vn.img.susercontent.com/file/vn-11134207-7r98o-lzmk9qy6eurxd9.webp"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "97e6535a",
+      "name": "Tất thể thao cao cấp",
+      "description": "Chất liệu cotton, thấm hút tốt",
+      "category_id": "3",
+      "images": [
+        "https://down-vn.img.susercontent.com/file/vn-11134207-7ras8-mclsr9691oiked.webp"
+      ],
+      "created_at": "2025-07-30T09:42:07.460797Z",
+      "updated_at": "2025-07-30T09:42:07.460805Z",
+      "variants": [
+        {
+          "sku": "PK-SOCK-WHT-M",
+          "color_code": "#FFFFFF",
+          "size": "M",
+          "price": 120000,
+          "cost_price": 80000,
+          "stock_quantity": 40,
+          "images": [
+            "https://down-vn.img.susercontent.com/file/vn-11134207-7ras8-mclsrozwa4ws28.webp"
+          ]
+        },
+        {
+          "sku": "PK-SOCK-WHT-L",
+          "color_code": "#FFFFFF",
+          "size": "L",
+          "price": 120000,
+          "cost_price": 80000,
+          "stock_quantity": 30,
+          "images": [
+            "https://down-vn.img.susercontent.com/file/vn-11134207-7ras8-mclsrm9nvt7x20.webp"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "nike_air_max",
+      "name": "Nike Air Max 270",
+      "description": "Giày thể thao với công nghệ Air Max, êm ái và thoáng khí",
+      "category_id": "1",
+      "images": [
+        "https://www.jordan1.vn/wp-content/uploads/2023/09/nike-air-max-270-_white-black-white_-ah8050-100_2_os_3b85db412593429eaa88426bc559574f.jpg"
+      ],
+      "created_at": "2025-07-30T10:00:00Z",
+      "updated_at": "2025-07-30T10:00:00Z",
+      "variants": [
+        {
+          "sku": "NK-AM-270-WHT-40",
+          "color_code": "#FFFFFF",
+          "size": 40,
+          "price": 2500000,
+          "cost_price": 1800000,
+          "stock_quantity": 15,
+          "images": [
+            "https://static.nike.com/a/images/t_PDP_936_v1/f_auto,q_auto:eco/eehabecsfly0wy1pxxve/NIKE+AIR+MAX+270+%28GS%29.png"
+          ]
+        },
+        {
+          "sku": "NK-AM-270-BLK-42",
+          "color_code": "#000000",
+          "size": 42,
+          "price": 2500000,
+          "cost_price": 1800000,
+          "stock_quantity": 12,
+          "images": [
+            "https://img01.ztat.net/article/spp-media-p1/3823eccb261341568422636ba471db62/165cc60c1c74494382f795d12f1f67da.jpg?imwidth=762&filter=packshot"
+          ]
+        },
+        {
+          "sku": "NK-AM-270-RED-41",
+          "color_code": "#FF0000",
+          "size": 41,
+          "price": 2500000,
+          "cost_price": 1800000,
+          "stock_quantity": 18,
+          "images": [
+            "https://img01.ztat.net/article/spp-media-p1/31243fac654d46629e8772206dae4bf7/e775ca6c988a41e7b1d56bec2b3a3267.jpg"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "adidas_ultraboost",
+      "name": "Adidas Ultraboost 22",
+      "description": "Giày chạy bộ với công nghệ Boost, đệm êm và phản hồi tốt",
+      "category_id": "1",
+      "images": [
+        "https://www.wowweekend.vn/document_root/upload/articles/image/BrowseContent/LifeStyle/202203/Gi%C3%A0y%20adidas%20ultraboost%2022/1.jpg"
+      ],
+      "created_at": "2025-07-30T10:01:00Z",
+      "updated_at": "2025-07-30T10:01:00Z",
+      "variants": [
+        {
+          "sku": "AD-UB-22-BLU-39",
+          "color_code": "#0066CC",
+          "size": 39,
+          "price": 3200000,
+          "cost_price": 2200000,
+          "stock_quantity": 10,
+          "images": [
+            "https://www.365rider.com/41837-thickbox_default/adidas-ultraboost-22-shoes-blue-coral.jpg"
+          ]
+        },
+        {
+          "sku": "AD-UB-22-GRY-43",
+          "color_code": "#808080",
+          "size": 43,
+          "price": 3200000,
+          "cost_price": 2200000,
+          "stock_quantity": 8,
+          "images": [
+            "https://cdn.chiaki.vn/unsafe/0x960/left/top/smart/filters:quality(75)/https://chiaki.vn/upload/product/2023/01/giay-the-thao-adidas-ultraboost-22-j-grey-two-gx9782-63b3a6b7ca580-03012023105327.jpg"
+          ]
+        },
+        {
+          "sku": "AD-UB-22-WHT-40",
+          "color_code": "#FFFFFF",
+          "size": 40,
+          "price": 3200000,
+          "cost_price": 2200000,
+          "stock_quantity": 14,
+          "images": [
+            "https://assets.adidas.com/images/w_600,f_auto,q_auto/49e5514bb83e4c5d8bf5ad9100ef2815_9366/Giay_Ultraboost_22_trang_GX5459_01_standard.jpg"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "converse_chuck_taylor",
+      "name": "Converse Chuck Taylor All Star",
+      "description": "Giày canvas cổ điển, phù hợp mọi phong cách",
+      "category_id": "1",
+      "images": [
+        "https://s7d2.scene7.com/is/image/aeo/7412_6837_001_f?$pdp-m-opt$"
+      ],
+      "created_at": "2025-07-30T10:02:00Z",
+      "updated_at": "2025-07-30T10:02:00Z",
+      "variants": [
+        {
+          "sku": "CV-CT-AS-WHT-38",
+          "color_code": "#FFFFFF",
+          "size": 38,
+          "price": 1200000,
+          "cost_price": 800000,
+          "stock_quantity": 25,
+          "images": [
+            "https://drake.vn/image/cache/catalog/Converse/1970s/TRANG%20CH%E1%BB%A8/162056-DRAKE-650x650.jpg"
+          ]
+        },
+        {
+          "sku": "CV-CT-AS-BLK-41",
+          "color_code": "#000000",
+          "size": 41,
+          "price": 1200000,
+          "cost_price": 800000,
+          "stock_quantity": 20,
+          "images": [
+            "https://www.converse.vn/media/catalog/product/0/8/0882-CONM9160C00011H-1.jpg"
+          ]
+        },
+        {
+          "sku": "CV-CT-AS-RED-39",
+          "color_code": "#FF0000",
+          "size": 39,
+          "price": 1200000,
+          "cost_price": 800000,
+          "stock_quantity": 22,
+          "images": [
+            "https://shoebizz.co.nz/cdn/shop/files/unisex_converse_chuck_taylor_all_star_faux_leather_high_top_red_172698_0_1_-Edited_1-Photoroom_1.jpg?v=1717713904&width=1445"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "vans_old_skool",
+      "name": "Vans Old Skool Classic",
+      "description": "Giày skateboard với thiết kế cổ điển, bền bỉ",
+      "category_id": "1",
+      "images": [
+        "https://pos.nvncdn.com/6a2de0-203642/ps/20250414_ckzmwLjwJy.jpeg?v=1744623074"
+      ],
+      "created_at": "2025-07-30T10:03:00Z",
+      "updated_at": "2025-07-30T10:03:00Z",
+      "variants": [
+        {
+          "sku": "VN-OS-CLS-BLK-40",
+          "color_code": "#000000",
+          "size": 40,
+          "price": 1500000,
+          "cost_price": 1000000,
+          "stock_quantity": 18,
+          "images": [
+            "https://bizweb.dktcdn.net/100/140/774/products/vans-old-skool-sidestripe-v-black-vn0a38g1ujj-1.jpg?v=1549186316720"
+          ]
+        },
+        {
+          "sku": "VN-OS-CLS-WHT-42",
+          "color_code": "#FFFFFF",
+          "size": 42,
+          "price": 1500000,
+          "cost_price": 1000000,
+          "stock_quantity": 15,
+          "images": [
+            "https://bizweb.dktcdn.net/100/140/774/products/vans-old-skool-classic-blue-mirage-vn0a4u3bx17-1.jpg?v=1576744784453"
+          ]
+        },
+        {
+          "sku": "VN-OS-CLS-BLU-39",
+          "color_code": "#0066CC",
+          "size": 39,
+          "price": 1500000,
+          "cost_price": 1000000,
+          "stock_quantity": 12,
+          "images": [
+            "https://bizweb.dktcdn.net/thumb/1024x1024/100/140/774/products/vans-old-skool-classic-white-vn0a4u3bfrl-1.jpg?v=1578484043063"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "jordan_air_1",
+      "name": "Air Jordan 1 Retro High",
+      "description": "Giày bóng rổ huyền thoại với thiết kế đặc trưng",
+      "category_id": "1",
+      "images": [
+        "https://static.ftshp.digital/img/p/1/4/0/8/9/3/6/1408936-full_product.jpg"
+      ],
+      "created_at": "2025-07-30T10:04:00Z",
+      "updated_at": "2025-07-30T10:04:00Z",
+      "variants": [
+        {
+          "sku": "JR-AJ-1-RED-41",
+          "color_code": "#FF0000",
+          "size": 41,
+          "price": 4500000,
+          "cost_price": 3000000,
+          "stock_quantity": 8,
+          "images": [
+            "https://d2cva83hdk3bwc.cloudfront.net/jordan-1-retro-high-og-chicago-2015-1.jpg"
+          ]
+        },
+        {
+          "sku": "JR-AJ-1-BLK-43",
+          "color_code": "#000000",
+          "size": 43,
+          "price": 4500000,
+          "cost_price": 3000000,
+          "stock_quantity": 6,
+          "images": [
+            "https://area51store.co.nz/cdn/shop/products/5_4df5907c-9564-4729-bc82-9d084e6f9718.png?v=1674701213"
+          ]
+        },
+        {
+          "sku": "JR-AJ-1-WHT-40",
+          "color_code": "#FFFFFF",
+          "size": 40,
+          "price": 4500000,
+          "cost_price": 3000000,
+          "stock_quantity": 10,
+          "images": [
+            "https://bizweb.dktcdn.net/thumb/1024x1024/100/427/145/products/nike-air-jordan-retro-high-stealth-555088-037-japanorderstore-0909665979-6.jpg?v=1677407781657"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "new_balance_574",
+      "name": "New Balance 574 Classic",
+      "description": "Giày thể thao với đệm êm ái, phù hợp đi hàng ngày",
+      "category_id": "1",
+      "images": [
+        "https://i.pinimg.com/736x/3b/a8/6c/3ba86cc6ed65b8890a5518cccff56f8e.jpg"
+      ],
+      "created_at": "2025-07-30T10:05:00Z",
+      "updated_at": "2025-07-30T10:05:00Z",
+      "variants": [
+        {
+          "sku": "NB-574-GRY-39",
+          "color_code": "#808080",
+          "size": 39,
+          "price": 1800000,
+          "cost_price": 1200000,
+          "stock_quantity": 20,
+          "images": [
+            "https://product.hstatic.net/1000382698/product/wl574evw-1_63b95e6cf1174cd3b827e52a66d2af90_large.jpg"
+          ]
+        },
+        {
+          "sku": "NB-574-BLU-41",
+          "color_code": "#0066CC",
+          "size": 41,
+          "price": 1800000,
+          "cost_price": 1200000,
+          "stock_quantity": 16,
+          "images": [
+            "https://www.supersports.co.th/cdn/shop/files/NE081SH342DYTH-0.jpg?v=1738839578"
+          ]
+        },
+        {
+          "sku": "NB-574-RED-42",
+          "color_code": "#FF0000",
+          "size": 42,
+          "price": 1800000,
+          "cost_price": 1200000,
+          "stock_quantity": 14,
+          "images": [
+            "https://unlimited.net.my/wp-content/uploads/2022/06/ml574evm_nb_02_i.jpg"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "puma_rs_x",
+      "name": "Puma RS-X Reinvention",
+      "description": "Giày thể thao với thiết kế retro, phong cách độc đáo",
+      "category_id": "1",
+      "images": [
+        "https://slideculture.gr/wp-content/uploads/2023/09/puma-rs-x-reinvent-sneakers-womens-frosty-pink-white-371008-25-2.jpg"
+      ],
+      "created_at": "2025-07-30T10:06:00Z",
+      "updated_at": "2025-07-30T10:06:00Z",
+      "variants": [
+        {
+          "sku": "PM-RSX-BLK-40",
+          "color_code": "#000000",
+          "size": 40,
+          "price": 2200000,
+          "cost_price": 1500000,
+          "stock_quantity": 12,
+          "images": [
+            "https://down-vn.img.susercontent.com/file/vn-11134201-7ra0g-m8yahy19ek3o69.webp"
+          ]
+        },
+        {
+          "sku": "PM-RSX-WHT-42",
+          "color_code": "#FFFFFF",
+          "size": 42,
+          "price": 2200000,
+          "cost_price": 1500000,
+          "stock_quantity": 10,
+          "images": [
+            "https://down-vn.img.susercontent.com/file/vn-11134201-7ra0g-m8yak0uvy6bm54.webp"
+          ]
+        },
+        {
+          "sku": "PM-RSX-RED-41",
+          "color_code": "#FF0000",
+          "size": 41,
+          "price": 2200000,
+          "cost_price": 1500000,
+          "stock_quantity": 15,
+          "images": [
+            "https://down-vn.img.susercontent.com/file/vn-11134201-7ra0g-m8yamdhq2344a7.webp"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "reebok_classic",
+      "name": "Reebok Classic Leather",
+      "description": "Giày thể thao cổ điển với chất liệu da cao cấp",
+      "category_id": "1",
+      "images": [
+        "https://images.journeys.com/images/products/1_691818_FS_ALT1C.JPG"
+      ],
+      "created_at": "2025-07-30T10:07:00Z",
+      "updated_at": "2025-07-30T10:07:00Z",
+      "variants": [
+        {
+          "sku": "RB-CL-WHT-39",
+          "color_code": "#FFFFFF",
+          "size": 39,
+          "price": 1600000,
+          "cost_price": 1100000,
+          "stock_quantity": 18,
+          "images": [
+            "https://down-vn.img.susercontent.com/file/sg-11134201-7ra3t-mbmdjxzlhn6v69.webp"
+          ]
+        },
+        {
+          "sku": "RB-CL-BLK-41",
+          "color_code": "#000000",
+          "size": 41,
+          "price": 1600000,
+          "cost_price": 1100000,
+          "stock_quantity": 14,
+          "images": [
+            "https://down-vn.img.susercontent.com/file/sg-11134201-7ra3a-mbl4sqxlxst85e.webp"
+          ]
+        },
+        {
+          "sku": "RB-CL-GRY-40",
+          "color_code": "#808080",
+          "size": 40,
+          "price": 1600000,
+          "cost_price": 1100000,
+          "stock_quantity": 16,
+          "images": [
+            "https://down-vn.img.susercontent.com/file/sg-11134201-7ra0q-mbmdnt6lu1lz9f.webp"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "asics_gel_kayano",
+      "name": "ASICS GEL-Kayano 28",
+      "description": "Giày chạy bộ với công nghệ GEL, hỗ trợ tối ưu",
+      "category_id": "1",
+      "images": [
+        "https://sneakerdaily.vn/wp-content/uploads/2023/09/Giay-Asics-Gel-Kayano-28-Black-Electric-Red-1011B189.002-2.jpg"
+      ],
+      "created_at": "2025-07-30T10:08:00Z",
+      "updated_at": "2025-07-30T10:08:00Z",
+      "variants": [
+        {
+          "sku": "AS-GK-28-BLU-40",
+          "color_code": "#0066CC",
+          "size": 40,
+          "price": 2800000,
+          "cost_price": 1900000,
+          "stock_quantity": 10,
+          "images": [
+            "https://down-vn.img.susercontent.com/file/sg-11134201-7rdy8-mcro4iteby7a27.webp"
+          ]
+        },
+        {
+          "sku": "AS-GK-28-GRY-42",
+          "color_code": "#808080",
+          "size": 42,
+          "price": 2800000,
+          "cost_price": 1900000,
+          "stock_quantity": 8,
+          "images": [
+            "https://down-vn.img.susercontent.com/file/sg-11134201-7rdvf-mcro4i6nandybc.webp"
+          ]
+        },
+        {
+          "sku": "AS-GK-28-RED-41",
+          "color_code": "#FF0000",
+          "size": 41,
+          "price": 2800000,
+          "cost_price": 1900000,
+          "stock_quantity": 12,
+          "images": [
+            "https://down-vn.img.susercontent.com/file/sg-11134201-7rdw9-mcro4hjm6z4k82@resize_w900_nl.webp"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "saucony_ride",
+      "name": "Saucony Ride 14",
+      "description": "Giày chạy bộ với đệm PWRRUN, nhẹ và linh hoạt",
+      "category_id": "1",
+      "images": [
+        "https://down-vn.img.susercontent.com/file/sg-11134201-7rdvq-mbxwyzejhglqb9.webp"
+      ],
+      "created_at": "2025-07-30T10:09:00Z",
+      "updated_at": "2025-07-30T10:09:00Z",
+      "variants": [
+        {
+          "sku": "SC-RD-14-WHT-39",
+          "color_code": "#FFFFFF",
+          "size": 39,
+          "price": 2400000,
+          "cost_price": 1600000,
+          "stock_quantity": 9,
+          "images": [
+            "https://down-vn.img.susercontent.com/file/vn-11134275-7ras8-mbf1rb75p8ww3b.webp"
+          ]
+        },
+        {
+          "sku": "SC-RD-14-BLU-41",
+          "color_code": "#0066CC",
+          "size": 41,
+          "price": 2400000,
+          "cost_price": 1600000,
+          "stock_quantity": 11,
+          "images": [
+            "https://down-vn.img.susercontent.com/file/vn-11134275-7ras8-mbf1rb6bqghg2c.webp"
+          ]
+        },
+        {
+          "sku": "SC-RD-14-GRY-43",
+          "color_code": "#808080",
+          "size": 43,
+          "price": 2400000,
+          "cost_price": 1600000,
+          "stock_quantity": 7,
+          "images": [
+            "https://down-vn.img.susercontent.com/file/vn-11134275-7ras8-mbf1rb5ru2usac.webp"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "havaianas_classic",
+      "name": "Havaianas Classic Flip Flop",
+      "description": "Dép xỏ ngón cao su cao cấp, thoáng khí và bền bỉ",
+      "category_id": "2",
+      "images": [
+        "https://images.asos-media.com/products/havaianas-classic-metal-logo-flip-flops-in-black/208087057-1-black?$n_750w$&wid=750&hei=750&fit=crop"
+      ],
+      "created_at": "2025-07-30T10:10:00Z",
+      "updated_at": "2025-07-30T10:10:00Z",
+      "variants": [
+        {
+          "sku": "HV-CLS-BLU-39",
+          "color_code": "#0066CC",
+          "size": 39,
+          "price": 450000,
+          "cost_price": 300000,
+          "stock_quantity": 30,
+          "images": [
+            "https://havaianas.com.vn/cdn/shop/files/4145752-2664-A_2048x.png?v=1749721201"
+          ]
+        },
+        {
+          "sku": "HV-CLS-BLK-41",
+          "color_code": "#000000",
+          "size": 41,
+          "price": 450000,
+          "cost_price": 300000,
+          "stock_quantity": 25,
+          "images": [
+            "https://havaianas.com.vn/cdn/shop/files/4145752-0090-A_2048x.png?v=1749721201"
+          ]
+        },
+        {
+          "sku": "HV-CLS-WHT-40",
+          "color_code": "#FFFFFF",
+          "size": 40,
+          "price": 450000,
+          "cost_price": 300000,
+          "stock_quantity": 28,
+          "images": [
+            "https://havaianas.com.vn/cdn/shop/files/4149734-havaianas-track-waves-34_3_2048x.png?v=1752464666"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "birkenstock_arizona",
+      "name": "Birkenstock Arizona Sandal",
+      "description": "Dép quai ngang với đế gỗ tự nhiên, thoải mái và bền",
+      "category_id": "2",
+      "images": [
+        "https://d2ob0iztsaxy5v.cloudfront.net/product/174257/1742576350m8_zm.jpg"
+      ],
+      "created_at": "2025-07-30T10:11:00Z",
+      "updated_at": "2025-07-30T10:11:00Z",
+      "variants": [
+        {
+          "sku": "BK-ARZ-BRN-38",
+          "color_code": "#8B4513",
+          "size": 38,
+          "price": 1200000,
+          "cost_price": 800000,
+          "stock_quantity": 15,
+          "images": [
+            "https://down-vn.img.susercontent.com/file/sg-11134201-7rfhz-m9r0vfeprlw1e7.webp"
+          ]
+        },
+        {
+          "sku": "BK-ARZ-BLK-40",
+          "color_code": "#000000",
+          "size": 40,
+          "price": 1200000,
+          "cost_price": 800000,
+          "stock_quantity": 12,
+          "images": [
+            "https://down-vn.img.susercontent.com/file/sg-11134201-7rdyj-mcrqv6yy82ms36.webp"
+          ]
+        },
+        {
+          "sku": "BK-ARZ-TAN-42",
+          "color_code": "#D2B48C",
+          "size": 42,
+          "price": 1200000,
+          "cost_price": 800000,
+          "stock_quantity": 10,
+          "images": [
+            "https://down-vn.img.susercontent.com/file/sg-11134201-7rdx4-mcxiajbkat6o96.webp"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "crocs_classic",
+      "name": "Crocs Classic Clog",
+      "description": "Dép nhựa thoáng khí, nhẹ và dễ vệ sinh",
+      "category_id": "2",
+      "images": [
+        "https://images.asos-media.com/products/crocs-classic-clog-in-moss/207230642-1-moss?$n_640w$&wid=513&fit=constrain"
+      ],
+      "created_at": "2025-07-30T10:12:00Z",
+      "updated_at": "2025-07-30T10:12:00Z",
+      "variants": [
+        {
+          "sku": "CR-CLS-BLU-39",
+          "color_code": "#0066CC",
+          "size": 39,
+          "price": 600000,
+          "cost_price": 400000,
+          "stock_quantity": 35,
+          "images": [
+            "https://www.panachekids.co.uk/images/thumbs/0055970_crocs-classic-clog-blue-bolt.jpeg"
+          ]
+        },
+        {
+          "sku": "CR-CLS-PNK-41",
+          "color_code": "#FFC0CB",
+          "size": 41,
+          "price": 600000,
+          "cost_price": 400000,
+          "stock_quantity": 30,
+          "images": [
+            "https://www.panachekids.co.uk/images/thumbs/0041062_crocs-classic-clog-taffy-pink.jpeg"
+          ]
+        },
+        {
+          "sku": "CR-CLS-GRY-40",
+          "color_code": "#808080",
+          "size": 40,
+          "price": 600000,
+          "cost_price": 400000,
+          "stock_quantity": 32,
+          "images": [
+            "https://www.famousfootwear.ca/blob/product-images/21000/71/32/48/713248_right_feed1000.jpg"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "teva_hurricane",
+      "name": "Teva Hurricane XLT2",
+      "description": "Dép quai ngang thể thao, phù hợp hoạt động ngoài trời",
+      "category_id": "2",
+      "images": [
+        "https://cdn.runrepeat.com/storage/gallery/product_primary/30890/teva-hurricane-xlt-2-21226078-main.jpg"
+      ],
+      "created_at": "2025-07-30T10:13:00Z",
+      "updated_at": "2025-07-30T10:13:00Z",
+      "variants": [
+        {
+          "sku": "TV-HUR-BLU-40",
+          "color_code": "#0066CC",
+          "size": 40,
+          "price": 800000,
+          "cost_price": 550000,
+          "stock_quantity": 20,
+          "images": [
+            "https://down-vn.img.susercontent.com/file/vn-11134201-7ra0g-m8cxnfjcykby04.webp"
+          ]
+        },
+        {
+          "sku": "TV-HUR-GRY-42",
+          "color_code": "#808080",
+          "size": 42,
+          "price": 800000,
+          "cost_price": 550000,
+          "stock_quantity": 18,
+          "images": [
+            "https://down-vn.img.susercontent.com/file/vn-11134201-7ra0g-m8kbpi4idpbi93.webp"
+          ]
+        },
+        {
+          "sku": "TV-HUR-GRN-41",
+          "color_code": "#00FF00",
+          "size": 41,
+          "price": 800000,
+          "cost_price": 550000,
+          "stock_quantity": 15,
+          "images": [
+            "https://down-vn.img.susercontent.com/file/vn-11134201-7ra0g-m9qw3oobeqtgdc.webp"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "keen_whisper",
+      "name": "Keen Whisper Sandal",
+      "description": "Dép quai ngang với mũi bảo vệ, an toàn và thoải mái",
+      "category_id": "2",
+      "images": [
+        "https://down-vn.img.susercontent.com/file/sg-11134201-7rdy5-mcp1l88tfb1zdb.webp"
+      ],
+      "created_at": "2025-07-30T10:14:00Z",
+      "updated_at": "2025-07-30T10:14:00Z",
+      "variants": [
+        {
+          "sku": "KN-WHP-BLK-39",
+          "color_code": "#000000",
+          "size": 39,
+          "price": 1000000,
+          "cost_price": 700000,
+          "stock_quantity": 12,
+          "images": [
+            "https://down-vn.img.susercontent.com/file/sg-11134201-7rat9-maicq2d3sdap1c.webp"
+          ]
+        },
+        {
+          "sku": "KN-WHP-BLU-41",
+          "color_code": "#0066CC",
+          "size": 41,
+          "price": 1000000,
+          "cost_price": 700000,
+          "stock_quantity": 10,
+          "images": [
+            "https://down-vn.img.susercontent.com/file/sg-11134201-7ravt-maicq3k41ftve8.webp"
+          ]
+        },
+        {
+          "sku": "KN-WHP-GRY-40",
+          "color_code": "#808080",
+          "size": 40,
+          "price": 1000000,
+          "cost_price": 700000,
+          "stock_quantity": 14,
+          "images": [
+            "https://down-vn.img.susercontent.com/file/sg-11134201-7rav9-maicpzzd9ssjad.webp"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "chaco_z1",
+      "name": "Chaco Z1 Classic Sandal",
+      "description": "Dép quai ngang với dây đeo có thể điều chỉnh",
+      "category_id": "2",
+      "images": [
+        "https://i.ebayimg.com/images/g/oS8AAOSwHgtiZfkO/s-l1200.jpg"
+      ],
+      "created_at": "2025-07-30T10:15:00Z",
+      "updated_at": "2025-07-30T10:15:00Z",
+      "variants": [
+        {
+          "sku": "CC-Z1-BRN-40",
+          "color_code": "#8B4513",
+          "size": 40,
+          "price": 1100000,
+          "cost_price": 750000,
+          "stock_quantity": 8,
+          "images": [
+            "https://s7d4.scene7.com/is/image/WolverineWorldWide/CHAM-JCH109871Z-022724-S25-000-NEW?$dw-pdp-mobile$"
+          ]
+        },
+        {
+          "sku": "CC-Z1-BLK-42",
+          "color_code": "#000000",
+          "size": 42,
+          "price": 1100000,
+          "cost_price": 750000,
+          "stock_quantity": 6,
+          "images": [
+            "https://s7d4.scene7.com/is/image/WolverineWorldWide/CHAW-JCH110254Z-042525-S26-000?$dw-pdp-mobile$"
+          ]
+        },
+        {
+          "sku": "CC-Z1-GRY-41",
+          "color_code": "#808080",
+          "size": 41,
+          "price": 1100000,
+          "cost_price": 750000,
+          "stock_quantity": 9,
+          "images": [
+            "https://cdn.shoplightspeed.com/shops/637470/files/62101590/800x1067x3/chaco-womens-z2-classic.jpg"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "nike_slide",
+      "name": "Nike Benassi Slide",
+      "description": "Dép xỏ ngón thể thao, nhẹ và thoáng khí",
+      "category_id": "2",
+      "images": [
+        "https://product.hstatic.net/1000367250/product/thiet_ke_chua_co_ten_-_2024-08-01t133959.236_7da9c821293a43d6a1cacb78bf8514d3_grande.png"
+      ],
+      "created_at": "2025-07-30T10:16:00Z",
+      "updated_at": "2025-07-30T10:16:00Z",
+      "variants": [
+        {
+          "sku": "NK-BEN-BLK-40",
+          "color_code": "#000000",
+          "size": 40,
+          "price": 500000,
+          "cost_price": 350000,
+          "stock_quantity": 25,
+          "images": [
+            "https://bizweb.dktcdn.net/thumb/1024x1024/100/340/361/products/thiet-ke-chua-co-ten-2024-08-27t082746-493.png?v=1750124916523"
+          ]
+        },
+        {
+          "sku": "NK-BEN-WHT-42",
+          "color_code": "#FFFFFF",
+          "size": 42,
+          "price": 500000,
+          "cost_price": 350000,
+          "stock_quantity": 22,
+          "images": [
+            "https://ash.vn/cdn/shop/files/1282afdc1a4c26d2352627cf14622a83_1800x.jpg?v=1752142635"
+          ]
+        },
+        {
+          "sku": "NK-BEN-GRY-41",
+          "color_code": "#808080",
+          "size": 41,
+          "price": 500000,
+          "cost_price": 350000,
+          "stock_quantity": 20,
+          "images": [
+            "https://product.hstatic.net/1000008082/product/3681_4ba04db4eec649dc87320a7ad202714d_master.jpg"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "adidas_adilette",
+      "name": "Adidas Adilette Comfort Slide",
+      "description": "Dép xỏ ngón với đệm Cloudfoam, êm ái và thoải mái",
+      "category_id": "2",
+      "images": [
+        "https://fado.vn/blog/wp-content/uploads/2023/09/bang-size-dep-adidas-jpg.webp"
+      ],
+      "created_at": "2025-07-30T10:17:00Z",
+      "updated_at": "2025-07-30T10:17:00Z",
+      "variants": [
+        {
+          "sku": "AD-ADL-BLK-39",
+          "color_code": "#000000",
+          "size": 39,
+          "price": 600000,
+          "cost_price": 400000,
+          "stock_quantity": 16,
+          "images": [
+            "https://down-vn.img.susercontent.com/file/vn-11134207-7r98o-lsm95dpequv8d0.webp"
+          ]
+        },
+        {
+          "sku": "AD-ADL-WHT-41",
+          "color_code": "#FFFFFF",
+          "size": 41,
+          "price": 600000,
+          "cost_price": 400000,
+          "stock_quantity": 15,
+          "images": [
+            "https://down-vn.img.susercontent.com/file/vn-11134201-7r98o-lsm8gqlswr8qe5.webp"
+          ]
+        },
+        {
+          "sku": "AD-ADL-BLU-40",
+          "color_code": "#0066CC",
+          "size": 40,
+          "price": 600000,
+          "cost_price": 400000,
+          "stock_quantity": 20,
+          "images": [
+            "https://down-vn.img.susercontent.com/file/vn-11134201-7r98o-lsm8gqf56hpe87.webp"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "under_armour_slide",
+      "name": "Under Armour Ignite Slide",
+      "description": "Dép xỏ ngón với đệm Ignite, hỗ  trợ tối ưu",
+      "category_id": "2",
+      "images": [
+        "https://i.ebayimg.com/images/g/SIYAAeSw0PtoMLaJ/s-l1200.jpg"
+      ],
+      "created_at": "2025-07-30T10:18:00Z",
+      "updated_at": "2025-07-30T10:18:00Z",
+      "variants": [
+        {
+          "sku": "UA-IGN-BLK-40",
+          "color_code": "#000000",
+          "size": 40,
+          "price": 700000,
+          "cost_price": 500000,
+          "stock_quantity": 16,
+          "images": [
+            "https://down-vn.img.susercontent.com/file/vn-11134201-7ra0g-m9h709r7f3ouea.webp"
+          ]
+        },
+        {
+          "sku": "UA-IGN-GRY-42",
+          "color_code": "#808080",
+          "size": 42,
+          "price": 700000,
+          "cost_price": 500000,
+          "stock_quantity": 12,
+          "images": [
+            "https://down-vn.img.susercontent.com/file/vn-11134275-7ras8-mclzllibe36kb7.webp"
+          ]
+        },
+        {
+          "sku": "UA-IGN-RED-41",
+          "color_code": "#FF0000",
+          "size": 41,
+          "price": 700000,
+          "cost_price": 500000,
+          "stock_quantity": 14,
+          "images": [
+            "https://down-vn.img.susercontent.com/file/vn-11134201-7ras8-marw7s77hrrr14.webp"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sports_socks_premium",
+      "name": "Tất thể thao cao cấp Nike Dri-FIT",
+      "description": "Tất thể thao với công nghệ Dri-FIT, thấm hút mồ hôi tốt",
+      "category_id": "3",
+      "images": [
+        "https://down-vn.img.susercontent.com/file/vn-11134207-7ra0g-ma6i90up87mwb9.webp"
+      ],
+      "created_at": "2025-07-30T10:19:00Z",
+      "updated_at": "2025-07-30T10:19:00Z",
+      "variants": [
+        {
+          "sku": "NK-SOC-WHT-S",
+          "color_code": "#FFFFFF",
+          "size": "S",
+          "price": 180000,
+          "cost_price": 120000,
+          "stock_quantity": 48,
+          "images": [
+            "https://down-vn.img.susercontent.com/file/vn-11134207-7ra0g-ma6ioilz0l1fb4.webp"
+          ]
+        },
+        {
+          "sku": "NK-SOC-BLK-M",
+          "color_code": "#000000",
+          "size": "M",
+          "price": 180000,
+          "cost_price": 120000,
+          "stock_quantity": 45,
+          "images": [
+            "https://down-vn.img.susercontent.com/file/vn-11134207-7ra0g-ma6ip69se1z715.webp"
+          ]
+        },
+        {
+          "sku": "NK-SOC-GRY-L",
+          "color_code": "#808080",
+          "size": "L",
+          "price": 180000,
+          "cost_price": 120000,
+          "stock_quantity": 40,
+          "images": [
+            "https://down-vn.img.susercontent.com/file/vn-11134207-7ra0g-ma5d3yia61z716.webp"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "shoe_cleaner_kit",
+      "name": "Bộ dụng cụ vệ sinh giày chuyên nghiệp",
+      "description": "Bộ kit vệ sinh giày đầy đủ, giúp bảo quản giày tốt hơn",
+      "category_id": "3",
+      "images": [
+        "https://down-vn.img.susercontent.com/file/vn-11134207-7r98o-lo7zr8naqbnvb8.webp"
+      ],
+      "created_at": "2025-07-30T10:20:00Z",
+      "updated_at": "2025-07-30T10:20:00Z",
+      "variants": [
+        {
+          "sku": "CLN-KIT-BASIC",
+          "color_code": "#808080",
+          "size": "Standard",
+          "price": 350000,
+          "cost_price": 250000,
+          "stock_quantity": 24,
+          "images": [
+            "https://down-vn.img.susercontent.com/file/eb0984f59b066df7e3ed3059d6175ebd.webp"
+          ]
+        },
+        {
+          "sku": "CLN-KIT-PREMIUM",
+          "color_code": "#FFD700",
+          "size": "Premium",
+          "price": 550000,
+          "cost_price": 400000,
+          "stock_quantity": 19,
+          "images": [
+            "https://down-vn.img.susercontent.com/file/80b24e12ca9c614f780083b8f12c0e9e.webp"
+          ]
+        },
+        {
+          "sku": "CLN-KIT-DELUXE",
+          "color_code": "#C0C0C0",
+          "size": "Deluxe",
+          "price": 750000,
+          "cost_price": 550000,
+          "stock_quantity": 13,
+          "images": [
+            "https://down-vn.img.susercontent.com/file/vn-11134207-7qukw-ljutq9i87kc404.webp"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "shoe_deodorizer",
+      "name": "Bình xịt khử mùi giày Fresh Step",
+      "description": "Bình xịt khử mùi giày hiệu quả, an toàn cho da",
+      "category_id": "3",
+      "images": [
+        "https://product.hstatic.net/200000652829/product/xit_khu_mui_hoi_cho_giay_scholl_fresh_step_cao_cap_150ml_cf276031e5f54492a439b5dc8535ec77_master.png"
+      ],
+      "created_at": "2025-07-30T10:21:00Z",
+      "updated_at": "2025-07-30T10:21:00Z",
+      "variants": [
+        {
+          "sku": "DEZ-FRESH-100ML",
+          "color_code": "#87CEEB",
+          "size": "100ml",
+          "price": 120000,
+          "cost_price": 80000,
+          "stock_quantity": 56,
+          "images": [
+            "https://product.hstatic.net/200000652829/product/xit_khu_mui_hoi_cho_giay_scholl_fresh_step_cao_cap_150ml_cf276031e5f54492a439b5dc8535ec77_master.png"
+          ]
+        },
+        {
+          "sku": "DEZ-FRESH-200ML",
+          "color_code": "#87CEEB",
+          "size": "200ml",
+          "price": 200000,
+          "cost_price": 140000,
+          "stock_quantity": 40,
+          "images": [
+            "https://down-vn.img.susercontent.com/file/vn-11134207-7ra0g-m9wml0tuzk7u1d.webp"
+          ]
+        },
+        {
+          "sku": "DEZ-FRESH-500ML",
+          "color_code": "#87CEEB",
+          "size": "500ml",
+          "price": 450000,
+          "cost_price": 300000,
+          "stock_quantity": 25,
+          "images": [
+            "https://down-vn.img.susercontent.com/file/vn-11134207-7ra0g-m9wml0v8xj72e0@resize_w900_nl.webp"
+          ]
+        }
+      ],
+      "sku": "DEZ-FRESH-100ML",
+      "color_code": "#87CEEB",
+      "size": "100ml",
+      "price": 120000,
+      "cost_price": 80000,
+      "stock_quantity": 56,
+      "variant_sku": "DEZ-FRESH-100ML"
+    },
+    {
+      "id": "mea3tesiau1xaud75tv",
+      "name": "Test",
+      "description": "12345",
+      "category_id": 3,
+      "images": [
+        "https://res.cloudinary.com/dbqb8zw82/image/upload/v1755097589/yreqqayh5dr8lrrgdhy2.png"
+      ],
+      "created_at": "2025-08-13T15:07:15.618Z",
+      "updated_at": "2025-08-13T17:42:33.662Z",
+      "variants": [
+        {
+          "sku": "TES-DEF-STD",
+          "price": 11000000,
+          "cost_price": 10000,
+          "stock_quantity": 99,
+          "images": [
+            "https://res.cloudinary.com/dbqb8zw82/image/upload/v1755106900/nxznebe5zjj1wwchuv7y.png"
+          ],
+          "Xanh": "48",
+          "color_code": "#FFA500",
+          "size": "37"
+        },
+        {
+          "sku": "SKU-1755106894052",
+          "price": 11000000,
+          "cost_price": 10000,
+          "stock_quantity": 100,
+          "images": [
+            "https://res.cloudinary.com/dbqb8zw82/image/upload/v1755106903/lrtik6feogjtlgluj7k9.png"
+          ],
+          "size": "44",
+          "color_code": "#FFFF00"
+        }
+      ],
+      "status": "Inactive"
+    },
+    {
+      "id": "meatbmf1r3mb7skna2",
+      "name": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "description": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "category_id": "2",
+      "images": [
+        "https://res.cloudinary.com/dbqb8zw82/image/upload/v1755140418/hbct3thudocorkncofwm.png"
+      ],
+      "created_at": "2025-08-14T03:01:15.709Z",
+      "updated_at": "2025-08-14T03:01:15.709Z",
+      "variants": [
+        {
+          "sku": "AAA-000-35",
+          "price": 11111111,
+          "cost_price": 1111111,
+          "stock_quantity": 1111,
+          "images": [
+            "https://res.cloudinary.com/dbqb8zw82/image/upload/v1755140463/kjia1kxlluxwfyyqrwka.png"
+          ],
+          "color_code": "#0066CC",
+          "size": "38"
+        }
+      ]
+    },
+    {
+      "id": "meatda05cjaqfohu6pc",
+      "name": "bbbbbbbbbbbbbbbbbbbbbbbbbbb",
+      "description": "bbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+      "category_id": "2",
+      "images": [
+        "https://res.cloudinary.com/dbqb8zw82/image/upload/v1755140522/zs0c1movsqhwyvgps1up.png"
+      ],
+      "created_at": "2025-08-14T03:02:32.933Z",
+      "updated_at": "2025-08-14T03:02:32.933Z",
+      "variants": [
+        {
+          "sku": "BBB-000-35",
+          "price": 1122222,
+          "cost_price": 22222,
+          "stock_quantity": 121,
+          "images": [
+            "https://res.cloudinary.com/dbqb8zw82/image/upload/v1755140542/npej8oowrvgmeczaffkw.png"
+          ],
+          "color_code": "#FFA500",
+          "size": "40"
+        }
+      ]
+    },
+    {
+      "id": "meatgt1p53eimhaym1s",
+      "name": "cccccccccccc",
+      "description": "cccccccccccccc",
+      "category_id": "3",
+      "images": [
+        "https://res.cloudinary.com/dbqb8zw82/image/upload/v1755140690/cb2avlxldvzrlkcuuaxw.png"
+      ],
+      "created_at": "2025-08-14T03:05:17.581Z",
+      "updated_at": "2025-08-14T03:05:17.581Z",
+      "variants": [
+        {
+          "sku": "CCC-000-35",
+          "price": 12312312,
+          "cost_price": 121212,
+          "stock_quantity": 221,
+          "images": [
+            "https://res.cloudinary.com/dbqb8zw82/image/upload/v1755140709/bjstdvm7qq9fyqv7mpsi.png"
+          ],
+          "color_code": "#FFA500",
+          "size": "XXL"
+        }
+      ]
+    },
+    {
+      "id": "mg2gjk33tjq8btr8tjh",
+      "name": "qnboke04aaaaa",
+      "description": "aaaaaaaaaaaaaaaaaaaaa",
+      "category_id": "1",
+      "images": [
+        "https://res.cloudinary.com/dbqb8zw82/image/upload/v1758988813/qfjjx5znxblj4if9d4db.png"
+      ],
+      "created_at": "2025-09-27T16:00:46.191Z",
+      "updated_at": "2025-09-27T16:00:46.191Z",
+      "variants": [
+        {
+          "sku": "QNB-000-35",
+          "price": 2222222,
+          "cost_price": 22222,
+          "stock_quantity": 222221,
+          "images": [],
+          "color_code": "#0066CC",
+          "size": "36"
+        }
+      ]
+    },
+    {
+      "id": "mg2gl7lnztxtdp6p69i",
+      "name": "aaa",
+      "description": "aaaaaaaaaaaaaaaaa",
+      "category_id": "2",
+      "images": [
+        "https://res.cloudinary.com/dbqb8zw82/image/upload/v1758988887/emhy020q0jr06hwv0wln.png"
+      ],
+      "created_at": "2025-09-27T16:02:03.323Z",
+      "updated_at": "2025-09-27T16:02:03.323Z",
+      "variants": [
+        {
+          "sku": "AAA-000-35",
+          "price": 0,
+          "cost_price": 0,
+          "stock_quantity": 0,
+          "images": [],
+          "color_code": "#000000",
+          "size": "35"
+        }
+      ]
+    }
+  ],
+  "cart": [
+    {
+      "id": "cart_001",
+      "user_id": "6",
+      "items": [],
+      "total": 1250000,
+      "updated_at": "2025-01-20T11:15:00Z"
+    },
+    {
+      "id": "cart_002",
+      "user_id": "7",
+      "items": [
+        {
+          "product_id": "8a1000d9",
+          "variant_sku": "SL-LV-GRN-39",
+          "quantity": 1,
+          "price": 270000,
+          "added_at": "2025-01-21T09:45:00Z"
+        },
+        {
+          "product_id": "97e6535a",
+          "variant_sku": "PK-SOCK-WHT-M",
+          "quantity": 3,
+          "price": 120000,
+          "added_at": "2025-01-21T10:20:00Z"
+        }
+      ],
+      "total": 630000,
+      "updated_at": "2025-01-21T10:20:00Z"
+    },
+    {
+      "id": "fb55",
+      "user_id": "10",
+      "status": "active",
+      "items": [
+        {
+          "product_id": "66e168fc-SL-AD-RED-38",
+          "variant_sku": "SL-AD-RED-38",
+          "quantity": 1,
+          "price": 350000,
+          "added_at": "2025-08-10T04:49:52.136Z"
+        },
+        {
+          "product_id": "a6952125-PK-BAG-BLU-STD",
+          "variant_sku": "PK-BAG-BLU-STD",
+          "quantity": 1,
+          "price": 450000,
+          "added_at": "2025-08-10T04:50:07.106Z"
+        }
+      ],
+      "total": 800000,
+      "updated_at": "2025-08-10T04:50:07.106Z"
+    }
+  ],
+  "reviews": [
+    {
+      "id": "REV-001",
+      "product_id": "nike_air_max",
+      "user_id": "6",
+      "user_name": "Nguyễn Văn An",
+      "rating": 5,
+      "title": "Giày rất đẹp và thoải mái",
+      "comment": "Tôi rất hài lòng với sản phẩm này. Giày Nike Air Max 270 rất đẹp, chất lượng tốt và đặc biệt là rất thoải mái khi đi. Đế giày êm ái, phù hợp cho việc đi bộ và chạy bộ. Tôi sẽ mua thêm các sản phẩm khác của Nike.",
+      "verified_purchase": true,
+      "helpful_count": 12,
+      "order_id": "ORD-2025-001",
+      "created_at": "2025-01-20T10:30:00Z",
+      "updated_at": "2025-01-20T10:30:00Z"
+    },
+    {
+      "id": "REV-002",
+      "product_id": "nike_air_max",
+      "user_id": "7",
+      "user_name": "Trần Thị Bình",
+      "rating": 4,
+      "title": "Chất lượng tốt, giá hợp lý",
+      "comment": "Giày có chất lượng tốt, thiết kế đẹp và giá cả hợp lý. Tuy nhiên, tôi thấy giày hơi chật một chút so với size thông thường. Nên chọn size lớn hơn 0.5 size. Nhìn chung là sản phẩm tốt.",
+      "images": [],
+      "verified_purchase": true,
+      "helpful_count": 8,
+      "order_id": "ORD-2025-002",
+      "created_at": "2025-01-18T14:15:00Z",
+      "updated_at": "2025-01-18T14:15:00Z"
+    },
+    {
+      "id": "REV-003",
+      "product_id": "adidas_ultraboost",
+      "user_id": "6",
+      "user_name": "Nguyễn Văn An",
+      "rating": 5,
+      "title": "Giày chạy bộ tuyệt vời",
+      "comment": "Adidas Ultraboost 22 là một trong những đôi giày chạy bộ tốt nhất tôi từng sử dụng. Công nghệ Boost thực sự tạo ra cảm giác êm ái và phản hồi tốt. Rất phù hợp cho việc chạy bộ đường dài.",
+      "verified_purchase": true,
+      "helpful_count": 15,
+      "created_at": "2025-01-22T09:45:00Z",
+      "updated_at": "2025-01-22T09:45:00Z"
+    },
+    {
+      "id": "REV-004",
+      "product_id": "havaianas_classic",
+      "user_id": "7",
+      "user_name": "Trần Thị Bình",
+      "rating": 5,
+      "title": "Dép Havaianas chất lượng cao",
+      "comment": "Dép Havaianas Classic thực sự rất tốt. Chất liệu cao su tự nhiên, mềm mại và bền bỉ. Phù hợp cho việc đi biển, đi trong nhà hoặc đi dạo. Tôi đã mua nhiều đôi với các màu khác nhau.",
+      "verified_purchase": true,
+      "helpful_count": 20,
+      "created_at": "2025-01-15T16:20:00Z",
+      "updated_at": "2025-01-15T16:20:00Z"
+    },
+    {
+      "id": "REV-005",
+      "product_id": "converse_chuck_taylor",
+      "user_id": "6",
+      "user_name": "Nguyễn Văn An",
+      "rating": 4,
+      "title": "Giày Converse cổ điển",
+      "comment": "Converse Chuck Taylor là một lựa chọn cổ điển và phong cách. Giày dễ phối đồ, phù hợp cho nhiều dịp khác nhau. Chất lượng tốt, nhưng đế giày hơi cứng khi mới mua, cần thời gian để làm mềm.",
+      "verified_purchase": true,
+      "helpful_count": 6,
+      "created_at": "2025-01-25T11:10:00Z",
+      "updated_at": "2025-01-25T11:10:00Z"
+    },
+    {
+      "id": "REV-006",
+      "product_id": "birkenstock_arizona",
+      "user_id": "7",
+      "user_name": "Trần Thị Bình",
+      "rating": 5,
+      "title": "Dép Birkenstock thoải mái nhất",
+      "comment": "Birkenstock Arizona là đôi dép thoải mái nhất tôi từng sử dụng. Đế dép được thiết kế theo hình dáng bàn chân, rất êm ái và hỗ trợ tốt. Phù hợp cho việc đi bộ nhiều giờ mà không bị mỏi chân.",
+      "verified_purchase": true,
+      "helpful_count": 18,
+      "created_at": "2025-01-12T13:30:00Z",
+      "updated_at": "2025-01-12T13:30:00Z"
+    },
+    {
+      "id": "REV-007",
+      "product_id": "vans_old_skool",
+      "user_id": "6",
+      "user_name": "Nguyễn Văn An",
+      "rating": 4,
+      "title": "Giày Vans phong cách",
+      "comment": "Vans Old Skool có thiết kế đẹp và phong cách. Giày phù hợp cho giới trẻ, dễ phối đồ. Chất lượng vải tốt, nhưng cần cẩn thận khi giặt để tránh bị phai màu.",
+      "verified_purchase": true,
+      "helpful_count": 9,
+      "created_at": "2025-01-28T15:45:00Z",
+      "updated_at": "2025-01-28T15:45:00Z"
+    },
+    {
+      "id": "REV-008",
+      "product_id": "crocs_classic",
+      "user_id": "7",
+      "user_name": "Trần Thị Bình",
+      "rating": 3,
+      "title": "Dép Crocs tiện dụng",
+      "comment": "Crocs Classic rất tiện dụng cho việc đi trong nhà hoặc đi dạo gần nhà. Chất liệu nhẹ, dễ rửa. Tuy nhiên, thiết kế không được đẹp lắm và có thể không phù hợp cho mọi dịp.",
+      "verified_purchase": true,
+      "helpful_count": 4,
+      "created_at": "2025-01-30T10:20:00Z",
+      "updated_at": "2025-01-30T10:20:00Z"
+    },
+    {
+      "id": "REV-009",
+      "product_id": "jordan_air_1",
+      "user_id": "6",
+      "user_name": "Nguyễn Văn An",
+      "rating": 5,
+      "title": "Giày Jordan chất lượng cao",
+      "comment": "Jordan Air 1 là một trong những đôi giày đẹp nhất tôi từng sở hữu. Chất lượng da tốt, đường may tinh tế và thiết kế cổ điển. Giày phù hợp cho cả việc đi chơi và sưu tầm.",
+      "verified_purchase": true,
+      "helpful_count": 25,
+      "created_at": "2025-01-10T12:00:00Z",
+      "updated_at": "2025-01-10T12:00:00Z"
+    },
+    {
+      "id": "REV-010",
+      "product_id": "sports_socks_premium",
+      "user_id": "7",
+      "user_name": "Trần Thị Bình",
+      "rating": 4,
+      "title": "Tất thể thao chất lượng tốt",
+      "comment": "Tất thể thao Premium có chất liệu cotton cao cấp, mềm mại và thoáng khí. Phù hợp cho việc tập luyện thể thao. Tuy nhiên, giá hơi cao so với các sản phẩm tương tự trên thị trường.",
+      "verified_purchase": true,
+      "helpful_count": 7,
+      "order_id": "ORD-2025-002",
+      "created_at": "2025-01-16T14:30:00Z",
+      "updated_at": "2025-01-16T14:30:00Z"
+    },
+    {
+      "id": "REV-011",
+      "product_id": "nike_air_max",
+      "user_id": "11",
+      "user_name": "qnboke04",
+      "rating": 5,
+      "title": "Giày Nike Air Max tuyệt vời",
+      "comment": "Đôi giày này thực sự rất thoải mái và đẹp. Công nghệ Air Max thực sự tạo ra cảm giác êm ái khi đi. Tôi rất hài lòng với sản phẩm này và sẽ mua thêm các sản phẩm khác của Nike.",
+      "verified_purchase": true,
+      "helpful_count": 3,
+      "order_id": "ORD202508106232",
+      "created_at": "2025-08-10T10:00:00Z",
+      "updated_at": "2025-08-10T10:00:00Z"
+    },
+    {
+      "id": "REV-012",
+      "product_id": "adidas_ultraboost",
+      "user_id": "13",
+      "user_name": "phaminh1909",
+      "rating": 5,
+      "title": "Giày chạy bộ tốt nhất",
+      "comment": "Adidas Ultraboost 22 là đôi giày chạy bộ tốt nhất tôi từng sử dụng. Công nghệ Boost thực sự tạo ra cảm giác êm ái và phản hồi tốt. Rất phù hợp cho việc chạy bộ đường dài.",
+      "verified_purchase": true,
+      "helpful_count": 5,
+      "order_id": "ORD202508110141",
+      "created_at": "2025-08-11T17:00:00Z",
+      "updated_at": "2025-08-11T17:00:00Z"
+    },
+    {
+      "id": "REV-1755056362142",
+      "product_id": "shoe_deodorizer",
+      "order_id": "ORD202508130935",
+      "rating": 5,
+      "title": "hàng như shiet·",
+      "comment": "ok",
+      "created_at": "2025-08-13T03:39:22.142Z",
+      "updated_at": "2025-08-13T03:39:22.142Z",
+      "user_id": "13",
+      "user_name": "phaminh1909",
+      "verified_purchase": true,
+      "helpful_count": 0
+    },
+    {
+      "id": "REV-1755057061720",
+      "product_id": "shoe_deodorizer",
+      "order_id": "ORD202508130935",
+      "rating": 5,
+      "title": "123",
+      "comment": "123",
+      "created_at": "2025-08-13T03:51:01.720Z",
+      "updated_at": "2025-08-13T03:51:01.720Z",
+      "user_id": "13",
+      "user_name": "phaminh1909",
+      "verified_purchase": true,
+      "helpful_count": 0
+    },
+    {
+      "id": "REV-1755067044969",
+      "product_id": "shoe_cleaner_kit",
+      "order_id": "ORD202508133150",
+      "rating": 5,
+      "title": "12345",
+      "comment": "123123121",
+      "created_at": "2025-08-13T06:37:24.969Z",
+      "updated_at": "2025-08-13T06:37:24.969Z",
+      "user_id": "13",
+      "user_name": "Pham Minh",
+      "verified_purchase": true,
+      "helpful_count": 0
+    },
+    {
+      "id": "REV-1755067270569",
+      "product_id": "adidas_adilette",
+      "order_id": "ORD202508135799",
+      "rating": 5,
+      "title": "12313131",
+      "comment": "12313",
+      "created_at": "2025-08-13T06:41:10.569Z",
+      "updated_at": "2025-08-13T06:41:10.569Z",
+      "user_id": "13",
+      "user_name": "Pham Minh",
+      "verified_purchase": true,
+      "helpful_count": 0
+    },
+    {
+      "id": "REV-1755071719342",
+      "product_id": "shoe_deodorizer",
+      "order_id": "ORD202508133684",
+      "rating": 5,
+      "title": "asfd",
+      "comment": "asdf",
+      "created_at": "2025-08-13T07:55:19.341Z",
+      "updated_at": "2025-08-13T07:55:19.342Z",
+      "user_id": "8",
+      "user_name": "lenomi",
+      "verified_purchase": true,
+      "helpful_count": 0
+    },
+    {
+      "id": "REV-1755141951638",
+      "product_id": "mea3tesiau1xaud75tv",
+      "order_id": "ORD202508141583",
+      "rating": 5,
+      "title": "oke",
+      "comment": "oke",
+      "created_at": "2025-08-14T03:25:51.638Z",
+      "updated_at": "2025-08-14T03:25:51.638Z",
+      "user_id": "11",
+      "user_name": "qnboke04",
+      "verified_purchase": true,
+      "helpful_count": 0
+    },
+    {
+      "id": "REV-1758997536551",
+      "product_id": "66e168fc",
+      "order_id": "ORD-2025-001",
+      "rating": 5,
+      "title": "aaa",
+      "comment": "aaaaaa",
+      "created_at": "2025-09-27T18:25:36.551Z",
+      "updated_at": "2025-09-27T18:25:36.551Z",
+      "user_id": "6",
+      "user_name": "Nguyễn Văn An",
+      "verified_purchase": true,
+      "helpful_count": 0
+    }
+  ],
+  "orders": [
+    {
+      "id": "ORD-2025-001",
+      "user_id": "6",
+      "items": [
+        {
+          "product_id": "66e168fc",
+          "product_name": "Dép quai ngang Adidas",
+          "variant_sku": "SL-AD-BLK-40",
+          "quantity": 1,
+          "price": 350000,
+          "color": "Đen",
+          "size": 40
+        },
+        {
+          "product_id": "a6952125",
+          "product_name": "Túi đeo chéo thời trang",
+          "variant_sku": "PK-BAG-BLK-STD",
+          "quantity": 1,
+          "price": 450000,
+          "color": "Đen",
+          "size": "Standard"
+        }
+      ],
+      "subtotal": 800000,
+      "shipping_fee": 30000,
+      "total": 830000,
+      "status": "delivered",
+      "payment_method": "cod",
+      "shipping_address": "123 Đường ABC, Quận 1, TP.HCM",
+      "phone": "0987654321",
+      "customer_name": "Nguyễn Văn An",
+      "created_at": "2025-01-15T14:30:00Z",
+      "updated_at": "2025-01-18T16:45:00Z",
+      "delivered_at": "2025-01-18T16:45:00Z",
+      "notes": "Giao hàng vào buổi chiều"
+    },
+    {
+      "id": "ORD-2025-002",
+      "user_id": "7",
+      "items": [
+        {
+          "product_id": "8a1000d9",
+          "product_name": "Dép Levi's",
+          "variant_sku": "SL-LV-GRN-41",
+          "quantity": 2,
+          "price": 270000,
+          "color": "Xanh lá",
+          "size": 41
+        },
+        {
+          "product_id": "97e6535a",
+          "product_name": "Tất thể thao cao cấp",
+          "variant_sku": "PK-SOCK-WHT-L",
+          "quantity": 2,
+          "price": 120000,
+          "color": "Trắng",
+          "size": "L"
+        }
+      ],
+      "subtotal": 780000,
+      "shipping_fee": 30000,
+      "total": 810000,
+      "status": "processing",
+      "payment_method": "bank_transfer",
+      "shipping_address": "456 Đường XYZ, Quận 3, TP.HCM",
+      "phone": "0123456789",
+      "customer_name": "Trần Thị Bình",
+      "created_at": "2025-01-22T09:15:00Z",
+      "updated_at": "2025-01-22T09:15:00Z",
+      "notes": "Thanh toán chuyển khoản"
+    },
+    {
+      "id": "ORD-2025-003",
+      "user_id": "6",
+      "items": [
+        {
+          "product_id": "a6952125",
+          "product_name": "Túi đeo chéo thời trang",
+          "variant_sku": "PK-BAG-BLU-STD",
+          "quantity": 1,
+          "price": 450000,
+          "color": "Xanh dương",
+          "size": "Standard"
+        }
+      ],
+      "subtotal": 450000,
+      "shipping_fee": 30000,
+      "total": 480000,
+      "status": "pending",
+      "payment_method": "cod",
+      "shipping_address": "123 Đường ABC, Quận 1, TP.HCM",
+      "phone": "0987654321",
+      "customer_name": "Nguyễn Văn An",
+      "created_at": "2025-01-25T16:20:00Z",
+      "updated_at": "2025-01-25T16:20:00Z",
+      "notes": ""
+    },
+    {
+      "id": "ORD-2025-001",
+      "user_id": 10,
+      "items": [
+        {
+          "product_id": "a6952125-PK-BAG-BLU-STD",
+          "product_name": "Túi đeo chéo thời trang",
+          "variant_sku": "PK-BAG-BLU-STD",
+          "quantity": 1,
+          "price": 450000,
+          "color": "#0000FF",
+          "size": "Standard"
+        }
+      ],
+      "subtotal": 450000,
+      "shipping_fee": 30000,
+      "total": 480000,
+      "status": "pending",
+      "payment_method": "qr_code",
+      "created_at": "2025-08-08T06:20:26.518Z",
+      "updated_at": "2025-08-08T06:20:26.518Z",
+      "notes": ""
+    },
+    {
+      "id": "ORD-2025-NaN",
+      "user_id": 10,
+      "items": [
+        {
+          "product_id": "a6952125-PK-BAG-BLU-STD",
+          "product_name": "Túi đeo chéo thời trang",
+          "variant_sku": "PK-BAG-BLU-STD",
+          "quantity": 1,
+          "price": 450000,
+          "color": "#0000FF",
+          "size": "Standard"
+        }
+      ],
+      "subtotal": 450000,
+      "shipping_fee": 30000,
+      "total": 480000,
+      "status": "pending",
+      "payment_method": "qr_code",
+      "created_at": "2025-08-10T04:50:02.615Z",
+      "updated_at": "2025-08-10T04:50:02.615Z",
+      "notes": ""
+    },
+    {
+      "id": "ORD202508106232",
+      "user_id": "11",
+      "items": [
+        {
+          "product_id": "66e168fc-SL-AD-RED-38",
+          "product_name": "Dép quai ngang Adidas",
+          "variant_sku": "SL-AD-RED-38",
+          "quantity": 1,
+          "price": 350000,
+          "color": "#000000",
+          "size": 38
+        }
+      ],
+      "subtotal": 350000,
+      "shipping_fee": 30000,
+      "total": 380000,
+      "status": "pending",
+      "payment_method": "cod",
+      "shipping_address": "any where",
+      "phone": "0974067698",
+      "customer_name": "qnboke04",
+      "created_at": "2025-08-10T09:38:04.297Z",
+      "updated_at": "2025-08-10T09:38:04.297Z",
+      "notes": ""
+    },
+    {
+      "id": "ORD202508104877",
+      "user_id": "11",
+      "items": [
+        {
+          "product_id": "a6952125-PK-BAG-BLK-STD",
+          "product_name": "Túi đeo chéo thời trang",
+          "variant_sku": "PK-BAG-BLK-STD",
+          "quantity": 1,
+          "price": 450000,
+          "color": "#000000",
+          "size": "Standard"
+        }
+      ],
+      "subtotal": 450000,
+      "shipping_fee": 30000,
+      "total": 480000,
+      "status": "pending",
+      "payment_method": "bank",
+      "shipping_address": "anywhere",
+      "phone": "0974067698",
+      "customer_name": "qnboke04",
+      "created_at": "2025-08-10T09:38:45.717Z",
+      "updated_at": "2025-08-10T09:38:45.717Z",
+      "notes": ""
+    },
+    {
+      "id": "ORD202508109623",
+      "user_id": "11",
+      "items": [
+        {
+          "product_id": "sports_socks_premium-NK-SOC-WHT-S",
+          "product_name": "Tất thể thao cao cấp Nike Dri-FIT",
+          "variant_sku": "NK-SOC-WHT-S",
+          "quantity": 1,
+          "price": 180000,
+          "color": "#FFFFFF",
+          "size": "S"
+        }
+      ],
+      "subtotal": 180000,
+      "shipping_fee": 30000,
+      "total": 210000,
+      "status": "pending",
+      "payment_method": "cod",
+      "shipping_address": "qưer",
+      "phone": "0974067698",
+      "customer_name": "qưe qưe",
+      "created_at": "2025-08-10T10:37:47.187Z",
+      "updated_at": "2025-08-10T10:37:47.187Z",
+      "notes": ""
+    },
+    {
+      "id": "ORD202508119466",
+      "user_id": "8",
+      "items": [
+        {
+          "product_id": "shoe_deodorizer-DEZ-FRESH-100ML",
+          "product_name": "Bình xịt khử mùi giày Fresh Step",
+          "variant_sku": "DEZ-FRESH-100ML",
+          "quantity": 1,
+          "price": 120000,
+          "color": "#87CEEB",
+          "size": "100ml"
+        }
+      ],
+      "subtotal": 120000,
+      "shipping_fee": 30000,
+      "total": 150000,
+      "status": "delivered",
+      "payment_method": "cod",
+      "shipping_address": "safasdfqwer",
+      "phone": "1234123434",
+      "customer_name": "lenomi",
+      "created_at": "2025-08-11T16:31:44.824Z",
+      "updated_at": "2025-08-11T16:31:44.824Z",
+      "notes": ""
+    },
+    {
+      "id": "ORD202508110228",
+      "user_id": "8",
+      "items": [
+        {
+          "product_id": "shoe_cleaner_kit-CLN-KIT-BASIC",
+          "product_name": "Bộ dụng cụ vệ sinh giày chuyên nghiệp",
+          "variant_sku": "CLN-KIT-BASIC",
+          "quantity": 1,
+          "price": 350000,
+          "color": "#808080",
+          "size": "Standard"
+        }
+      ],
+      "subtotal": 350000,
+      "shipping_fee": 30000,
+      "total": 380000,
+      "status": "pending",
+      "payment_method": "bank",
+      "shipping_address": "safasdfqwer",
+      "phone": "1234123434",
+      "customer_name": "lenomi",
+      "created_at": "2025-08-11T16:31:50.776Z",
+      "updated_at": "2025-08-11T16:31:50.776Z",
+      "notes": ""
+    },
+    {
+      "id": "ORD202508110141",
+      "user_id": "8",
+      "items": [
+        {
+          "product_id": "shoe_cleaner_kit-CLN-KIT-DELUXE",
+          "product_name": "Bộ dụng cụ vệ sinh giày chuyên nghiệp",
+          "variant_sku": "CLN-KIT-DELUXE",
+          "quantity": 2,
+          "price": 750000,
+          "color": "#C0C0C0",
+          "size": "Deluxe"
+        }
+      ],
+      "subtotal": 1500000,
+      "shipping_fee": 30000,
+      "total": 1530000,
+      "status": "pending",
+      "payment_method": "cod",
+      "shipping_address": "safasdfqwer",
+      "phone": "1234123434",
+      "customer_name": "lenomi",
+      "created_at": "2025-08-11T16:31:55.287Z",
+      "updated_at": "2025-08-11T16:31:55.287Z",
+      "notes": ""
+    },
+    {
+      "id": "ORD202508113015",
+      "user_id": "8",
+      "items": [
+        {
+          "product_id": "shoe_cleaner_kit-CLN-KIT-PREMIUM",
+          "product_name": "Bộ dụng cụ vệ sinh giày chuyên nghiệp",
+          "variant_sku": "CLN-KIT-PREMIUM",
+          "quantity": 1,
+          "price": 550000,
+          "color": "#FFD700",
+          "size": "Premium"
+        }
+      ],
+      "subtotal": 550000,
+      "shipping_fee": 30000,
+      "total": 580000,
+      "status": "pending",
+      "payment_method": "cod",
+      "shipping_address": "safasdfqwer",
+      "phone": "1234123434",
+      "customer_name": "lenomi",
+      "created_at": "2025-08-11T16:32:00.445Z",
+      "updated_at": "2025-08-11T16:32:00.445Z",
+      "notes": ""
+    },
+    {
+      "id": "ORD202508130935",
+      "user_id": "13",
+      "items": [
+        {
+          "product_id": "shoe_deodorizer-DEZ-FRESH-100ML",
+          "product_name": "Bình xịt khử mùi giày Fresh Step",
+          "variant_sku": "DEZ-FRESH-100ML",
+          "quantity": 2,
+          "price": 120000,
+          "color": "#87CEEB",
+          "size": "100ml"
+        },
+        {
+          "product_id": "shoe_cleaner_kit-CLN-KIT-BASIC",
+          "product_name": "Bộ dụng cụ vệ sinh giày chuyên nghiệp",
+          "variant_sku": "CLN-KIT-BASIC",
+          "quantity": 1,
+          "price": 350000,
+          "color": "#808080",
+          "size": "Standard"
+        },
+        {
+          "product_id": "adidas_adilette-AD-ADL-BLK-39",
+          "product_name": "Adidas Adilette Comfort Slide",
+          "variant_sku": "AD-ADL-BLK-39",
+          "quantity": 1,
+          "price": 600000,
+          "color": "#000000",
+          "size": 39
+        }
+      ],
+      "subtotal": 1190000,
+      "shipping_fee": 30000,
+      "total": 1220000,
+      "status": "delivered",
+      "payment_method": "bank",
+      "shipping_address": "Đại Học FPT",
+      "phone": "123456789",
+      "customer_name": "phaminh1909",
+      "created_at": "2025-08-13T03:37:07.480Z",
+      "updated_at": "2025-08-13T03:37:07.480Z",
+      "notes": ""
+    },
+    {
+      "id": "ORD202508136755",
+      "user_id": "13",
+      "items": [
+        {
+          "product_id": "shoe_deodorizer-DEZ-FRESH-100ML",
+          "product_name": "Bình xịt khử mùi giày Fresh Step",
+          "variant_sku": "DEZ-FRESH-100ML",
+          "quantity": 1,
+          "price": 120000,
+          "color": "#87CEEB",
+          "size": "100ml"
+        }
+      ],
+      "subtotal": 120000,
+      "shipping_fee": 30000,
+      "total": 150000,
+      "status": "cancelled",
+      "payment_method": "cod",
+      "shipping_address": "Đại Học FPT",
+      "phone": "123456789",
+      "customer_name": "phaminh1909",
+      "created_at": "2025-08-13T04:01:16.421Z",
+      "updated_at": "2025-08-13T04:01:25.972Z",
+      "notes": "",
+      "cancelled_at": "2025-08-13T04:01:25.972Z"
+    },
+    {
+      "id": "ORD-2025-NaN",
+      "user_id": 13,
+      "items": [
+        {
+          "product_id": "shoe_deodorizer-DEZ-FRESH-100ML",
+          "product_name": "Bình xịt khử mùi giày Fresh Step",
+          "variant_sku": "DEZ-FRESH-100ML",
+          "quantity": 1,
+          "price": 120000,
+          "color": "#87CEEB",
+          "size": "100ml"
+        }
+      ],
+      "subtotal": 120000,
+      "shipping_fee": 30000,
+      "total": 150000,
+      "status": "pending",
+      "payment_method": "qr_code",
+      "shipping_address": "Đại Học FPT",
+      "phone": "123456789",
+      "customer_name": "phaminh1909",
+      "created_at": "2025-08-13T04:03:14.142Z",
+      "updated_at": "2025-08-13T04:03:14.142Z",
+      "notes": ""
+    },
+    {
+      "id": "ORD202508131371",
+      "user_id": "13",
+      "items": [
+        {
+          "product_id": "shoe_deodorizer-DEZ-FRESH-100ML",
+          "product_name": "Bình xịt khử mùi giày Fresh Step",
+          "variant_sku": "DEZ-FRESH-100ML",
+          "quantity": 1,
+          "price": 120000,
+          "color": "#87CEEB",
+          "size": "100ml"
+        }
+      ],
+      "subtotal": 120000,
+      "shipping_fee": 30000,
+      "total": 150000,
+      "status": "cancelled",
+      "payment_method": "cod",
+      "shipping_address": "Đại Học FPT",
+      "phone": "123456789",
+      "customer_name": "phaminh1909",
+      "created_at": "2025-08-13T04:03:26.448Z",
+      "updated_at": "2025-08-13T04:16:37.508Z",
+      "notes": "",
+      "cancelled_at": "2025-08-13T04:16:37.507Z"
+    },
+    {
+      "id": "ORD202508139620",
+      "user_id": "13",
+      "items": [
+        {
+          "product_id": "66e168fc-SL-AD-RED-38",
+          "product_name": "Dép quai ngang Adidas",
+          "variant_sku": "SL-AD-RED-38",
+          "quantity": 1,
+          "price": 350000,
+          "color": "#000000",
+          "size": 38
+        }
+      ],
+      "subtotal": 350000,
+      "shipping_fee": 30000,
+      "total": 380000,
+      "status": "cancelled",
+      "payment_method": "bank",
+      "shipping_address": "Đại Học FPT",
+      "phone": "123456789",
+      "customer_name": "phaminh1909",
+      "created_at": "2025-08-13T05:01:34.193Z",
+      "updated_at": "2025-08-13T05:01:51.333Z",
+      "notes": "",
+      "cancelled_at": "2025-08-13T05:01:51.333Z"
+    },
+    {
+      "id": "ORD202508133150",
+      "user_id": "13",
+      "items": [
+        {
+          "product_id": "shoe_cleaner_kit-CLN-KIT-BASIC",
+          "product_name": "Bộ dụng cụ vệ sinh giày chuyên nghiệp",
+          "variant_sku": "CLN-KIT-BASIC",
+          "quantity": 1,
+          "price": 350000,
+          "color": "#808080",
+          "size": "Standard"
+        }
+      ],
+      "subtotal": 350000,
+      "shipping_fee": 30000,
+      "total": 380000,
+      "status": "delivered",
+      "payment_method": "cod",
+      "shipping_address": "Đại Học FPT",
+      "phone": "123456789",
+      "customer_name": "Pham Minh",
+      "created_at": "2025-08-13T06:36:27.139Z",
+      "updated_at": "2025-08-13T06:36:27.139Z",
+      "notes": ""
+    },
+    {
+      "id": "ORD202508135799",
+      "user_id": "13",
+      "items": [
+        {
+          "product_id": "adidas_adilette-AD-ADL-BLK-39",
+          "product_name": "Adidas Adilette Comfort Slide",
+          "variant_sku": "AD-ADL-BLK-39",
+          "quantity": 1,
+          "price": 600000,
+          "color": "#000000",
+          "size": 39
+        }
+      ],
+      "subtotal": 600000,
+      "shipping_fee": 30000,
+      "total": 630000,
+      "status": "delivered",
+      "payment_method": "cod",
+      "shipping_address": "Đại Học FPT",
+      "phone": "123456789",
+      "customer_name": "Pham Minh",
+      "created_at": "2025-08-13T06:40:49.679Z",
+      "updated_at": "2025-08-13T06:40:49.679Z",
+      "notes": ""
+    },
+    {
+      "id": "ORD202508133684",
+      "user_id": "8",
+      "items": [
+        {
+          "product_id": "shoe_deodorizer-DEZ-FRESH-100ML",
+          "product_name": "Bình xịt khử mùi giày Fresh Step",
+          "variant_sku": "DEZ-FRESH-100ML",
+          "quantity": 2,
+          "price": 120000,
+          "color": "#87CEEB",
+          "size": "100ml"
+        }
+      ],
+      "subtotal": 240000,
+      "shipping_fee": 30000,
+      "total": 270000,
+      "status": "delivered",
+      "payment_method": "cod",
+      "shipping_address": "safasdfqwer",
+      "phone": "12341234",
+      "customer_name": "lenomi",
+      "created_at": "2025-08-13T07:52:00.710Z",
+      "updated_at": "2025-08-13T07:52:00.710Z",
+      "notes": ""
+    },
+    {
+      "id": "ORD202508141583",
+      "user_id": "11",
+      "items": [
+        {
+          "product_id": "mea3tesiau1xaud75tv-TES-DEF-STD",
+          "product_name": "Test",
+          "variant_sku": "TES-DEF-STD",
+          "quantity": 1,
+          "price": 11000000,
+          "color": "#FFA500",
+          "size": "37"
+        }
+      ],
+      "subtotal": 11000000,
+      "shipping_fee": 30000,
+      "total": 11030000,
+      "status": "delivered",
+      "payment_method": "cod",
+      "shipping_address": "any where",
+      "phone": "0974067698",
+      "customer_name": "qnboke04",
+      "created_at": "2025-08-14T03:24:01.899Z",
+      "updated_at": "2025-08-14T03:24:01.899Z",
+      "notes": ""
+    },
+    {
+      "id": "ORD202508140736",
+      "user_id": "13",
+      "items": [
+        {
+          "product_id": "meatgt1p53eimhaym1s-CCC-000-35",
+          "product_name": "cccccccccccc",
+          "variant_sku": "CCC-000-35",
+          "quantity": 11,
+          "price": 12312312,
+          "color": "#FFA500",
+          "size": "XXL"
+        },
+        {
+          "product_id": "meatbmf1r3mb7skna2-AAA-000-35",
+          "product_name": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "variant_sku": "AAA-000-35",
+          "quantity": 1,
+          "price": 11111111,
+          "color": "#0066CC",
+          "size": "38"
+        },
+        {
+          "product_id": "meatda05cjaqfohu6pc-BBB-000-35",
+          "product_name": "bbbbbbbbbbbbbbbbbbbbbbbbbbb",
+          "variant_sku": "BBB-000-35",
+          "quantity": 1,
+          "price": 1122222,
+          "color": "#FFA500",
+          "size": "40"
+        }
+      ],
+      "subtotal": 147668765,
+      "shipping_fee": 30000,
+      "total": 147698765,
+      "status": "cancelled",
+      "payment_method": "cod",
+      "shipping_address": "Đại Học FPT",
+      "phone": "123456789",
+      "customer_name": "Pham Minh",
+      "created_at": "2025-08-14T03:46:57.953Z",
+      "updated_at": "2025-08-14T03:47:42.053Z",
+      "notes": "",
+      "cancelled_at": "2025-08-14T03:47:42.053Z"
+    },
+    {
+      "id": "ORD202509286906",
+      "user_id": "6",
+      "items": [
+        {
+          "product_id": "mg2gl7lnztxtdp6p69i-AAA-000-35",
+          "product_name": "aaa",
+          "variant_sku": "AAA-000-35",
+          "quantity": 1,
+          "price": 0,
+          "color": "#000000",
+          "size": "35"
+        }
+      ],
+      "subtotal": 0,
+      "shipping_fee": 30000,
+      "total": 30000,
+      "status": "pending",
+      "payment_method": "cod",
+      "shipping_address": "123 Đường ABC, Quận 1, TP.HCM",
+      "phone": "0987654321",
+      "customer_name": "Nguyễn Văn An",
+      "created_at": "2025-09-27T17:21:45.012Z",
+      "updated_at": "2025-09-27T17:21:45.012Z",
+      "notes": ""
+    },
+    {
+      "id": "ORD202509287246",
+      "user_id": "6",
+      "items": [
+        {
+          "product_id": "sports_socks_premium-NK-SOC-WHT-S",
+          "product_name": "Tất thể thao cao cấp Nike Dri-FIT",
+          "variant_sku": "NK-SOC-WHT-S",
+          "quantity": 1,
+          "price": 180000,
+          "color": "#FFFFFF",
+          "size": "S"
+        }
+      ],
+      "subtotal": 180000,
+      "shipping_fee": 30000,
+      "total": 210000,
+      "status": "pending",
+      "payment_method": "cod",
+      "shipping_address": "123 Đường ABC, Quận 1, TP.HCM",
+      "phone": "0987654321",
+      "customer_name": "Nguyễn Văn An",
+      "created_at": "2025-09-27T18:50:46.664Z",
+      "updated_at": "2025-09-27T18:50:46.664Z",
+      "notes": ""
+    },
+    {
+      "id": "ORD202509288812",
+      "user_id": "6",
+      "items": [
+        {
+          "product_id": "shoe_cleaner_kit-CLN-KIT-BASIC",
+          "product_name": "Bộ dụng cụ vệ sinh giày chuyên nghiệp",
+          "variant_sku": "CLN-KIT-BASIC",
+          "quantity": 1,
+          "price": 350000,
+          "color": "#808080",
+          "size": "Standard"
+        }
+      ],
+      "subtotal": 350000,
+      "shipping_fee": 30000,
+      "total": 380000,
+      "status": "pending",
+      "payment_method": "bank",
+      "shipping_address": "123 Đường ABC, Quận 1, TP.HCM",
+      "phone": "0987654321",
+      "customer_name": "Nguyễn Văn An",
+      "created_at": "2025-09-27T19:01:05.690Z",
+      "updated_at": "2025-09-27T19:01:05.690Z",
+      "notes": ""
+    },
+    {
+      "id": "ORD202509281388",
+      "user_id": "6",
+      "items": [
+        {
+          "product_id": "shoe_cleaner_kit-CLN-KIT-BASIC",
+          "product_name": "Bộ dụng cụ vệ sinh giày chuyên nghiệp",
+          "variant_sku": "CLN-KIT-BASIC",
+          "quantity": 1,
+          "price": 350000,
+          "color": "#808080",
+          "size": "Standard"
+        }
+      ],
+      "subtotal": 350000,
+      "shipping_fee": 30000,
+      "total": 380000,
+      "status": "pending",
+      "payment_method": "bank",
+      "shipping_address": "123 Đường ABC, Quận 1, TP.HCM",
+      "phone": "0987654321",
+      "customer_name": "Nguyễn Văn An",
+      "created_at": "2025-09-27T19:02:13.316Z",
+      "updated_at": "2025-09-27T19:02:13.316Z",
+      "notes": ""
+    },
+    {
+      "id": "ORD202509288051",
+      "user_id": "6",
+      "items": [
+        {
+          "product_id": "shoe_cleaner_kit-CLN-KIT-BASIC",
+          "product_name": "Bộ dụng cụ vệ sinh giày chuyên nghiệp",
+          "variant_sku": "CLN-KIT-BASIC",
+          "quantity": 1,
+          "price": 350000,
+          "color": "#808080",
+          "size": "Standard"
+        }
+      ],
+      "subtotal": 350000,
+      "shipping_fee": 30000,
+      "total": 380000,
+      "status": "pending",
+      "payment_method": "bank",
+      "shipping_address": "123 Đường ABC, Quận 1, TP.HCM",
+      "phone": "0987654321",
+      "customer_name": "Nguyễn Văn An",
+      "created_at": "2025-09-27T19:02:49.069Z",
+      "updated_at": "2025-09-27T19:02:49.069Z",
+      "notes": ""
+    }
+  ]
+}

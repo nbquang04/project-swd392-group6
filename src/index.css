@@ -1,0 +1,11 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  font-family: 'Pacifico', cursive;
+}
+
+a {
+    text-decoration: none !important;
+}
