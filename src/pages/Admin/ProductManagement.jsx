@@ -1,3 +1,5 @@
+import { fetchProduct, deleteProduct } from '../../service/product.js';
+import Pagination from '../../components/Pagination';
 import React, { useContext, useState, useEffect } from "react";
 import { FaPlus, FaSearch } from "react-icons/fa";
 import { PackageIcon, Loader2, AlertCircle, Trash2, Edit } from "lucide-react";
@@ -5,6 +7,15 @@ import { ShoesShopContext } from "../../context/ShoeShopContext";
 import { useNotification } from "../../context/NotificationContext";
 import { Link } from "react-router-dom";
 import SideBarAdmin from '../../components/SideBarAdmin';
+
+
+
+
+
+
+
+
+
 
 // Confirm Dialog Component
 const ConfirmDialog = ({ isOpen, onClose, onConfirm, title, message, confirmText, cancelText, type = "warning" }) => {
@@ -138,7 +149,7 @@ export default function ProductManagement() {
       onConfirm: async () => {
         try {
           // Call API to delete the product
-          const response = await fetch(`http://localhost:9999/products/${product.id}`, {
+          const response = await fetch(`http://localhost:8080/products/${product.id}`, {
             method: 'DELETE',
           });
 

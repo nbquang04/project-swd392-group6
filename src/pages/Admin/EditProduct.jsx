@@ -4,6 +4,11 @@ import { useSearchParams, useNavigate } from "react-router-dom";
 import { ShoesShopContext } from "../../context/ShoeShopContext";
 import { Loader2, AlertCircle, Save, X, Plus, Trash2 } from "lucide-react";
 
+
+
+
+
+
 export default function EditProduct() {
   const [searchParams] = useSearchParams();
   const navigate = useNavigate();

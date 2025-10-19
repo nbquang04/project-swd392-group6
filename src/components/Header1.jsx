@@ -2,9 +2,16 @@ import React, { useContext, useEffect, useRef, useState } from 'react';
 import '../index.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Link, useNavigate, useLocation, useSearchParams } from 'react-router-dom';
-import { searchProducts, fetchProduct } from '../service/product';
+import { fetchProduct } from '../service/product.js';
 import { ShoeShopContext } from '../context/ShoeShopContext.js';
 import { fetchCart } from '../service/cart.js';
+
+
+
+
+
+
+
 
 const Header1 = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -107,16 +114,16 @@ const Header1 = () => {
     let filtered = [...products];
 
     filtered = filtered.filter(product => {
-      const productName = normalizeText(product.name);
+      const name = normalizeText(product.name);
       const productDesc = normalizeText(product.description || '');
       const variantText = product.variants?.map(v =>
         normalizeText(`${v.sku || ''} ${v.color_code || ''}`)
       ).join(' ') || '';
 
-      const searchText = `${productName} ${productDesc} ${variantText}`;
+      const searchText = `${name} ${productDesc} ${variantText}`;
 
       return searchText.includes(normalizedQuery) ||
-        productName.includes(normalizedQuery) ||
+        name.includes(normalizedQuery) ||
         productDesc.includes(normalizedQuery);
     });
 

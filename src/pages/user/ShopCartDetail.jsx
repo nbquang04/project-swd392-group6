@@ -1,5 +1,11 @@
 import React, { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
+import Header from "../../components/Header1";
+import { ShoesShopContext } from "../../context/ShoeShopContext";
+import { fetchCart } from '../../service/cart.js';
+
+
 import {
   Container,
   Image,
@@ -9,10 +15,10 @@ import {
   Form,
   Card,
 } from "react-bootstrap";
-import axios from "axios";
-import Header from "../../components/Header1";
-import { ShoesShopContext } from "../../context/ShoeShopContext";
-import { fetchCart } from "../../service/cart";
+
+
+
+
 
 const CartPage = () => {
   const navigate = useNavigate();
@@ -67,7 +73,7 @@ const CartPage = () => {
       setSelectedItems((prev) => prev.filter((sel) => sel.cartId !== cartId));
     } else {
       axios
-        .put(`http://localhost:9999/cart/${cartId}`, {
+        .put(`http://localhost:8080/cart/${cartId}`, {
           ...cart,
           items: updatedItems,
           total: updatedItems.reduce(

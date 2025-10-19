@@ -1,5 +1,6 @@
-// src/lib/sendNewsletterEmail.js
 import emailjs from '@emailjs/browser';
+// src/lib/sendNewsletterEmail.js
+
 
 const SERVICE_ID = 'service_xj2twkz';
 const TEMPLATE_ID = 'template_9t66uat';

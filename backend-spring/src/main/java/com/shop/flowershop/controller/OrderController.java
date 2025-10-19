@@ -1,51 +1,49 @@
+
 package com.shop.flowershop.controller;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.node.ArrayNode;
+import com.shop.flowershop.domain.Order;
+import com.shop.flowershop.domain.OrderItem;
+import com.shop.flowershop.dto.order.CreateOrderRequest;
+import com.shop.flowershop.dto.order.OrderResponse;
+import com.shop.flowershop.service.IdGenerator;
+import com.shop.flowershop.service.OrderService;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+import java.util.stream.Collectors;
 
 @RestController
-@RequestMapping({"/api/orders", "/orders"})
+@RequestMapping("/api/orders")
 public class OrderController {
-    private final com.shop.flowershop.service.OrderService orderService;
-    private final ObjectMapper mapper;
-    public OrderController(com.shop.flowershop.service.OrderService orderService, ObjectMapper mapper) {
-        this.orderService = orderService;
-        this.mapper = mapper;
-    }
+  private final OrderService orderService;
+  public OrderController(OrderService orderService){ this.orderService = orderService; }
 
-    @GetMapping
-    public ResponseEntity<ArrayNode> list() {
-        return ResponseEntity.ok(mapper.valueToTree(orderService.findAll()));
-    }
+  @GetMapping("/me")
+  public List<OrderResponse> myOrders(@RequestHeader("X-User-Id") String userId){
+    return orderService.listByUser(userId).stream().map(OrderResponse::from).collect(Collectors.toList());
+  }
 
-    @PostMapping
-    public ResponseEntity<com.fasterxml.jackson.databind.JsonNode> create(@RequestBody com.shop.flowershop.domain.Order payload) {
-        if (payload.getId() == null || payload.getId().isBlank()) payload.setId("ORD-" + System.currentTimeMillis());
-        var saved = orderService.save(payload);
-        return ResponseEntity.status(201).body(mapper.valueToTree(saved));
-    }
-
-    @PutMapping("/{id}")
-    public ResponseEntity<com.fasterxml.jackson.databind.JsonNode> update(@PathVariable String id, @RequestBody com.shop.flowershop.domain.Order payload) {
-        payload.setId(id);
-        var saved = orderService.save(payload);
-        return ResponseEntity.ok(mapper.valueToTree(saved));
-    }
-
-    @DeleteMapping("/{id}")
-    public ResponseEntity<Void> delete(@PathVariable String id) {
-        orderService.deleteById(id);
-        return ResponseEntity.noContent().build();
-    }
+  @PostMapping("/me")
+  public ResponseEntity<OrderResponse> place(@RequestHeader("X-User-Id") String userId, @RequestBody CreateOrderRequest req){
+    Order o = new Order();
+    o.setUserId(userId);
+    o.setAddress(req.address());
+    o.setPaymentMethod(req.paymentMethod());
+    o.setStatus("Pending");
+    var items = req.items().stream().map(i -> {
+      OrderItem it = new OrderItem();
+      it.setId(IdGenerator.timeId("OITEM"));
+      it.setProductId(i.productId());
+      it.setVariantId(i.variantId());
+      it.setQuantity(i.quantity());
+      it.setPrice(i.price());
+      return it;
+    }).toList();
+    o.setItems(items);
+    int total = items.stream().mapToInt(it -> it.getPrice() * it.getQuantity()).sum();
+    o.setTotal(total);
+    Order saved = orderService.placeOrder(o);
+    return ResponseEntity.ok(OrderResponse.from(saved));
+  }
 }
-
-

@@ -3,6 +3,10 @@ import { CreditCard, MapPin, Phone, User, Building2, ShieldCheck, ArrowLeft } fr
 import { ShoesShopContext } from '../../context/ShoeShopContext';
 import { useNavigate } from 'react-router-dom';
 
+
+
+
+
 const Payment = () => {
   const navigate = useNavigate()
   const { handleCheckout, getTotal, selectedItems, getUserData, isAuthenticated } = useContext(ShoesShopContext)

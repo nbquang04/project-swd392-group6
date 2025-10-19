@@ -2,6 +2,9 @@ import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import { ShoeShopContext } from "../context/ShoeShopContext";
 
+
+
+
 const CategorySection = ({ categories = [], onSelectCategory, selectedCategory }) => {
   return (
     <section className="py-16 bg-white">
@@ -20,7 +23,7 @@ const CategorySection = ({ categories = [], onSelectCategory, selectedCategory }
               key={category.id}
               type="button"
               onClick={() => onSelectCategory(category.id)}
-              className={`group relative overflow-hidden rounded-lg bg-gray-100 aspect-[16/10] cursor-pointer border-2 ${selectedCategory === category.id ? 'border-red-500' : 'border-transparent'}`}
+              className={`group relative overflow-hidden rounded-lg bg-gray-100 aspect-[16/10] cursor-pointer border-2 ${String(selectedCategory) === String(category.id) ? 'border-red-500' : 'border-transparent'}`}
             >
               <img
                 src={category.image}

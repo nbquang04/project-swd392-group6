@@ -6,6 +6,13 @@ import OrderHistory from './OrderHistory';
 import Header from "../../components/Header1";
 import { ShoesShopContext } from '../../context/ShoeShopContext';
 
+
+
+
+
+
+
+
 const ProfilePage = () => {
   const [activeTab, setActiveTab] = useState('info');
   const { users, getCompleteUserData, isAuthenticated } = useContext(ShoesShopContext);

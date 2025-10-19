@@ -1,6 +1,8 @@
 import React, { useState, useContext } from 'react';
 import { ShoesShopContext } from '../context/ShoeShopContext';
 
+
+
 const ProductReviews = ({ product, reviews = [] }) => {
   const { getCompleteUserData } = useContext(ShoesShopContext);
   const user = getCompleteUserData();

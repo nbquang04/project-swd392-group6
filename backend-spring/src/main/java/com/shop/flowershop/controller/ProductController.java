@@ -1,9 +1,14 @@
+
 package com.shop.flowershop.controller;
 
-import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ArrayNode;
+import com.shop.flowershop.domain.Product;
+import com.shop.flowershop.dto.product.ProductRequest;
 import com.shop.flowershop.service.ProductService;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -12,58 +17,75 @@ import org.springframework.web.bind.annotation.*;
 public class ProductController {
     private final ProductService productService;
     private final ObjectMapper mapper;
-
-    public ProductController(ProductService productService, ObjectMapper mapper) {
+    public ProductController(ProductService productService, ObjectMapper mapper){
         this.productService = productService;
         this.mapper = mapper;
     }
 
     @GetMapping
     public ResponseEntity<ArrayNode> list(
-            @RequestParam(value = "category_id", required = false) String categoryId,
-            @RequestParam(value = "shop_id", required = false) String shopId,
-            @RequestParam(value = "occasion", required = false) String occasion,
-            @RequestParam(value = "size", required = false) String size,
-            @RequestParam(value = "q", required = false) String q,
-            @RequestParam(value = "_limit", required = false) Integer limit) {
+        @RequestParam(value = "categoryId", required = false) String categoryId,
+        @RequestParam(value = "category_id", required = false) String category_id,
+        @RequestParam(value = "shopId", required = false) String shopId,
+        @RequestParam(value = "shop_id", required = false) String shop_id,
+        @RequestParam(value = "occasion", required = false) String occasion,
+        @RequestParam(value = "q", required = false) String q,
+        @RequestParam(value = "_limit", required = false) Integer limit,
+        @RequestParam(value = "page", required = false, defaultValue = "0") int page,
+        @RequestParam(value = "size", required = false, defaultValue = "20") int size,
+        @RequestParam(value = "featured", required = false) Boolean featured
+    ){
+        String cid = categoryId != null ? categoryId : category_id;
+        String sid = shopId != null ? shopId : shop_id;
+        Pageable pageable = PageRequest.of(page, limit != null && limit > 0 ? limit : size);
 
-        var list = (shopId != null && !shopId.isEmpty())
-                ? productService.findByShop(shopId, q, limit, occasion, size)
-                : productService.findAll(categoryId, q, limit, occasion, size);
+        Page<Product> result = (featured != null && featured)
+            ? productService.featured(pageable)
+            : productService.list(cid, sid, occasion, q, pageable);
 
-        ArrayNode result = mapper.valueToTree(list);
-        return ResponseEntity.ok(result);
+        ArrayNode arr = mapper.createArrayNode();
+        result.getContent().forEach(p -> arr.add(mapper.valueToTree(p)));
+        return ResponseEntity.ok(arr);
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<JsonNode> get(@PathVariable String id) {
-        var p = productService.findById(id);
-        if (p == null) return ResponseEntity.notFound().build();
-        return ResponseEntity.ok(mapper.valueToTree(p));
+    public ResponseEntity<Product> detail(@PathVariable String id){
+        Product p = productService.findById(id);
+        return p == null ? ResponseEntity.notFound().build() : ResponseEntity.ok(p);
     }
 
     @PostMapping
-    public ResponseEntity<JsonNode> create(@RequestBody com.shop.flowershop.domain.Product payload) {
-        if (payload.getId() == null || payload.getId().isBlank()) {
-            payload.setId("PROD-" + System.currentTimeMillis());
-        }
-        // timestamps are handled by @PrePersist/@PreUpdate in the entity
-        var saved = productService.save(payload);
-        return ResponseEntity.status(201).body(mapper.valueToTree(saved));
+    public ResponseEntity<Product> create(@RequestBody ProductRequest req){
+        Product payload = new Product();
+        payload.setId(com.shop.flowershop.service.IdGenerator.timeId("PROD"));
+        payload.setName(req.name());
+        payload.setDescription(req.description());
+        payload.setPrice(req.price());
+        payload.setCategoryId(req.categoryId());
+        payload.setShopId(req.shopId());
+        payload.setOccasion(req.occasion());
+        payload.setSize(req.size());
+        payload.setFeatured(Boolean.TRUE.equals(req.featured()));
+        return ResponseEntity.ok(productService.save(payload));
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<JsonNode> update(@PathVariable String id, @RequestBody com.shop.flowershop.domain.Product payload) {
-        var exist = productService.findById(id);
+    public ResponseEntity<Product> update(@PathVariable String id, @RequestBody ProductRequest req){
+        Product exist = productService.findById(id);
         if (exist == null) return ResponseEntity.notFound().build();
-        payload.setId(id);
-        // timestamps are handled by @PrePersist/@PreUpdate in the entity
-        var saved = productService.save(payload);
-        return ResponseEntity.ok(mapper.valueToTree(saved));
+        exist.setName(req.name());
+        exist.setDescription(req.description());
+        exist.setPrice(req.price());
+        exist.setCategoryId(req.categoryId());
+        exist.setShopId(req.shopId());
+        exist.setOccasion(req.occasion());
+        exist.setSize(req.size());
+        if (req.featured()!=null) exist.setFeatured(req.featured());
+        return ResponseEntity.ok(productService.save(exist));
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> delete(@PathVariable String id) {
+    public ResponseEntity<Void> delete(@PathVariable String id){
         productService.deleteById(id);
         return ResponseEntity.noContent().build();
     }

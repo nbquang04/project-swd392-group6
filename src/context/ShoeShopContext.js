@@ -1,12 +1,19 @@
 import React, { createContext, useEffect, useState, useCallback } from "react";
-import axios from "axios";
+import instance from "../service";
 import { useNavigate } from "react-router-dom";
 import { useNotification } from "./NotificationContext";
 import * as XLSX from "xlsx";
+import axios from 'axios';
+
+
+
+
+
+
 export const ShoesShopContext = createContext();
 export { ShoesShopContext as ShoeShopContext };
 
-const API_BASE = "http://localhost:8080";
+const API_BASE = "";
 
 const ShoesProvider = ({ children }) => {
 
@@ -177,7 +184,7 @@ const ShoesProvider = ({ children }) => {
 
   const refreshUserData = async () => {
     try {
-      const response = await axios.get("http://localhost:8080/user");
+      const response = await instance.get("/users");
       setUser(response.data);
     } catch (error) {
       console.error("Error refreshing user data:", error);
@@ -239,7 +246,7 @@ const ShoesProvider = ({ children }) => {
   // ===== DATA FETCHING EFFECTS =====
   // Fetch root products once and on explicit reloads
   useEffect(() => {
-    axios.get("http://localhost:8080/products", { params: { _t: Date.now() } }).then((result) => {
+    instance.get("/products", { params: { _t: Date.now() } }).then((result) => {
       const raw = result.data || [];
       setProductsRoot(raw);
     });
@@ -294,7 +301,7 @@ const ShoesProvider = ({ children }) => {
   };
 
   useEffect(() => {
-    axios.get("http://localhost:8080/category").then((result) => {
+    instance.get("/category").then((result) => {
       setCategory(result.data);
     });
   }, []);
@@ -304,7 +311,7 @@ const ShoesProvider = ({ children }) => {
   }, [currentPage, currentProducts]);
 
   useEffect(() => {
-    axios.get("http://localhost:8080/user").then((result) => {
+    instance.get("/users").then((result) => {
       let filteredData = result.data;
       if (search.trim() !== "") {
         filteredData = filteredData.filter((u) =>
@@ -325,7 +332,7 @@ const ShoesProvider = ({ children }) => {
   }, [search, msg]);
 
   useEffect(() => {
-    axios.get("http://localhost:8080/cart").then((result) => {
+    instance.get("/carts/me").then((result) => {
       setCart(result.data);
     });
   }, [priceF]);
@@ -334,7 +341,7 @@ const ShoesProvider = ({ children }) => {
   useEffect(() => {
     const fetchOrders = async () => {
       try {
-        const response = await axios.get("http://localhost:8080/orders");
+        const response = await instance.get("/orders");
         let allOrders = response.data;
 
         const user = getCurrentUser();
@@ -404,7 +411,7 @@ const ShoesProvider = ({ children }) => {
     }
 
     try {
-      const response = await fetch("http://localhost:8080/user");
+      const response = await fetch("http://localhost:8080/users");
       if (!response.ok) {
         setMsg("Error fetching user data", false);
         return { status: false, text: "Error fetching user data" };
@@ -441,7 +448,7 @@ const ShoesProvider = ({ children }) => {
       const expiresAt = new Date(Date.now() + 15 * 60 * 1000).toISOString();
 
       try {
-        await axios.post("http://localhost:8080/tokens", {
+        await instance.post("/tokens", {
           id: Date.now().toString(),
           user_id: user.id,
           access_token: accessToken,
@@ -482,7 +489,7 @@ const ShoesProvider = ({ children }) => {
     }
 
     try {
-      const usersResponse = await fetch("http://localhost:8080/user");
+      const usersResponse = await fetch("http://localhost:8080/users");
       if (!usersResponse.ok) {
         return { text: "Error fetching user data", status: false };
       }
@@ -508,7 +515,7 @@ const ShoesProvider = ({ children }) => {
         created_at: new Date().toISOString().split("T")[0],
       };
 
-      await fetch("http://localhost:8080/user", {
+      await fetch("http://localhost:8080/users", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(newUser),
@@ -610,8 +617,7 @@ const ShoesProvider = ({ children }) => {
           total: pro.price * number,
           updated_at: new Date().toISOString(),
         };
-        const response = await axios.post(
-          "http://localhost:8080/cart",
+        const response = await instance.post("/cart",
           newCart
         );
         setCart((prev) => [...prev, response.data]);
@@ -875,7 +881,7 @@ const ShoesProvider = ({ children }) => {
 
   const updateProductStock = async (allOrderItems, setProductCb) => {
     try {
-      const productRes = await axios.get("http://localhost:8080/products");
+      const productRes = await instance.get("/products");
       const allProducts = productRes.data;
 
       const itemsByProduct = {};
@@ -918,8 +924,7 @@ const ShoesProvider = ({ children }) => {
       await Promise.all(updateRequests);
 
       // reload flattened
-      const updatedProductsRes = await axios.get(
-        "http://localhost:8080/products"
+      const updatedProductsRes = await instance.get("/products"
       );
       setProductCb(
         updatedProductsRes.data
@@ -1003,7 +1008,7 @@ const ShoesProvider = ({ children }) => {
     const idU = userToken.id;
     const currentTime = new Date();
 
-    await axios.post("http://localhost:8080/orders", {
+    await instance.post("/orders", {
       id: finalOrderID,
       user_id: idU,
       items: allOrderItems,
@@ -1377,7 +1382,7 @@ const ShoesProvider = ({ children }) => {
       }
       let finalUserData = { ...existingUser, ...updatedUser };
       const response = await fetch(
-        `http://localhost:8080/user/${updatedUser.id}`,
+        `http://localhost:8080/users/${updatedUser.id}`,
         {
           method: "PUT",
           headers: { "Content-Type": "application/json" },
@@ -1425,7 +1430,7 @@ const ShoesProvider = ({ children }) => {
   const restoreProductStock = async (orderItems) => {
     try {
       // Lấy danh sách sản phẩm hiện tại
-      const productRes = await axios.get("http://localhost:8080/products");
+      const productRes = await instance.get("/products");
       const allProducts = productRes.data;
 
       // Nhóm items theo product_id để xử lý
@@ -1469,7 +1474,7 @@ const ShoesProvider = ({ children }) => {
       await Promise.all(updateRequests);
 
       // Cập nhật lại state products với dữ liệu mới
-      const updatedProductsRes = await axios.get("http://localhost:8080/products");
+      const updatedProductsRes = await instance.get("/products");
       const flattenedProducts = updatedProductsRes.data
         .map((product) =>
           product.variants.map((variant) => ({
@@ -1689,7 +1694,7 @@ const ShoesProvider = ({ children }) => {
         status: "Deleted", // hoặc is_deleted: true
       };
 
-      await axios.put(`http://localhost:8080/user/${id}`, updatedUser);
+      await axios.put(`http://localhost:8080/users/${id}`, updatedUser);
 
       // Cập nhật state
       const updatedUsers = users.map((u) =>
@@ -1720,7 +1725,7 @@ const ShoesProvider = ({ children }) => {
         status: "Active", // hoặc giá trị gốc của status
       };
 
-      await axios.put(`http://localhost:8080/user/${id}`, updatedUser);
+      await axios.put(`http://localhost:8080/users/${id}`, updatedUser);
 
       const updatedUsers = users.map((u) =>
         String(u.id) === String(id) ? updatedUser : u

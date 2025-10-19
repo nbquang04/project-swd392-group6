@@ -3,6 +3,10 @@ import ColorDropdown from './ColorDropdown';
 import SizeDropdown from './SizeDropdown';
 import VariantImageManager from './VariantImageManager';
 
+
+
+
+
 export default function VariantOptions({
   options,
   handleOptionNameChange,

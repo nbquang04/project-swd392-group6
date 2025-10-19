@@ -1,6 +1,8 @@
 import React, { useMemo } from 'react';
 import VariantsTable from './VariantsTable';
 
+
+
 export default function VariantsTab({
   variants,
   control,
@@ -67,10 +69,10 @@ export default function VariantsTab({
   // Hàm thêm biến thể thủ công
   const handleAddManualVariant = () => {
     const currentVariants = watchedValues.variants || [];
-    const productName = watchedValues.name || "PROD";
+    const name = watchedValues.name || "PROD";
     const newVariant = {
       key: Date.now(), // Unique key
-      sku: generateSKU(productName, { color_code: "#000000", size: "35" }) || `SKU-${Date.now()}`,
+      sku: generateSKU(name, { color_code: "#000000", size: "35" }) || `SKU-${Date.now()}`,
       color_code: "#000000",
       size: "35",
       price: 0,

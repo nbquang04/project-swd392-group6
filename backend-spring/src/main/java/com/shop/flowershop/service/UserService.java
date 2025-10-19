@@ -1,18 +1,34 @@
+
 package com.shop.flowershop.service;
 
 import com.shop.flowershop.domain.User;
 import com.shop.flowershop.repository.UserRepository;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
+import java.util.Optional;
 
 @Service
 public class UserService {
-    private final UserRepository userRepository;
-    public UserService(UserRepository userRepository) { this.userRepository = userRepository; }
-    public List<User> findAll() { return userRepository.findAll(); }
-    public User save(User u) { return userRepository.save(u); }
-    public void deleteById(String id) { userRepository.deleteById(id); }
+  private final UserRepository repo;
+  private final PasswordEncoder passwordEncoder;
+  public UserService(UserRepository repo, PasswordEncoder passwordEncoder){
+    this.repo = repo; this.passwordEncoder = passwordEncoder;
+  }
+
+  public boolean existsById(String id){ return repo.existsById(id); }
+
+  public Optional<User> findByEmail(String email){ return repo.findByEmail(email); }
+
+  public User register(String email, String rawPassword, String fullName, String role){
+    if (repo.existsByEmail(email)) throw new IllegalArgumentException("Email already registered");
+    User u = new User();
+    u.setId(IdGenerator.timeId("USR"));
+    u.setEmail(email);
+    u.setPassword(passwordEncoder.encode(rawPassword));
+    u.setFullName(fullName);
+    u.setRole(role);
+    u.setStatus("Active");
+    return repo.save(u);
+  }
 }
-
-

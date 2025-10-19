@@ -1,5 +1,11 @@
 import React, { useContext, useMemo, useEffect } from 'react';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
+import SideBarAdmin from '../../components/SideBarAdmin';
+import { ShoesShopContext } from '../../context/ShoeShopContext';
+import MonthlyRevenueChart from '../../components/Chart';
+
+
 import {
   UserIcon,
   ShoppingCartIcon,
@@ -11,10 +17,10 @@ import {
   LockIcon,
   BarChart3Icon,
 } from 'lucide-react';
-import { Link } from 'react-router-dom';
-import SideBarAdmin from '../../components/SideBarAdmin';
-import { ShoesShopContext } from '../../context/ShoeShopContext';
-import MonthlyRevenueChart from '../../components/Chart';
+
+
+
+
 
 const formatTimeAgo = (dateString) => {
   const date = new Date(dateString);
@@ -115,8 +121,8 @@ export default function AdminDashboard() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        await axios.get("http://localhost:9999/orders").then(res => setOrder(res.data));
-        await axios.get("http://localhost:9999/user").then(res => setUser(res.data));
+        await axios.get("http://localhost:8080/orders").then(res => setOrder(res.data));
+        await axios.get("http://localhost:8080/user").then(res => setUser(res.data));
       } catch (error) {
         console.error("Error fetching data:", error);
       }

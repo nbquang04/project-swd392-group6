@@ -1,6 +1,7 @@
 
 import { useState } from 'react';
 
+
 export default function ProductTabs({ product, reviews = [], onWriteReview }) {
   const [activeTab, setActiveTab] = useState('description');
 

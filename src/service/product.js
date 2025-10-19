@@ -1,135 +1,169 @@
 import instance from ".";
 import { endpoint } from "./endpoints";
 
+const normalizeProduct = (p = {}) => {
+  const name = p.name ?? p.productName ?? p.title ?? "";
+  const price = p.price ?? p.unitPrice ?? p.unit_price ?? 0;
+  const id = p.id ?? p.productId ?? p.code ?? p.sku ?? null;
+  return { ...p, id, name, price };
+};
+
+// ✅ Lấy danh sách sản phẩm (có thể lọc, phân trang)
 export const fetchProduct = async (params = {}) => {
-    try {
-        const query = new URLSearchParams(params).toString();
-        const res = await instance.get(`${endpoint.PRODUCT}${query ? `?${query}` : ''}`);
-        return res.data;
-    } catch (error) {
-        console.log(error);
-        return [];
-    }
-};
-
-export const fetchProductDetail = async (id) => {
-    try {
-        const res = await instance.get(`${endpoint.PRODUCT}/${id}`);
-        return res.data;
-    } catch (error) {
-        console.log(error);
-        return null;
-    }
-};
-
-export const fetchCategory = async () => {
-    try {
-        const res = await instance.get(endpoint.CATEGORY);
-        return res.data;
-    } catch (error) {
-        console.log(error);
-        return [];
-    }
-};
-
-export const fetchProductsByCategory = async (categoryId, extra = {}) => {
-    try {
-        const qp = new URLSearchParams({ category_id: categoryId, ...extra }).toString();
-        const res = await instance.get(`${endpoint.PRODUCT}?${qp}`);
-        return res.data;
-    } catch (error) {
-        console.log(error);
-        return [];
-    }
-};
-
-export const fetchProductsByCategoryAndSubcategory = async (categoryId, subcategory) => {
-    try {
-        const res = await instance.get(`${endpoint.PRODUCT}?category_id=${categoryId}`);
-        let products = res.data;
-        
-        // Filter by subcategory if specified
-        if (subcategory) {
-            if (subcategory === "socks") {
-                products = products.filter(product => 
-                    product.name.toLowerCase().includes('Tất') || 
-                    product.name.toLowerCase().includes('tất') ||
-                    product.name.toLowerCase().includes('sock')
-                );
-            } else if (subcategory === "bag") {
-                products = products.filter(product => 
-                    product.name.toLowerCase().includes('túi') || 
-                    product.name.toLowerCase().includes('bag')
-                );
-            }
+  try {
+    const map = {
+      categoryId: "category_id",
+      shopId: "shop_id",
+      size: "size",
+      occasion: "occasion",
+      q: "q",
+      page: "page",
+      size: "size",
+      featured: "featured",
+      _limit: "_limit",
+    };
+    const actual = {};
+    Object.entries(params).forEach(([k, v]) => {
+      if (v !== undefined && v !== null && v !== "") {
+        actual[map[k] || k] = v;
+      }
+    });
+    const query = new URLSearchParams(actual).toString();
+    const res = await instance.get(
+      `${endpoint.PRODUCT}${query ? `?${query}` : ""}`
+    );
+    const data = Array.isArray(res.data?.content)
+      ? res.data.content
+      : Array.isArray(res.data)
+      ? res.data
+      : [];
+    const mapped = data.map(normalizeProduct);
+    const meta = res.data?.totalPages
+      ? {
+          totalPages: res.data.totalPages,
+          totalElements: res.data.totalElements,
+          number: res.data.number,
+          size: res.data.size,
         }
-        
-        return products;
-    } catch (error) {
-        console.log(error);
-        return [];
-    }
+      : null;
+    return meta ? { items: mapped, meta } : mapped;
+  } catch (error) {
+    console.log(error);
+    return [];
+  }
 };
 
+// ✅ Lấy chi tiết sản phẩm
+export const fetchProductDetail = async (id) => {
+  try {
+    const { data } = await instance.get(`${endpoint.PRODUCT}/${id}`);
+    return normalizeProduct(data);
+  } catch (error) {
+    console.log(error);
+    return null;
+  }
+};
+
+// ✅ Tạo, sửa, xóa sản phẩm (admin)
+export const createProduct = async (payload) => {
+  const { data } = await instance.post(endpoint.PRODUCT, payload);
+  return normalizeProduct(data);
+};
+export const updateProduct = async (id, payload) => {
+  const { data } = await instance.put(`${endpoint.PRODUCT}/${id}`, payload);
+  return normalizeProduct(data);
+};
+export const deleteProduct = async (id) => {
+  const { data } = await instance.delete(`${endpoint.PRODUCT}/${id}`);
+  return data;
+};
+
+// ✅ Reviews
+export const getReviewsByProductId = async (productId) => {
+  const { data } = await instance.get(
+    `${endpoint.PRODUCT}/${productId}/reviews`
+  );
+  return data;
+};
+export const createProductReview = async (productId, payload) => {
+  const { data } = await instance.post(
+    `${endpoint.PRODUCT}/${productId}/reviews`,
+    payload
+  );
+  return data;
+};
+export const updateProductReview = async (productId, reviewId, payload) => {
+  const { data } = await instance.put(
+    `${endpoint.PRODUCT}/${productId}/reviews/${reviewId}`,
+    payload
+  );
+  return data;
+};
+export const deleteProductReview = async (productId, reviewId) => {
+  const { data } = await instance.delete(
+    `${endpoint.PRODUCT}/${productId}/reviews/${reviewId}`
+  );
+  return data;
+};
+
+//
+// 🧩 Thêm các hàm còn thiếu (để khớp với FE)
+//
+
+// ✅ Lấy danh sách sản phẩm nổi bật
 export const fetchFeaturedProducts = async () => {
-    try {
-        // Get first 6 products as featured products
-        const res = await instance.get(`${endpoint.PRODUCT}?_limit=6`);
-        return res.data;
-    } catch (error) {
-        console.log(error);
-        return [];
-    }
+  try {
+    const res = await instance.get(`${endpoint.PRODUCT}?featured=true&_limit=8`);
+    const data = Array.isArray(res.data) ? res.data : res.data?.content ?? [];
+    return data.map(normalizeProduct);
+  } catch (error) {
+    console.log("Error fetching featured products:", error);
+    return [];
+  }
 };
 
-export const searchProducts = async (query) => {
-    try {
-        const res = await instance.get(`${endpoint.PRODUCT}?q=${encodeURIComponent(query)}`);
-        return res.data;
-    } catch (error) {
-        console.log(error);
-        return [];
-    }
+// ✅ Lấy danh sách category
+export const fetchCategory = async () => {
+  try {
+    const res = await instance.get(endpoint.CATEGORY);
+    return res.data;
+  } catch (error) {
+    console.log("Error fetching categories:", error);
+    return [];
+  }
 };
 
-// Review functions
+// ✅ Lấy sản phẩm theo category
+export const fetchProductsByCategory = async (categoryId, extra = {}) => {
+  try {
+    const qp = new URLSearchParams({ category_id: categoryId, ...extra }).toString();
+    const res = await instance.get(`${endpoint.PRODUCT}?${qp}`);
+    const data = Array.isArray(res.data) ? res.data : res.data?.content ?? [];
+    return data.map(normalizeProduct);
+  } catch (error) {
+    console.log("Error fetching products by category:", error);
+    return [];
+  }
+};
+
+// ✅ Lấy review theo product (FE dùng)
 export const fetchProductReviews = async (productId) => {
-    try {
-        // Ask backend to filter by productId directly
-        const res = await instance.get(`${endpoint.REVIEWS}/${productId}`);
-        return res.data;
-    } catch (error) {
-        console.log(error);
-        return [];
-    }
+  try {
+    const res = await instance.get(`${endpoint.REVIEW}/${productId}`);
+    return res.data;
+  } catch (error) {
+    console.log("Error fetching product reviews:", error);
+    return [];
+  }
 };
 
-export const submitProductReview = async (reviewData) => {
-    try {
-        const res = await instance.post(endpoint.REVIEWS, reviewData);
-        return res.data;
-    } catch (error) {
-        console.log(error);
-        throw error;
-    }
-};
-
-export const updateProductReview = async (reviewId, reviewData) => {
-    try {
-        const res = await instance.put(`${endpoint.REVIEWS}/${reviewId}`, reviewData);
-        return res.data;
-    } catch (error) {
-        console.log(error);
-        throw error;
-    }
-};
-
-export const deleteProductReview = async (reviewId) => {
-    try {
-        const res = await instance.delete(`${endpoint.REVIEWS}/${reviewId}`);
-        return res.data;
-    } catch (error) {
-        console.log(error);
-        throw error;
-    }
+// ✅ Gửi review sản phẩm (FE gọi)
+export const submitProductReview = async (payload) => {
+  try {
+    const res = await instance.post(endpoint.REVIEW, payload);
+    return res.data;
+  } catch (error) {
+    console.log("Error submitting product review:", error);
+    throw error;
+  }
 };

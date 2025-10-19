@@ -1,7 +1,11 @@
 import { useContext, useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { ShoeShopContext } from '../context/ShoeShopContext';
-import { getProductStats } from '../service/reviews';
+import { getProductStats } from '../service/reviews.js';
+
+
+
+
 
 export default function RelatedProducts({ products = [] }) {
   const [productRatings, setProductRatings] = useState({});

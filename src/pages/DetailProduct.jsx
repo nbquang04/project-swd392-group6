@@ -7,10 +7,11 @@ import ProductTabs from '../components/ProductTabsProps';
 import RelatedProducts from '../components/RelatedProduct';
 import ProductReviews from '../components/ProductReviews';
 import ReviewForm from '../components/ReviewForm';
-import { fetchProductDetail, fetchProductsByCategory, fetchCategory, fetchProductReviews, submitProductReview } from '../service/product';
+import { fetchProductDetail, fetchProductsByCategory, fetchCategory, fetchProductReviews, submitProductReview } from '../service/product.js';
 import { ShoesShopContext } from '../context/ShoeShopContext';
 import { useNotification } from '../context/NotificationContext';
 import axios from 'axios';
+
 
 export default function ProductDetail() {
   const { id } = useParams();
@@ -348,7 +349,7 @@ export default function ProductDetail() {
           {/* Product Gallery */}
           <ProductGallery
             images={productImages}
-            productName={product.name}
+            name={product.name}
           />
 
           {/* Product Info */}

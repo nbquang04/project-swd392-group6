@@ -5,6 +5,12 @@ import MonthlyRevenueChart from "../../components/Chart";
 import { ShoesShopContext } from '../../context/ShoeShopContext';
 import { BarChart3, TrendingUp, Users, ShoppingBag } from 'lucide-react';
 
+
+
+
+
+
+
 const Statistic = () => {
   const { orders, usersRaw, productsRoot, setOrder, setUser } = useContext(ShoesShopContext);
   const [timeRange, setTimeRange] = useState('all'); // all, year, month, week

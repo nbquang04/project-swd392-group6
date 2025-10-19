@@ -28,6 +28,33 @@ import AdminRoute from "./AdminRoute";
 import { ShoesShopContext } from "../context/ShoeShopContext";
 import { useContext } from "react";
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 // Dynamic redirect sau khi login hoặc truy cập "/"
 const HomeRedirect = () => {
   const { currentUser } = useContext(ShoesShopContext);

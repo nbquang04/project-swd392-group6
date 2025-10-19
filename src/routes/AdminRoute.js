@@ -2,6 +2,9 @@ import { useContext } from "react";
 import { Navigate, Outlet, useLocation } from "react-router-dom";
 import { ShoesShopContext } from "../context/ShoeShopContext";
 
+
+
+
 const AdminRoute = () => {
     const { isAuthenticated, currentUser, isLoading } = useContext(ShoesShopContext);
     const location = useLocation();

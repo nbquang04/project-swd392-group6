@@ -4,6 +4,10 @@ import backgroundImg from '../assets/images/shop_giay.jpg';
 import { useContext } from "react";
 import { ShoeShopContext } from "../context/ShoeShopContext";
 
+
+
+
+
 const HeroSection = () => {
   return (
     <section

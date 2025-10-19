@@ -1,3 +1,4 @@
+import { ShoesShopContext } from '../context/ShoeShopContext';
 import React, { useContext } from 'react'
 import {
   LayoutDashboardIcon,
@@ -8,7 +9,7 @@ import {
   LogOut,
 } from 'lucide-react';
 import { Link } from 'react-router-dom'; 
-import { ShoesShopContext } from '../context/ShoeShopContext';
+
 const SideBarAdmin = () => {
     const { logout, currentUser } = useContext(ShoesShopContext);
     const adminName = currentUser?.name || "Admin"; // Fallback to "Admin" if name is not available

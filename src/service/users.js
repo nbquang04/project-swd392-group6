@@ -1,6 +1,8 @@
 import instance from ".";
 import { endpoint } from "./endpoints";
 
+
+
 export const fetchUsers = async () => {
   try {
     const res = await instance.get(endpoint.USER);

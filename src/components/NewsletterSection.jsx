@@ -1,7 +1,10 @@
-// src/components/NewsletterSection.jsx
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { sendNewsletterEmail } from '../lib/sendNewsletterEmail';
+// src/components/NewsletterSection.jsx
+
+
+
 
 const NewsletterSection = () => {
   const [email, setEmail] = useState('');

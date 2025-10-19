@@ -1,3 +1,4 @@
+
 package com.shop.flowershop;
 
 import org.springframework.boot.SpringApplication;
@@ -9,5 +10,3 @@ public class FlowerShopApplication {
         SpringApplication.run(FlowerShopApplication.class, args);
     }
 }
-
-

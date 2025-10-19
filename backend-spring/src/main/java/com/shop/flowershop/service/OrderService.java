@@ -1,6 +1,8 @@
+
 package com.shop.flowershop.service;
 
 import com.shop.flowershop.domain.Order;
+import com.shop.flowershop.domain.OrderItem;
 import com.shop.flowershop.repository.OrderRepository;
 import org.springframework.stereotype.Service;
 
@@ -8,11 +10,20 @@ import java.util.List;
 
 @Service
 public class OrderService {
-    private final OrderRepository orderRepository;
-    public OrderService(OrderRepository orderRepository) { this.orderRepository = orderRepository; }
-    public List<Order> findAll() { return orderRepository.findAll(); }
-    public Order save(Order o) { return orderRepository.save(o); }
-    public void deleteById(String id) { orderRepository.deleteById(id); }
+  private final OrderRepository orderRepo;
+  public OrderService(OrderRepository orderRepo){ this.orderRepo = orderRepo; }
+
+  public List<Order> listByUser(String userId){ return orderRepo.findByUserIdOrderByCreatedAtDesc(userId); }
+
+  public Order placeOrder(Order order){
+    if (order.getId()==null || order.getId().isBlank()){
+      order.setId(IdGenerator.timeId("ORD"));
+    }
+    for (OrderItem it : order.getItems()) {
+      if (it.getId()==null || it.getId().isBlank()) it.setId(IdGenerator.timeId("OITEM"));
+      it.setOrder(order);
+    }
+    if (order.getStatus()==null) order.setStatus("Pending");
+    return orderRepo.save(order);
+  }
 }
-
-

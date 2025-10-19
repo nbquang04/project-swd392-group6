@@ -2,7 +2,12 @@ import React, { useContext, useState, useEffect } from "react";
 import { Trash2, Filter, Download, RotateCcw, Edit, X, Check, Loader2, ArrowUpDown, ArrowUp, ArrowDown, AlertCircle, Shield, UserCheck, UserX } from "lucide-react";
 import { ShoeShopContext } from "../../context/ShoeShopContext";
 import SideBarAdmin from '../../components/SideBarAdmin';
-import { fetchUsers } from "../../service/users";
+import { fetchUsers } from '../../service/users.js';
+
+
+
+
+
 
 const getRoleBadge = (role) => {
   switch (role) {
@@ -236,7 +241,7 @@ const UserManagement = () => {
   const handleEditSave = async (userId) => {
     try {
       // Cập nhật status trong database
-      const response = await fetch(`http://localhost:9999/user/${userId}`, {
+      const response = await fetch(`http://localhost:8080/user/${userId}`, {
         method: 'PATCH',
         headers: {
           'Content-Type': 'application/json',

@@ -8,6 +8,14 @@ import { useForm } from 'react-hook-form';
 import * as yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
 
+
+
+
+
+
+
+
+
 // ==============================
 // Yup Schemas
 // ==============================
@@ -137,7 +145,7 @@ const Auth = () => {
   // ------------------------------
   const checkEmailExists = async (email) => {
     try {
-      const response = await axios.get(`http://localhost:9999/user?email=${email}`);
+      const response = await axios.get(`http://localhost:8080/user?email=${email}`);
       if (response.data.length > 0) {
         setUserId(response.data[0].id);
         return true;
@@ -304,7 +312,7 @@ const Auth = () => {
           setValue('confirmNewPassword', '');
         } else if (step === 3) {
           // data: { newPassword, confirmNewPassword }
-          await axios.patch(`http://localhost:9999/user/${userId}`, {
+          await axios.patch(`http://localhost:8080/user/${userId}`, {
             password: data.newPassword,
           });
           setMessage({

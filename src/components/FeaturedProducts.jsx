@@ -3,6 +3,9 @@ import { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { ShoeShopContext } from '../context/ShoeShopContext';
 
+
+
+
 const FeaturedProducts = ({ products = [] }) => {
   const [favorites, setFavorites] = useState([]);
 

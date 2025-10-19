@@ -1,9 +1,14 @@
-// The exported code uses Tailwind CSS. Install Tailwind CSS in your dev environment to ensure all styles work.
 import React, { useState, useEffect, useContext } from "react";
 import { useSearchParams, Link } from "react-router-dom";
-import { fetchProduct, fetchCategory } from "../service/product";
-import { getProductStats } from "../service/reviews";
+import { fetchProduct, fetchCategory } from '../service/product.js';
+import { getProductStats } from '../service/reviews.js';
 import { ShoeShopContext } from "../context/ShoeShopContext";
+// The exported code uses Tailwind CSS. Install Tailwind CSS in your dev environment to ensure all styles work.
+
+
+
+
+
 
 const ProductPage = () => {
     const [searchParams, setSearchParams] = useSearchParams();
@@ -196,7 +201,7 @@ const ProductPage = () => {
 
         // Filter by category
         if (selectedCategory && selectedCategory !== "Tất cả") {
-            filtered = filtered.filter(product => product.category_id === selectedCategory);
+            filtered = filtered.filter(product => String(product.category_id) === String(selectedCategory));
             console.log('🔍 After category filter:', filtered.length, 'for category:', selectedCategory);
         }
 
@@ -303,7 +308,7 @@ const ProductPage = () => {
     };
 
     const getCategoryName = (categoryId) => {
-        const category = categories.find(cat => cat.id === categoryId);
+        const category = categories.find(cat => String(cat.id) === String(categoryId));
         return category ? category.name : '';
     };
 
@@ -453,8 +458,8 @@ const ProductPage = () => {
                                             <input
                                                 type="radio"
                                                 name="category"
-                                                value={category.id}
-                                                checked={selectedCategory === category.id}
+                                                value={String(category.id)}
+                                                checked={String(selectedCategory) === String(category.id)}
                                                 onChange={(e) => {
                                                     setSelectedCategory(e.target.value);
                                                     setSelectedSubcategory("");

@@ -3,6 +3,10 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useContext } from 'react';
 import { ShoeShopContext } from '../context/ShoeShopContext';
 
+
+
+
+
 const NotFound = () => {
     const navigate = useNavigate();
     const { getCurrentUser } = useContext(ShoeShopContext);

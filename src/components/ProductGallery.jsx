@@ -3,7 +3,8 @@ import { useState } from 'react';
 
 
 
-export default function ProductGallery({ images, productName }) {
+
+export default function ProductGallery({ images, name }) {
   const [selectedImage, setSelectedImage] = useState(0);
   const [isZoomed, setIsZoomed] = useState(false);
 
@@ -14,7 +15,7 @@ export default function ProductGallery({ images, productName }) {
         <div className="aspect-square relative group cursor-zoom-in" onClick={() => setIsZoomed(true)}>
           <img 
             src={images[selectedImage]} 
-            alt={productName}
+            alt={name}
             className="w-full h-full object-cover object-top transition-transform duration-300 group-hover:scale-105"
           />
           <div className="absolute top-4 right-4">
@@ -42,7 +43,7 @@ export default function ProductGallery({ images, productName }) {
           >
             <img 
               src={image} 
-              alt={`${productName} ${index + 1}`}
+              alt={`${name} ${index + 1}`}
               className="w-full h-full object-cover object-top"
             />
           </button>
@@ -55,7 +56,7 @@ export default function ProductGallery({ images, productName }) {
           <div className="relative max-w-4xl max-h-full">
             <img 
               src={images[selectedImage]} 
-              alt={productName}
+              alt={name}
               className="max-w-full max-h-full object-contain"
             />
             <button 

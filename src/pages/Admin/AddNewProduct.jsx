@@ -9,6 +9,16 @@ import { ShoesShopContext } from "../../context/ShoeShopContext";
 import { useNotification } from "../../context/NotificationContext";
 import { BasicInfoTab, VariantsTab } from '../../components/Admin/ProductForm';
 
+
+
+
+
+
+
+
+
+
+
 // Schema validation với Yup
 const productSchema = yup.object().shape({
   name: yup
@@ -170,10 +180,10 @@ export default function AddNewProduct() {
   );
 
   // Tự động tạo SKU dựa trên tên sản phẩm và thuộc tính
-  const generateSKU = (productName, variant) => {
-    if (!productName) return "";
+  const generateSKU = (name, variant) => {
+    if (!name) return "";
     
-    const prefix = productName.substring(0, 3).toUpperCase();
+    const prefix = name.substring(0, 3).toUpperCase();
     const color = variant.color_code ? variant.color_code.substring(1, 4).toUpperCase() : "DEF";
     const size = variant.size || "STD";
     

@@ -4,7 +4,14 @@ import HeroSection from '../components/HeroSection.jsx';
 import CategorySection from '../components/CategorySection.jsx';
 import FeaturedProducts from '../components/FeaturedProducts.jsx';
 import NewsletterSection from '../components/NewsletterSection.jsx';
-import { fetchFeaturedProducts, fetchCategory } from '../service/product';
+import { fetchFeaturedProducts, fetchCategory } from '../service/product.js';
+
+
+
+
+
+
+
 
 const Home = () => {
   const [featuredProducts, setFeaturedProducts] = useState([]);

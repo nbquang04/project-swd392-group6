@@ -1,6 +1,8 @@
 
 import { useState, useEffect } from 'react';
-import { getProductStats } from '../service/reviews';
+import { getProductStats } from '../service/reviews.js';
+
+
 
 export default function ProductInfo({
     product,

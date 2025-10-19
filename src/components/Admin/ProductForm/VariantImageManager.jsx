@@ -1,5 +1,6 @@
 import React from 'react';
 
+
 export default function VariantImageManager({ variants, handleVariantImageChange, handleRemoveVariantImage }) {
   if (variants.length === 0) {
     return (

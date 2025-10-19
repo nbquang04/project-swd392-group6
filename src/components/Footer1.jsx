@@ -1,7 +1,10 @@
-// src/components/Footer1.jsx
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { sendNewsletterEmail } from '../lib/sendNewsletterEmail';
+// src/components/Footer1.jsx
+
+
+
 
 const Footer1 = () => {
   const [email, setEmail] = useState('');

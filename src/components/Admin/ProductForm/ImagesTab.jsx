@@ -1,5 +1,6 @@
 import React from 'react';
 
+
 export default function ImagesTab({ formData, handleImageChange, handleRemoveImage }) {
   return (
     <div className="bg-white rounded-lg shadow-sm border p-6 mb-6">

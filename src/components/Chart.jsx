@@ -1,4 +1,6 @@
 import React, { useContext, useMemo } from "react";
+import { ShoesShopContext } from "../context/ShoeShopContext";
+
 import {
   ComposedChart,
   Line,
@@ -10,7 +12,7 @@ import {
   ResponsiveContainer,
   Legend,
 } from "recharts";
-import { ShoesShopContext } from "../context/ShoeShopContext";
+
 
 export default function MonthlyRevenueChart({ data }) {
   const chartData = useMemo(() => {

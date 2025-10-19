@@ -1,51 +1,44 @@
+
 package com.shop.flowershop.controller;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.node.ArrayNode;
+import com.shop.flowershop.domain.Cart;
+import com.shop.flowershop.service.CartService;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.math.BigDecimal;
+import java.security.Principal;
 
 @RestController
-@RequestMapping({"/api/cart", "/cart"})
+@RequestMapping("/api/carts")
 public class CartController {
-    private final com.shop.flowershop.service.CartService cartService;
-    private final ObjectMapper mapper;
-    public CartController(com.shop.flowershop.service.CartService cartService, ObjectMapper mapper) {
-        this.cartService = cartService;
-        this.mapper = mapper;
-    }
+  private final CartService cartService;
+  public CartController(CartService cartService){ this.cartService = cartService; }
 
-    @GetMapping
-    public ResponseEntity<ArrayNode> list() {
-        return ResponseEntity.ok(mapper.valueToTree(cartService.findAll()));
-    }
+  // For demo: read userId from SecurityContext if set; else from header
+  private String userId(Principal principal, @RequestHeader(value="X-User-Id", required=false) String fallback){
+    return principal != null ? principal.getName() : fallback;
+  }
 
-    @PostMapping
-    public ResponseEntity<com.fasterxml.jackson.databind.JsonNode> create(@RequestBody com.shop.flowershop.domain.Cart payload) {
-        if (payload.getId() == null || payload.getId().isBlank()) payload.setId("CART-" + System.currentTimeMillis());
-        var saved = cartService.save(payload);
-        return ResponseEntity.status(201).body(mapper.valueToTree(saved));
-    }
+  @GetMapping("/me")
+  public Cart myCart(Principal principal, @RequestHeader(value="X-User-Id", required=false) String fallback){
+    return cartService.getOrCreateCart(userId(principal, fallback));
+  }
 
-    @PutMapping("/{id}")
-    public ResponseEntity<com.fasterxml.jackson.databind.JsonNode> update(@PathVariable String id, @RequestBody com.shop.flowershop.domain.Cart payload) {
-        payload.setId(id);
-        var saved = cartService.save(payload);
-        return ResponseEntity.ok(mapper.valueToTree(saved));
-    }
+  @PostMapping("/me/items")
+  public ResponseEntity<Cart> addItem(
+      Principal principal,
+      @RequestHeader(value="X-User-Id", required=false) String fallback,
+      @RequestParam String productId,
+      @RequestParam(required=false) String variantId,
+      @RequestParam(defaultValue="1") int quantity,
+      @RequestParam(defaultValue="0") BigDecimal price
+  ){
+    return ResponseEntity.ok(cartService.addItem(userId(principal, fallback), productId, variantId, quantity, price));
+  }
 
-    @DeleteMapping("/{id}")
-    public ResponseEntity<Void> delete(@PathVariable String id) {
-        cartService.deleteById(id);
-        return ResponseEntity.noContent().build();
-    }
+  @DeleteMapping("/me")
+  public ResponseEntity<Cart> clear(Principal principal, @RequestHeader(value="X-User-Id", required=false) String fallback){
+    return ResponseEntity.ok(cartService.clear(userId(principal, fallback)));
+  }
 }
-
-
