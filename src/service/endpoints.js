@@ -6,5 +6,9 @@ export const endpoint = {
   USER: '/users',
   CART: '/carts',
   ORDERS: '/orders',
-  REVIEWS: '/reviews'
+  REVIEWS: '/reviews',
+  SHOPS: '/shops',
+  ANALYTICS: '/analytics',
+  NOTIFICATIONS: '/notifications',
+  PAYMENTS: '/payments'
 }

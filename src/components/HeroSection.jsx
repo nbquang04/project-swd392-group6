@@ -1,6 +1,6 @@
 
 import { Link } from "react-router-dom";
-import backgroundImg from '../assets/images/shop_giay.jpg';
+import backgroundImg from '../assets/images/shop-flower-1.jpg';
 import { useContext } from "react";
 import { ShoeShopContext } from "../context/ShoeShopContext";
 

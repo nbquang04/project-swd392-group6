@@ -1,9 +1,10 @@
-import React, { useContext, useMemo, useEffect } from 'react';
+import React, { useContext, useMemo, useEffect, useState } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import SideBarAdmin from '../../components/SideBarAdmin';
 import { ShoesShopContext } from '../../context/ShoeShopContext';
 import MonthlyRevenueChart from '../../components/Chart';
+import { getDashboardStats, getRevenueStats, getBestSellingProducts, getTopCustomers } from '../../service/analytics.js';
 
 
 import {
@@ -118,11 +119,38 @@ export default function AdminDashboard() {
     setUser
   } = useContext(ShoesShopContext);
   
+  const [analyticsData, setAnalyticsData] = useState({
+    dashboardStats: null,
+    revenueStats: null,
+    bestSellingProducts: [],
+    topCustomers: []
+  });
+  
   useEffect(() => {
     const fetchData = async () => {
       try {
+        // Fetch basic data
         await axios.get("http://localhost:8080/orders").then(res => setOrder(res.data));
         await axios.get("http://localhost:8080/user").then(res => setUser(res.data));
+        
+        // Fetch analytics data
+        try {
+          const [dashboardStats, revenueStats, bestSellingProducts, topCustomers] = await Promise.all([
+            getDashboardStats(),
+            getRevenueStats(),
+            getBestSellingProducts(5),
+            getTopCustomers(5)
+          ]);
+          
+          setAnalyticsData({
+            dashboardStats,
+            revenueStats,
+            bestSellingProducts,
+            topCustomers
+          });
+        } catch (analyticsError) {
+          console.warn("Analytics data not available:", analyticsError);
+        }
       } catch (error) {
         console.error("Error fetching data:", error);
       }

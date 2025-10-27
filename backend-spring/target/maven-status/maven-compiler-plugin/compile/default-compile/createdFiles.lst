@@ -5,7 +5,6 @@ com\shop\flowershop\controller\AuthController.class
 com\shop\flowershop\security\JwtTokenProvider.class
 com\shop\flowershop\service\OrderService.class
 com\shop\flowershop\dto\order\CreateOrderRequest.class
-com\shop\flowershop\config\WebConfig.class
 com\shop\flowershop\dto\auth\LoginRequest.class
 com\shop\flowershop\domain\CartItem.class
 com\shop\flowershop\config\JacksonConfig.class

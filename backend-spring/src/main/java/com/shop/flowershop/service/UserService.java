@@ -1,4 +1,3 @@
-
 package com.shop.flowershop.service;
 
 import com.shop.flowershop.domain.User;
@@ -10,18 +9,30 @@ import java.util.Optional;
 
 @Service
 public class UserService {
+
   private final UserRepository repo;
   private final PasswordEncoder passwordEncoder;
-  public UserService(UserRepository repo, PasswordEncoder passwordEncoder){
-    this.repo = repo; this.passwordEncoder = passwordEncoder;
+
+  public UserService(UserRepository repo, PasswordEncoder passwordEncoder) {
+    this.repo = repo;
+    this.passwordEncoder = passwordEncoder;
   }
 
-  public boolean existsById(String id){ return repo.existsById(id); }
+  public boolean existsById(String id) {
+    return repo.existsById(id);
+  }
 
-  public Optional<User> findByEmail(String email){ return repo.findByEmail(email); }
+  public Optional<User> findById(String id) {
+    return repo.findById(id);
+  }
 
-  public User register(String email, String rawPassword, String fullName, String role){
-    if (repo.existsByEmail(email)) throw new IllegalArgumentException("Email already registered");
+  public Optional<User> findByEmail(String email) {
+    return repo.findByEmail(email);
+  }
+
+  public User register(String email, String rawPassword, String fullName, String role) {
+    if (repo.existsByEmail(email))
+      throw new IllegalArgumentException("Email already registered");
     User u = new User();
     u.setId(IdGenerator.timeId("USR"));
     u.setEmail(email);

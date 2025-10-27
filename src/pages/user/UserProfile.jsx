@@ -6,33 +6,21 @@ import OrderHistory from './OrderHistory';
 import Header from "../../components/Header1";
 import { ShoesShopContext } from '../../context/ShoeShopContext';
 
-
-
-
-
-
-
-
 const ProfilePage = () => {
   const [activeTab, setActiveTab] = useState('info');
   const { users, getCompleteUserData, isAuthenticated } = useContext(ShoesShopContext);
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
     id: "",
-    name: "",
+    fullName: "",
     email: "",
-    phone: "",
-    address: "",
     password: "",
-    created_at: "",
-    gender: "",
     role: "",
+    status: "",
   });
 
   const [userNotFound, setUserNotFound] = useState(false);
   const [loading, setLoading] = useState(true);
-
-
 
   useEffect(() => {
     const checkUser = () => {
@@ -45,23 +33,17 @@ const ProfilePage = () => {
       }
 
       setUserNotFound(false);
-
       setFormData({
         id: currentUser.id || "",
-        name: currentUser.name || "",
+        fullName: currentUser.fullName || "",
         email: currentUser.email || "",
-        phone: currentUser.phone || "",
-        address: currentUser.address || "",
         password: currentUser.password || "",
-        created_at: currentUser.created_at || "",
-        gender: currentUser.gender || "",
         role: currentUser.role || "",
+        status: currentUser.status || "",
       });
-
       setLoading(false);
     };
 
-    // If users array is not loaded yet, wait a bit and try again
     if (users.length === 0) {
       setTimeout(checkUser, 100);
     } else {
@@ -94,36 +76,13 @@ const ProfilePage = () => {
     return null;
   }
 
-  const tabs = [
-    {
-      key: 'info',
-      label: 'Personal Info',
-      icon: '👤',
-      description: 'View your account details'
-    },
-    {
-      key: 'edit',
-      label: 'Edit Profile',
-      icon: '✏️',
-      description: 'Update your information'
-    },
-    {
-      key: 'orders',
-      label: 'Order History',
-      icon: '📦',
-      description: 'Track your purchases'
-    }
-  ];
-
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-50 via-white to-blue-50">
       <Header />
-
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-
-
         <div className="bg-white rounded-3xl shadow-xl border border-gray-100 overflow-hidden">
-          {/* Tab Navigation */}
+
+          {/* Tabs */}
           <div className="border-b border-gray-200 dark:border-gray-700">
             <nav className="flex space-x-6 sm:space-x-10 px-6 sm:px-8 pt-6 sm:pt-8">
               {[
@@ -144,47 +103,24 @@ const ProfilePage = () => {
                 </button>
               ))}
             </nav>
-
           </div>
 
-
-          {/* Tab Content with Animation */}
+          {/* Content */}
           <div className="relative overflow-hidden">
-            {/* Background Pattern */}
             <div className="absolute inset-0 opacity-5">
               <div className="absolute top-0 right-0 w-64 h-64 bg-gradient-to-br from-blue-400 to-purple-400 rounded-full blur-3xl"></div>
               <div className="absolute bottom-0 left-0 w-48 h-48 bg-gradient-to-tr from-pink-400 to-yellow-400 rounded-full blur-3xl"></div>
             </div>
 
             <div className="relative z-10 p-8 sm:p-12">
-
-              {/* Content Area */}
               <div className="bg-white rounded-2xl ">
-                <div className={`transition-all duration-300 ${activeTab === 'info' ? 'opacity-100 translate-x-0' :
-                  activeTab === 'edit' ? 'opacity-100 translate-x-0' :
-                    'opacity-100 translate-x-0'
-                  }`}>
-                  {activeTab === 'info' && (
-                    <>
-                      <UserInfo />
-                    </>
-                  )}
-
-                  {activeTab === 'edit' && (
-                    <>
-                      <EditProfile formData={formData} setFormData={setFormData} />
-                    </>
-                  )}
-
-                  {activeTab === 'orders' && (
-                    <>
-                      <OrderHistory />
-                    </>
-                  )}
-                </div>
+                {activeTab === 'info' && <UserInfo />}
+                {activeTab === 'edit' && <EditProfile formData={formData} setFormData={setFormData} />}
+                {activeTab === 'orders' && <OrderHistory />}
               </div>
             </div>
           </div>
+
         </div>
       </div>
     </div>

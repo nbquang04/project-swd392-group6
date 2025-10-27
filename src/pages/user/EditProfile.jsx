@@ -1,7 +1,7 @@
 import { useContext, useEffect, useMemo, useState } from "react";
 import { ShoesShopContext } from "../../context/ShoeShopContext.js";
 import { useNotification } from "../../context/NotificationContext.js";
-import { fetchUsers } from "../../service/users.js";
+import { fetchUsers } from '../../service/users.js';
 
 import { useForm } from "react-hook-form";
 import * as yup from "yup";

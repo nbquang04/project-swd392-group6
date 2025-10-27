@@ -1,20 +1,63 @@
-import React, { useState, useContext } from 'react';
-import { ShoesShopContext } from '../context/ShoeShopContext';
+import React, { useState } from 'react';
 
+const ProductReviews = ({ product, reviews: propReviews = [] }) => {
+  // ✅ Dữ liệu review giả (fix cứng)
+  const fakeReviews = [
+    {
+      id: 1,
+      user_name: 'Nguyễn Văn A',
+      rating: 5,
+      title: 'Rất hài lòng!',
+      comment: 'Hoa tươi đẹp, giao hàng nhanh và đóng gói cẩn thận. Rất đáng tiền!',
+      created_at: '2025-10-10',
+      verified_purchase: true,
+      images: ['/images/review1.jpg', '/images/review2.jpg'],
+    },
+    {
+      id: 2,
+      user_name: 'Trần Thị B',
+      rating: 4,
+      title: 'Ổn trong tầm giá',
+      comment: 'Màu sắc tươi tắn, đúng mô tả. Giao hàng hơi chậm một chút.',
+      created_at: '2025-09-25',
+      verified_purchase: true,
+      images: [],
+    },
+    {
+      id: 3,
+      user_name: 'Lê Cường',
+      rating: 5,
+      title: 'Sẽ ủng hộ lần sau',
+      comment: 'Sản phẩm giống hình, nhân viên tư vấn nhiệt tình, 10 điểm!',
+      created_at: '2025-09-05',
+      verified_purchase: true,
+      images: ['/images/review3.jpg'],
+    },
+    {
+      id: 4,
+      user_name: 'Phạm Thảo',
+      rating: 3,
+      title: 'Bình thường',
+      comment: 'Hoa hơi nhỏ hơn hình, nhưng vẫn tạm ổn với giá này.',
+      created_at: '2025-08-22',
+      verified_purchase: false,
+      images: [],
+    },
+  ];
 
+  // Ưu tiên review được truyền từ props (nếu có), nếu không thì dùng fake
+  const reviews = propReviews.length > 0 ? propReviews : fakeReviews;
 
-const ProductReviews = ({ product, reviews = [] }) => {
-  const { getCompleteUserData } = useContext(ShoesShopContext);
-  const user = getCompleteUserData();
   const [showAllReviews, setShowAllReviews] = useState(false);
   const [sortBy, setSortBy] = useState('newest');
 
   // Tính toán thống kê đánh giá
   const totalReviews = reviews.length;
-  const averageRating = totalReviews > 0 
-    ? reviews.reduce((sum, review) => sum + review.rating, 0) / totalReviews 
-    : 0;
-  
+  const averageRating =
+    totalReviews > 0
+      ? reviews.reduce((sum, review) => sum + review.rating, 0) / totalReviews
+      : 0;
+
   const ratingCounts = {
     5: reviews.filter(r => r.rating === 5).length,
     4: reviews.filter(r => r.rating === 4).length,
@@ -39,48 +82,35 @@ const ProductReviews = ({ product, reviews = [] }) => {
     }
   });
 
-  const displayedReviews = showAllReviews ? sortedReviews : sortedReviews.slice(0, 5);
+  const displayedReviews = showAllReviews ? sortedReviews : sortedReviews.slice(0, 3);
 
   const formatDate = (dateString) => {
     const date = new Date(dateString);
     return date.toLocaleDateString('vi-VN', {
       year: 'numeric',
       month: 'long',
-      day: 'numeric'
+      day: 'numeric',
     });
   };
 
-  const renderStars = (rating) => {
-    return (
-      <div className="flex items-center space-x-1">
-        {[1, 2, 3, 4, 5].map((star) => (
-          <span
-            key={star}
-            className={`text-sm ${
-              star <= rating ? 'text-yellow-400' : 'text-gray-300'
-            }`}
-          >
-            ★
-          </span>
-        ))}
-      </div>
-    );
-  };
+  const renderStars = (rating) => (
+    <div className="flex items-center space-x-1">
+      {[1, 2, 3, 4, 5].map((star) => (
+        <span
+          key={star}
+          className={`text-sm ${star <= rating ? 'text-yellow-400' : 'text-gray-300'}`}
+        >
+          ★
+        </span>
+      ))}
+    </div>
+  );
 
   if (totalReviews === 0) {
     return (
       <div className="bg-white rounded-lg border border-gray-200 p-6">
-        <h3 className="text-lg font-semibold text-gray-900 mb-4">
-          Đánh giá sản phẩm
-        </h3>
-        <div className="text-center py-8">
-          <div className="text-gray-400 mb-2">
-            <svg className="w-12 h-12 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z" />
-            </svg>
-          </div>
-          <p className="text-gray-500">Chưa có đánh giá nào cho sản phẩm này</p>
-        </div>
+        <h3 className="text-lg font-semibold text-gray-900 mb-4">Đánh giá sản phẩm</h3>
+        <div className="text-center py-8 text-gray-500">Chưa có đánh giá nào cho sản phẩm này</div>
       </div>
     );
   }
@@ -91,7 +121,7 @@ const ProductReviews = ({ product, reviews = [] }) => {
         <h3 className="text-lg font-semibold text-gray-900">
           Đánh giá sản phẩm ({totalReviews})
         </h3>
-        {totalReviews > 5 && (
+        {totalReviews > 3 && (
           <select
             value={sortBy}
             onChange={(e) => setSortBy(e.target.value)}
@@ -114,9 +144,7 @@ const ProductReviews = ({ product, reviews = [] }) => {
           <div className="flex justify-center mb-2">
             {renderStars(Math.round(averageRating))}
           </div>
-          <p className="text-sm text-gray-600">
-            {totalReviews} đánh giá
-          </p>
+          <p className="text-sm text-gray-600">{totalReviews} đánh giá</p>
         </div>
 
         <div className="md:col-span-2">
@@ -124,7 +152,7 @@ const ProductReviews = ({ product, reviews = [] }) => {
             {[5, 4, 3, 2, 1].map((rating) => {
               const count = ratingCounts[rating];
               const percentage = totalReviews > 0 ? (count / totalReviews) * 100 : 0;
-              
+
               return (
                 <div key={rating} className="flex items-center space-x-2">
                   <div className="flex items-center space-x-1 w-16">
@@ -137,9 +165,7 @@ const ProductReviews = ({ product, reviews = [] }) => {
                       style={{ width: `${percentage}%` }}
                     ></div>
                   </div>
-                  <span className="text-sm text-gray-600 w-12 text-right">
-                    {count}
-                  </span>
+                  <span className="text-sm text-gray-600 w-12 text-right">{count}</span>
                 </div>
               );
             })}
@@ -177,9 +203,7 @@ const ProductReviews = ({ product, reviews = [] }) => {
 
             <div className="ml-13">
               <h5 className="font-medium text-gray-900 mb-2">{review.title}</h5>
-              <p className="text-gray-700 text-sm leading-relaxed mb-3">
-                {review.comment}
-              </p>
+              <p className="text-gray-700 text-sm leading-relaxed mb-3">{review.comment}</p>
 
               {review.images && review.images.length > 0 && (
                 <div className="flex space-x-2 mb-3">
@@ -198,8 +222,8 @@ const ProductReviews = ({ product, reviews = [] }) => {
         ))}
       </div>
 
-      {/* Show More/Less Button */}
-      {totalReviews > 5 && (
+      {/* Show More / Less Button */}
+      {totalReviews > 3 && (
         <div className="text-center mt-6">
           <button
             onClick={() => setShowAllReviews(!showAllReviews)}

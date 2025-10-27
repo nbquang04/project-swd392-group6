@@ -1,7 +1,8 @@
-import { useState, useMemo, useContext } from "react";
+import { useState, useMemo, useContext, useEffect } from "react";
 import SideBarAdmin from "../../components/SideBarAdmin";
 import { Check, ArrowUpDown, Calendar, User } from "lucide-react";
 import { ShoesShopContext } from "../../context/ShoeShopContext";
+import { updateOrderStatus } from '../../service/order.js';
 
 
 
@@ -48,6 +49,13 @@ export default function OrderHistory() {
 
   // Trạng thái tab status đang chọn
   const [statusFilter, setStatusFilter] = useState("all"); // 'all' | 'pending' | 'processing' | 'delivered' | 'canceled'
+  
+  // Analytics data
+  const [analyticsData, setAnalyticsData] = useState(null);
+  const [loading, setLoading] = useState(false);
+
+  // Fetch analytics data
+ 
 
   const [sortConfig, setSortConfig] = useState({
     key: null,        // 'total' | 'created_at' | null

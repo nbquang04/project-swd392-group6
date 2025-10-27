@@ -1,8 +1,17 @@
-
 package com.shop.flowershop.dto.order;
 
+import java.math.BigDecimal;
 import java.util.List;
 
-public record CreateOrderRequest(String address, String paymentMethod, List<Item> items) {
-  public record Item(String productId, String variantId, Integer quantity, Integer price) {}
+public record CreateOrderRequest(
+    String address,
+    String paymentMethod,
+    List<Item> items
+) {
+    public record Item(
+        String productId,
+        String variantId,
+        Integer quantity,
+        BigDecimal price // ✅ Đổi sang BigDecimal
+    ) {}
 }

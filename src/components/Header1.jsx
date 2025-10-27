@@ -4,7 +4,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { Link, useNavigate, useLocation, useSearchParams } from 'react-router-dom';
 import { fetchProduct } from '../service/product.js';
 import { ShoeShopContext } from '../context/ShoeShopContext.js';
-import { fetchCart } from '../service/cart.js';
+import { getMyCart } from '../service/cart.js';
 
 
 
@@ -39,7 +39,7 @@ const Header1 = () => {
   useEffect(() => {
     const load = async () => {
       try {
-        const data = await fetchCart();
+        const data = await getMyCart();
         setCart(data);
       } catch (e) {
         console.error('Fetch cart error:', e);

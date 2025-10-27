@@ -4,14 +4,8 @@ import HeroSection from '../components/HeroSection.jsx';
 import CategorySection from '../components/CategorySection.jsx';
 import FeaturedProducts from '../components/FeaturedProducts.jsx';
 import NewsletterSection from '../components/NewsletterSection.jsx';
-import { fetchFeaturedProducts, fetchCategory } from '../service/product.js';
-
-
-
-
-
-
-
+import { fetchFeaturedProducts , fetchProduct} from '../service/product.js';
+import { fetchCategories } from '../service/categories.js';
 
 const Home = () => {
   const [featuredProducts, setFeaturedProducts] = useState([]);
@@ -24,8 +18,8 @@ const Home = () => {
       try {
         setLoading(true);
         const [productsData, categoriesData] = await Promise.all([
-          fetchFeaturedProducts(),
-          fetchCategory()
+          fetchProduct(),
+          fetchCategories()
         ]);
         setFeaturedProducts(productsData);
         setCategories(categoriesData);
@@ -37,6 +31,7 @@ const Home = () => {
     };
     loadData();
   }, []);
+  console.log(categories);
 
   const handleCategorySelect = (categoryId) => {
     if (categoryId) {

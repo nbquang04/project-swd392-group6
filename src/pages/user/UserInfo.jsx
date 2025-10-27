@@ -2,9 +2,6 @@ import { useContext, useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { ShoesShopContext } from '../../context/ShoeShopContext';
 
-
-
-
 const UserInfo = () => {
   const navigate = useNavigate();
   const { setSelectedItems, getCompleteUserData, logout, users } = useContext(ShoesShopContext);
@@ -18,7 +15,6 @@ const UserInfo = () => {
       setLoading(false);
     };
 
-    // If users array is not loaded yet, wait a bit and try again
     if (users.length === 0) {
       setTimeout(fetchUserData, 100);
     } else {
@@ -27,29 +23,25 @@ const UserInfo = () => {
   }, [getCompleteUserData, users]);
 
   const handleLogout = () => {
-    setSelectedItems([])
+    setSelectedItems([]);
     logout();
   };
 
-  // Format date for display
   const formatDate = (dateString) => {
     if (!dateString) return 'Chưa có thông tin';
-
     try {
       const date = new Date(dateString);
       if (isNaN(date.getTime())) return 'Chưa có thông tin';
-
       return date.toLocaleDateString('vi-VN', {
         year: 'numeric',
         month: 'long',
         day: 'numeric'
       });
-    } catch (error) {
+    } catch {
       return 'Chưa có thông tin';
     }
   };
 
-  // Handle missing or empty fields
   const getFieldValue = (value) => {
     if (!value || value === '') return 'Chưa có thông tin';
     return value;
@@ -87,7 +79,11 @@ const UserInfo = () => {
 
       <div className="flex flex-col md:flex-row gap-8">
         <div className="flex flex-col items-center">
-          <p className="text-sm text-gray-500">Thành viên từ: {formatDate(user.created_at)}</p>
+          {user.createdAt && (
+            <p className="text-sm text-gray-500">
+              Thành viên từ: {formatDate(user.createdAt)}
+            </p>
+          )}
         </div>
 
         <div className="flex-1 grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -95,7 +91,7 @@ const UserInfo = () => {
             <label className="block text-sm font-medium text-gray-700 mb-1">
               Họ và tên
             </label>
-            <p className="text-gray-900 font-medium">{getFieldValue(user.name)}</p>
+            <p className="text-gray-900 font-medium">{getFieldValue(user.fullName)}</p>
           </div>
 
           <div className="bg-gray-50 p-4 rounded-lg">
@@ -107,30 +103,16 @@ const UserInfo = () => {
 
           <div className="bg-gray-50 p-4 rounded-lg">
             <label className="block text-sm font-medium text-gray-700 mb-1">
-              Số điện thoại
-            </label>
-            <p className="text-gray-900">{getFieldValue(user.phone)}</p>
-          </div>
-
-          <div className="bg-gray-50 p-4 rounded-lg">
-            <label className="block text-sm font-medium text-gray-700 mb-1">
-              Giới tính
-            </label>
-            <p className="text-gray-900">{getFieldValue(user.gender)}</p>
-          </div>
-
-          <div className="bg-gray-50 p-4 rounded-lg md:col-span-2">
-            <label className="block text-sm font-medium text-gray-700 mb-1">
-              Địa chỉ
-            </label>
-            <p className="text-gray-900">{getFieldValue(user.address)}</p>
-          </div>
-
-          <div className="bg-gray-50 p-4 rounded-lg">
-            <label className="block text-sm font-medium text-gray-700 mb-1">
               Vai trò
             </label>
             <p className="text-gray-900 capitalize">{getFieldValue(user.role)}</p>
+          </div>
+
+          <div className="bg-gray-50 p-4 rounded-lg">
+            <label className="block text-sm font-medium text-gray-700 mb-1">
+              Trạng thái
+            </label>
+            <p className="text-gray-900">{getFieldValue(user.status)}</p>
           </div>
 
           <div className="bg-gray-50 p-4 rounded-lg">
@@ -142,7 +124,6 @@ const UserInfo = () => {
         </div>
       </div>
 
-      {/* Nút Đăng xuất */}
       <div className="mt-8 flex justify-end">
         <button
           onClick={handleLogout}

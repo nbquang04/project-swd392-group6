@@ -9,7 +9,7 @@ import ProductPage from "../pages/ProductPage";
 import DetailProduct from "../pages/DetailProduct";
 import AboutPage from "../pages/AboutPage";
 import PrivacyPolicy from "../pages/PrivacyPolicy";
-import Auth from "../pages/Auth/Auth";
+import AuthRoute from "./AuthRoute"; // ✅ Route bảo vệ /auth
 import UserProfile from "../pages/user/UserProfile";
 import ShopCartDetail from "../pages/user/ShopCartDetail";
 import Payment from "../pages/user/Payment";
@@ -28,36 +28,12 @@ import AdminRoute from "./AdminRoute";
 import { ShoesShopContext } from "../context/ShoeShopContext";
 import { useContext } from "react";
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// Dynamic redirect sau khi login hoặc truy cập "/"
+// ✅ Dynamic redirect sau login
 const HomeRedirect = () => {
-  const { currentUser } = useContext(ShoesShopContext);
+  const { currentUser, authChecked } = useContext(ShoesShopContext);
+
+  if (!authChecked) return null; // tránh redirect khi chưa check token
+
   if (currentUser?.role === "admin") {
     return <Navigate to="/admin/dashboard" replace />;
   }
@@ -88,7 +64,7 @@ const router = createBrowserRouter([
           { path: "*", element: <NotFound /> },
         ],
       },
-      { path: "auth", element: <Auth /> },
+      { path: "auth", element: <AuthRoute /> }, // ✅ Chặn vòng lặp /auth
       { path: "profile", element: <UserProfile /> },
       { path: "cart", element: <ShopCartDetail /> },
       { path: "payment", element: <Payment /> },

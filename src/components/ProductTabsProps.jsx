@@ -1,107 +1,147 @@
-
 import { useState } from 'react';
-
 
 export default function ProductTabs({ product, reviews = [], onWriteReview }) {
   const [activeTab, setActiveTab] = useState('description');
 
-  // Function to get category-specific description
+  // 🌸 Mô tả theo từng dịp (occasion)
   const getCategoryDescription = () => {
-    const categoryId = product.category_id;
-    
-    switch (categoryId) {
-      case "1": // Giày
+    const occasion = (product.occasion || '').toLowerCase();
+
+    switch (occasion) {
+      case 'birthday':
+      case 'sinh nhật':
         return {
-          title: "Mô tả chi tiết",
-          description: product.description,
+          title: "Hoa tặng sinh nhật 🎂",
+          description: product.description || "Bó hoa sinh nhật tươi thắm gửi trao lời chúc tốt đẹp, niềm vui và hạnh phúc đến người thân yêu trong ngày đặc biệt.",
           additionalInfo: [
-            "Giày sneaker này được thiết kế với sự kết hợp hoàn hảo giữa phong cách hiện đại và tính năng thực dụng.",
-            "Chất liệu da thật cao cấp không chỉ mang lại vẻ ngoài sang trọng mà còn đảm bảo độ bền và sự thoải mái cho người sử dụng.",
-            "Đế giày được làm từ cao su chống trượt chất lượng cao, giúp bạn tự tin di chuyển trên mọi địa hình.",
-            "Thiết kế thoáng khí với các lỗ thông hơi nhỏ giúp chân luôn khô ráo và thoải mái cả ngày dài."
+            "Hoa sinh nhật thường mang tông màu rực rỡ như đỏ, vàng, cam hoặc hồng để thể hiện niềm vui và sự may mắn.",
+            "Các loại hoa thường dùng: hoa hồng, hướng dương, cẩm chướng, baby trắng.",
+            "Thích hợp tặng bạn bè, người yêu, đồng nghiệp hoặc người thân."
           ],
           careInstructions: [
-            "Làm sạch bằng khăn ẩm, tránh ngâm nước",
-            "Bảo quản nơi khô ráo, thoáng mát",
-            "Sử dụng miếng lót giày để tăng tuổi thọ",
-            "Định kỳ vệ sinh đế giày để tránh mài mòn"
+            "Thay nước hoa mỗi ngày và cắt chéo gốc cành 2–3 cm.",
+            "Đặt hoa nơi thoáng mát, tránh ánh nắng trực tiếp.",
+            "Phun sương nhẹ để hoa luôn tươi lâu hơn."
           ],
           specifications: {
-            material: "Da thật + Cao su",
-            weight: "~0.8kg/đôi",
-            warranty: "12 tháng",
-            sizes: "38-44"
+            material: "Hoa tươi tự nhiên nhập mới mỗi ngày",
+            weight: "~0.8kg/bó",
+            warranty: "Không áp dụng",
+            sizes: "Tùy theo kích thước bó"
           }
         };
-        
-      case "2": // Dép
+
+      case 'valentine':
+      case 'lễ tình nhân':
         return {
-          title: "Mô tả chi tiết",
-          description: product.description,
+          title: "Hoa Lễ Tình Nhân ❤️",
+          description: product.description || "Bó hoa Valentine là món quà thể hiện tình yêu, sự ngọt ngào và lãng mạn dành cho người thương.",
           additionalInfo: [
-            "Dép được thiết kế với chất liệu cao cấp, mang lại cảm giác thoải mái tối đa cho đôi chân.",
-            "Đế dép mềm mại với khả năng chống trượt tốt, phù hợp cho việc đi lại hàng ngày.",
-            "Thiết kế đơn giản nhưng tinh tế, dễ dàng phối với nhiều loại trang phục khác nhau.",
-            "Quai dép được làm từ chất liệu bền bỉ, không gây kích ứng da."
+            "Hoa hồng đỏ là biểu tượng của tình yêu nồng cháy và chân thành.",
+            "Có thể phối cùng baby, lá bạc hoặc giấy gói tone đỏ, hồng pastel.",
+            "Phù hợp tặng người yêu, vợ/chồng hoặc bạn gái."
           ],
           careInstructions: [
-            "Rửa sạch bằng nước ấm và xà phòng nhẹ",
-            "Phơi khô tự nhiên, tránh ánh nắng trực tiếp",
-            "Bảo quản nơi khô ráo, tránh ẩm ướt",
-            "Không sử dụng hóa chất tẩy rửa mạnh"
+            "Giữ hoa nơi mát mẻ, tránh ánh nắng mạnh.",
+            "Thay nước hằng ngày và dùng nước sạch có vài giọt chanh để hoa tươi lâu.",
+            "Không đặt gần quạt hoặc điều hòa để tránh làm khô hoa."
           ],
           specifications: {
-            material: "Cao su + Vải",
-            weight: "~0.3kg/đôi",
-            warranty: "6 tháng",
-            sizes: "38-42"
+            material: "Hoa hồng nhập khẩu / hoa baby / giấy gói cao cấp",
+            weight: "~0.6kg/bó",
+            warranty: "Không áp dụng",
+            sizes: "Tùy theo thiết kế bó"
           }
         };
-        
-      case "3": // Phụ kiện
+
+      case 'wedding':
+      case 'đám cưới':
         return {
-          title: "Mô tả chi tiết",
-          description: product.description,
+          title: "Hoa cưới 💍",
+          description: product.description || "Hoa cưới là biểu tượng của hạnh phúc, tình yêu và khởi đầu viên mãn cho lứa đôi trong ngày trọng đại.",
           additionalInfo: [
-            "Phụ kiện được thiết kế với chất liệu cao cấp, tăng thêm sự hoàn thiện cho bộ trang phục.",
-            "Sản phẩm được sản xuất theo tiêu chuẩn chất lượng quốc tế, đảm bảo độ bền và thẩm mỹ.",
-            "Thiết kế đa dạng, phù hợp với nhiều phong cách thời trang khác nhau.",
-            "Dễ dàng bảo quản và sử dụng trong thời gian dài."
+            "Thường dùng các loài hoa nhẹ nhàng như lan, baby, hồng pastel, cúc mẫu đơn.",
+            "Tông màu trắng, kem, hồng nhạt giúp mang lại cảm giác tinh khôi và sang trọng.",
+            "Phù hợp cho hoa cầm tay cô dâu, bàn tiệc, cổng cưới hoặc hoa trang trí."
           ],
           careInstructions: [
-            "Làm sạch theo hướng dẫn trên nhãn sản phẩm",
-            "Bảo quản nơi khô ráo, tránh ánh nắng trực tiếp",
-            "Tránh tiếp xúc với hóa chất mạnh",
-            "Định kỳ kiểm tra và bảo dưỡng"
+            "Bảo quản hoa ở nhiệt độ mát, tránh ánh nắng gắt.",
+            "Phun sương nhẹ lên cánh hoa để giữ độ tươi.",
+            "Không đặt hoa gần nguồn nhiệt hoặc gió mạnh."
           ],
           specifications: {
-            material: "Đa dạng theo loại sản phẩm",
-            weight: "Tùy theo sản phẩm",
-            warranty: "3-6 tháng",
-            sizes: "Đa dạng"
+            material: "Hoa hồng pastel / lan hồ điệp / baby trắng",
+            weight: "~1kg/bó / kệ",
+            warranty: "Không áp dụng",
+            sizes: "Tùy theo yêu cầu đặt thiết kế"
           }
         };
-        
+
+      case 'funeral':
+      case 'tang lễ':
+        return {
+          title: "Hoa chia buồn 🕊️",
+          description: product.description || "Hoa chia buồn thể hiện lòng thành kính, cảm thông và sự chia sẻ nỗi đau mất mát.",
+          additionalInfo: [
+            "Tông màu chủ đạo: trắng, vàng nhạt hoặc tím thể hiện sự trang trọng và thanh khiết.",
+            "Các loài hoa thường dùng: lan trắng, cúc trắng, huệ, hồng trắng.",
+            "Phù hợp gửi đến tang lễ, viếng người thân, đồng nghiệp, đối tác."
+          ],
+          careInstructions: [
+            "Đặt hoa nơi thoáng mát, tránh ánh nắng mạnh.",
+            "Phun sương giữ ẩm định kỳ để hoa không héo.",
+            "Nếu để lâu, thay nước trong chân kệ hoa (nếu có ống nước)."
+          ],
+          specifications: {
+            material: "Lan trắng / cúc trắng / huệ trắng",
+            weight: "~2kg/kệ",
+            warranty: "Không áp dụng",
+            sizes: "Cao 1.5m – 2m"
+          }
+        };
+
+      case 'congratulations':
+      case 'chúc mừng':
+      case 'khai trương':
+        return {
+          title: "Hoa chúc mừng 🎉",
+          description: product.description || "Kệ hoa chúc mừng tượng trưng cho sự thịnh vượng, may mắn và khởi đầu tốt đẹp trong công việc, kinh doanh.",
+          additionalInfo: [
+            "Hoa hướng dương, lan, đồng tiền, hồng vàng tượng trưng cho thành công và tài lộc.",
+            "Thiết kế dạng kệ hoặc giỏ sang trọng, màu sắc tươi sáng.",
+            "Phù hợp cho khai trương, thăng chức, tân gia, kỷ niệm."
+          ],
+          careInstructions: [
+            "Đặt hoa ở nơi mát mẻ, tránh gió mạnh.",
+            "Phun sương thường xuyên để giữ hoa tươi.",
+            "Không để gần nguồn nhiệt hoặc ánh nắng trực tiếp."
+          ],
+          specifications: {
+            material: "Hoa hướng dương / lan hồ điệp / đồng tiền",
+            weight: "~2–3kg/kệ",
+            warranty: "Không áp dụng",
+            sizes: "Cao 1.5m – 1.8m"
+          }
+        };
+
       default:
         return {
-          title: "Mô tả chi tiết",
-          description: product.description,
+          title: "Hoa tươi cho mọi dịp 🌸",
+          description: product.description || "Hoa tươi mang đến niềm vui, hạnh phúc và là món quà tinh tế cho mọi dịp trong cuộc sống.",
           additionalInfo: [
-            "Sản phẩm được thiết kế với chất liệu cao cấp, mang lại trải nghiệm sử dụng tốt nhất.",
-            "Được sản xuất theo tiêu chuẩn chất lượng cao, đảm bảo độ bền và thẩm mỹ.",
-            "Thiết kế hiện đại, phù hợp với xu hướng thời trang hiện tại.",
-            "Dễ dàng bảo quản và sử dụng trong thời gian dài."
+            "Các loài hoa được tuyển chọn tươi mới, nhập mới mỗi ngày.",
+            "Thiết kế thủ công bởi đội ngũ florist chuyên nghiệp của FlowerShop.",
+            "Phù hợp cho nhiều dịp: sinh nhật, chúc mừng, khai trương, tri ân, lễ tết."
           ],
           careInstructions: [
-            "Làm sạch theo hướng dẫn sử dụng",
-            "Bảo quản nơi khô ráo, thoáng mát",
-            "Tránh tiếp xúc với hóa chất mạnh",
-            "Định kỳ kiểm tra và bảo dưỡng"
+            "Cắt chéo gốc hoa trước khi cắm vào bình nước sạch.",
+            "Thay nước mỗi ngày, tránh ánh nắng gắt và gió mạnh.",
+            "Phun sương nhẹ lên hoa để giữ độ tươi tự nhiên."
           ],
           specifications: {
-            material: "Chất liệu cao cấp",
-            weight: "Tùy theo sản phẩm",
-            warranty: "6-12 tháng",
+            material: "Hoa tươi các loại",
+            weight: "~0.5–1kg/bó",
+            warranty: "Không áp dụng",
             sizes: "Đa dạng"
           }
         };
@@ -116,11 +156,9 @@ export default function ProductTabs({ product, reviews = [], onWriteReview }) {
     { id: 'shipping', label: 'Vận chuyển', icon: 'ri-truck-line' }
   ];
 
-  // Sử dụng reviews từ props thay vì mock data
-
+  // ✅ Giữ nguyên toàn bộ layout gốc
   return (
     <div className="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
-      {/* Tab Navigation */}
       <div className="border-b border-gray-200">
         <div className="flex">
           {tabs.map((tab) => (
@@ -140,7 +178,7 @@ export default function ProductTabs({ product, reviews = [], onWriteReview }) {
         </div>
       </div>
 
-      {/* Tab Content */}
+      {/* Nội dung giữ nguyên */}
       <div className="p-6">
         {activeTab === 'description' && (
           <div className="space-y-6">
@@ -159,7 +197,7 @@ export default function ProductTabs({ product, reviews = [], onWriteReview }) {
             </div>
             
             <div>
-              <h4 className="font-medium mb-3">Hướng dẫn sử dụng:</h4>
+              <h4 className="font-medium mb-3">Hướng dẫn chăm sóc hoa:</h4>
               <ul className="space-y-2 text-gray-700">
                 {categoryInfo.careInstructions.map((instruction, index) => (
                   <li key={index} className="flex items-start">
@@ -172,22 +210,19 @@ export default function ProductTabs({ product, reviews = [], onWriteReview }) {
           </div>
         )}
 
+        {/* ⚙️ Các tab khác giữ nguyên */}
         {activeTab === 'specifications' && (
           <div>
             <h3 className="text-lg font-semibold mb-4">Thông số kỹ thuật</h3>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div className="space-y-3">
                 <div className="flex justify-between py-2 border-b border-gray-100">
-                  <span className="text-gray-600">Thương hiệu:</span>
-                  <span className="font-medium">{product.brand}</span>
+                  <span className="text-gray-600">Mã sản phẩm:</span>
+                  <span className="font-medium">{product.id}</span>
                 </div>
                 <div className="flex justify-between py-2 border-b border-gray-100">
                   <span className="text-gray-600">Danh mục:</span>
-                  <span className="font-medium">{product.category}</span>
-                </div>
-                <div className="flex justify-between py-2 border-b border-gray-100">
-                  <span className="text-gray-600">Mã sản phẩm:</span>
-                  <span className="font-medium">{product.sku}</span>
+                  <span className="font-medium">{product.categoryId}</span>
                 </div>
                 <div className="flex justify-between py-2 border-b border-gray-100">
                   <span className="text-gray-600">Chất liệu:</span>
@@ -196,19 +231,15 @@ export default function ProductTabs({ product, reviews = [], onWriteReview }) {
               </div>
               <div className="space-y-3">
                 <div className="flex justify-between py-2 border-b border-gray-100">
-                  <span className="text-gray-600">Xuất xứ:</span>
-                  <span className="font-medium">Việt Nam</span>
-                </div>
-                <div className="flex justify-between py-2 border-b border-gray-100">
                   <span className="text-gray-600">Bảo hành:</span>
                   <span className="font-medium">{categoryInfo.specifications.warranty}</span>
                 </div>
                 <div className="flex justify-between py-2 border-b border-gray-100">
-                  <span className="text-gray-600">Size có sẵn:</span>
+                  <span className="text-gray-600">Kích thước:</span>
                   <span className="font-medium">{categoryInfo.specifications.sizes}</span>
                 </div>
                 <div className="flex justify-between py-2 border-b border-gray-100">
-                  <span className="text-gray-600">Trọng lượng:</span>
+                  <span className="text-gray-600">Khối lượng:</span>
                   <span className="font-medium">{categoryInfo.specifications.weight}</span>
                 </div>
               </div>
@@ -218,7 +249,7 @@ export default function ProductTabs({ product, reviews = [], onWriteReview }) {
 
         {activeTab === 'shipping' && (
           <div>
-            <h3 className="text-lg font-semibold mb-4">Thông tin vận chuyển</h3>
+            <h3 className="text-lg font-semibold mb-4">Vận chuyển</h3>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div className="space-y-4">
                 <div className="flex items-start space-x-3">
@@ -226,52 +257,27 @@ export default function ProductTabs({ product, reviews = [], onWriteReview }) {
                     <i className="ri-truck-line text-blue-600 w-5 h-5 flex items-center justify-center"></i>
                   </div>
                   <div>
-                    <h4 className="font-medium mb-1">Giao hàng tiêu chuẩn</h4>
-                    <p className="text-gray-600 text-sm">3-5 ngày làm việc • Phí: 30.000₫</p>
+                    <h4 className="font-medium mb-1">Giao hàng nhanh</h4>
+                    <p className="text-gray-600 text-sm">2–4 tiếng nội thành • 1–2 ngày tỉnh</p>
                   </div>
                 </div>
-                
                 <div className="flex items-start space-x-3">
                   <div className="bg-green-100 rounded-full p-2 flex-shrink-0">
-                    <i className="ri-flashlight-line text-green-600 w-5 h-5 flex items-center justify-center"></i>
+                    <i className="ri-gift-line text-green-600 w-5 h-5 flex items-center justify-center"></i>
                   </div>
                   <div>
-                    <h4 className="font-medium mb-1">Giao hàng nhanh</h4>
-                    <p className="text-gray-600 text-sm">1-2 ngày làm việc • Phí: 50.000₫</p>
-                  </div>
-                </div>
-                
-                <div className="flex items-start space-x-3">
-                  <div className="bg-yellow-100 rounded-full p-2 flex-shrink-0">
-                    <i className="ri-gift-line text-yellow-600 w-5 h-5 flex items-center justify-center"></i>
-                  </div>
-                  <div>
-                    <h4 className="font-medium mb-1">Miễn phí vận chuyển</h4>
-                    <p className="text-gray-600 text-sm">Đơn hàng từ 500.000₫</p>
+                    <h4 className="font-medium mb-1">Miễn phí giao hàng</h4>
+                    <p className="text-gray-600 text-sm">Cho đơn hàng trên 500.000₫</p>
                   </div>
                 </div>
               </div>
-              
-              <div className="space-y-4">
-                <div>
-                  <h4 className="font-medium mb-2">Chính sách đổi trả</h4>
-                  <ul className="text-sm text-gray-600 space-y-1">
-                    <li>• Đổi trả trong 30 ngày</li>
-                    <li>• Sản phẩm còn nguyên tem mác</li>
-                    <li>• Miễn phí đổi size lần đầu</li>
-                    <li>• Hoàn tiền 100% nếu lỗi</li>
-                  </ul>
-                </div>
-                
-                <div>
-                  <h4 className="font-medium mb-2">Hỗ trợ khách hàng</h4>
-                  <p className="text-sm text-gray-600 mb-2">
-                    Hotline: 1900 1234 (7:00 - 22:00)
-                  </p>
-                  <p className="text-sm text-gray-600">
-                    Email: support@shoeshop.vn
-                  </p>
-                </div>
+              <div>
+                <h4 className="font-medium mb-2">Chính sách đổi trả</h4>
+                <ul className="text-sm text-gray-600 space-y-1">
+                  <li>• Đổi trả trong 24h nếu hoa hư hỏng do vận chuyển</li>
+                  <li>• Miễn phí thay hoa nếu giao sai mẫu</li>
+                  <li>• Liên hệ hotline 1900 1234 để được hỗ trợ</li>
+                </ul>
               </div>
             </div>
           </div>

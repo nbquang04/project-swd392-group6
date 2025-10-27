@@ -1,15 +1,47 @@
-
 package com.shop.flowershop.dto.order;
 
 import com.shop.flowershop.domain.Order;
+import com.shop.flowershop.domain.OrderItem;
+import com.shop.flowershop.dto.order.OrderResponse.OrderItemDto;
+
+import java.math.BigDecimal;
 import java.util.List;
 
-public record OrderResponse(String id, String status, Integer total, String address, String paymentMethod,
-                            List<OrderItemDto> items) {
-  public static record OrderItemDto(String productId, String variantId, Integer quantity, Integer price) {}
+public record OrderResponse(
+                String id,
+                String status,
+                BigDecimal total, // ✅ BigDecimal thay cho Integer
+                String address,
+                String paymentMethod,
+                List<OrderItemDto> items) {
+        public static record OrderItemDto(
+                        String productId,
+                        String variantId,
+                        Integer quantity,
+                        BigDecimal price // ✅ BigDecimal thay cho Integer
+        ) {
+        }
 
-  public static OrderResponse from(Order o){
-    var items = o.getItems().stream().map(i -> new OrderItemDto(i.getProductId(), i.getVariantId(), i.getQuantity(), i.getPrice())).toList();
-    return new OrderResponse(o.getId(), o.getStatus(), o.getTotal(), o.getAddress(), o.getPaymentMethod(), items);
-  }
+        public static OrderResponse from(Order o) {
+                if (o == null)
+                        return null;
+
+                var items = (o.getItems() != null ? o.getItems() : List.<OrderItem>of())
+                                .stream()
+                                .map(i -> new OrderItemDto(
+                                                i.getProductId(),
+                                                i.getVariantId(),
+                                                i.getQuantity(),
+                                                i.getPrice() != null ? i.getPrice() : BigDecimal.ZERO))
+                                .toList();
+
+                return new OrderResponse(
+                                o.getId(),
+                                o.getStatus(),
+                                o.getTotal() != null ? o.getTotal() : BigDecimal.ZERO,
+                                o.getAddress(),
+                                o.getPaymentMethod(),
+                                items);
+        }
+
 }

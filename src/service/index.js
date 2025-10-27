@@ -2,15 +2,45 @@
 import axios from 'axios';
 
 const instance = axios.create({
-  baseURL: (typeof import.meta !== 'undefined' && import.meta.env && import.meta.env.VITE_API_BASE) || 'http://localhost:8080/api'
+  baseURL:
+    (typeof import.meta !== 'undefined' &&
+      import.meta.env &&
+      import.meta.env.VITE_API_BASE) ||
+    'http://localhost:8080/api',
 });
 
 instance.interceptors.request.use((config) => {
   const token = localStorage.getItem('accessToken');
-  if (token) config.headers['Authorization'] = `Bearer ${token}`;
+  if (token) {
+    config.headers['Authorization'] = `Bearer ${token}`;
+  }
   const ustr = localStorage.getItem('user');
-  if (ustr) { try { const u = JSON.parse(ustr); if (u?.id) config.headers['X-User-Id'] = u.id } catch {} }
+   if (ustr) {
+    try {
+      const u = JSON.parse(ustr);
+      if (u?.id) {
+        config.headers['X-User-Id'] = u.id;
+      }
+    } catch (error) {
+      console.warn('Failed to parse user from localStorage', error);
+    }
+  }
   return config;
 });
 
-export default instance
+// Response interceptor for error handling
+instance.interceptors.response.use(
+  (response) => response,
+  (error) => {
+    if (error.response?.status === 401) {
+      // Clear tokens and redirect to login
+      localStorage.removeItem('accessToken');
+      localStorage.removeItem('refreshToken');
+      localStorage.removeItem('user');
+      window.location.href = '/auth';
+    }
+    return Promise.reject(error);
+  }
+);
+
+export default instance;

@@ -1,5 +1,7 @@
 package com.shop.flowershop.security;
 
+import io.jsonwebtoken.Claims;
+import io.jsonwebtoken.Jws;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.security.Keys;
@@ -25,27 +27,37 @@ public class JwtTokenProvider {
 
     @PostConstruct
     void init() {
+        // Tạo key đủ 32 bytes (256-bit)
         key = Keys.hmacShaKeyFor(secret.getBytes(StandardCharsets.UTF_8));
     }
 
-    // ✅ tạo JWT hợp lệ theo API mới
+    // 🔹 Tạo JWT token
     public String generateToken(String subject, Map<String, Object> claims) {
         long now = System.currentTimeMillis();
-
         return Jwts.builder()
-                .setSubject(subject)                     // thay subject() -> setSubject()
-                .addClaims(claims)                       // thay claims() -> addClaims()
-                .setIssuedAt(new Date(now))              // thay issuedAt() -> setIssuedAt()
-                .setExpiration(new Date(now + validityMs)) // thay expiration() -> setExpiration()
+                .setSubject(subject)
+                .addClaims(claims)
+                .setIssuedAt(new Date(now))
+                .setExpiration(new Date(now + validityMs))
                 .signWith(key, SignatureAlgorithm.HS256)
                 .compact();
     }
 
-    // ✅ parse JWT với parserBuilder()
-    public io.jsonwebtoken.Jws<io.jsonwebtoken.Claims> parse(String token) {
+    // 🔹 Giải mã và xác thực token
+    public Jws<Claims> parse(String token) {
         return Jwts.parserBuilder()
-                .setSigningKey(key)                     // thay verifyWith() -> setSigningKey()
+                .setSigningKey(key)
                 .build()
-                .parseClaimsJws(token);                 // thay parseSignedClaims() -> parseClaimsJws()
+                .parseClaimsJws(token);
+    }
+
+    // 🔹 Tiện ích lấy claim cụ thể
+    public String getSubject(String token) {
+        return parse(token).getBody().getSubject();
+    }
+
+    public boolean isExpired(String token) {
+        Date exp = parse(token).getBody().getExpiration();
+        return exp.before(new Date());
     }
 }
