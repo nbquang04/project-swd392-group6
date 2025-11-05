@@ -1,7 +1,7 @@
 
 package com.shop.flowershop.controller;
 
-import com.shop.flowershop.domain.Review;
+import com.shop.flowershop.entity.Review;
 import com.shop.flowershop.service.ReviewService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

@@ -1,7 +1,7 @@
 
 package com.shop.flowershop.controller;
 
-import com.shop.flowershop.domain.Shop;
+import com.shop.flowershop.entity.Shop;
 import com.shop.flowershop.repository.ShopRepository;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

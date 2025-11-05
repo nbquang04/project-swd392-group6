@@ -1,4 +1,4 @@
-package com.shop.flowershop.domain;
+package com.shop.flowershop.entity;
 
 import jakarta.persistence.*;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
@@ -41,6 +41,11 @@ public class Product extends BaseEntity {
     @OneToMany(mappedBy = "product", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
     @JsonManagedReference
     private List<ProductVariant> variants = new ArrayList<>();
+
+    @ElementCollection
+    @CollectionTable(name = "product_images", joinColumns = @JoinColumn(name = "product_id"))
+    @Column(name = "image_url")
+    private List<String> images = new ArrayList<>();
 
     // Hàm tiện ích quản lý quan hệ hai chiều
     public void addVariant(ProductVariant variant) {

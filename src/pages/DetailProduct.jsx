@@ -121,7 +121,6 @@ export default function ProductDetail() {
     try {
       // Gọi hàm context (đã khớp với API addItem)
       await handleAddToCart(product, quantity, variant);
-      showSuccess('✅ Đã thêm vào giỏ hàng!');
     } catch (err) {
       console.error('Add to cart error:', err);
       showWarning('Không thể thêm sản phẩm vào giỏ hàng!');

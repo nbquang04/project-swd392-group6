@@ -52,16 +52,20 @@ export const cancelOrder = async (orderId) => {
   }
 };
 
+
 // 🧾 Lấy tất cả đơn hàng (Admin)
 export const getAllOrders = async (filters = {}) => {
   try {
-    const qp = new URLSearchParams(filters).toString();
-    const { data } = await instance.get(
-      `${endpoint.ORDERS}${qp ? `?${qp}` : ""}`
-    );
+    const query = new URLSearchParams(filters).toString();
+    const url = `${endpoint.ORDERS}${query ? `?${query}` : ""}`;
+    const { data } = await instance.get(url);
+    console.log("✅ [getAllOrders] Loaded", data.length, "orders");
     return Array.isArray(data) ? data : [];
   } catch (error) {
-    console.error("❌ [getAllOrders] Error:", error.response?.data || error.message);
+    console.error(
+      "❌ [getAllOrders] Error:",
+      error.response?.data || error.message
+    );
     return [];
   }
 };
@@ -69,10 +73,15 @@ export const getAllOrders = async (filters = {}) => {
 // ⚙️ Cập nhật trạng thái đơn hàng (Admin)
 export const updateOrderStatus = async (orderId, status) => {
   try {
-    const { data } = await instance.put(`${endpoint.ORDERS}/${orderId}`, { status });
+    const { data } = await instance.patch(
+      `${endpoint.ORDERS}/${orderId}/status`,
+      { status } // ✅ body phải là { "status": "Delivered" }
+    );
+    console.log("✅ [updateOrderStatus] Success:", data);
     return data;
   } catch (error) {
-    console.error("❌ [updateOrderStatus] Error:", error.response?.data || error.message);
+    console.error("❌ [updateOrderStatus] Error:", error.response || error);
+    alert(`⚠️ ${error.response?.status || "Network"} - ${error.response?.data || error.message}`);
     return null;
   }
 };

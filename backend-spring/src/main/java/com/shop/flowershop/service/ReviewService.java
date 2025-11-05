@@ -1,7 +1,7 @@
 
 package com.shop.flowershop.service;
 
-import com.shop.flowershop.domain.Review;
+import com.shop.flowershop.entity.Review;
 import com.shop.flowershop.repository.ReviewRepository;
 import org.springframework.stereotype.Service;
 import java.util.HashMap;

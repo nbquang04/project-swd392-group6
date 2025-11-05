@@ -34,7 +34,7 @@ const HomeRedirect = () => {
 
   if (!authChecked) return null; // tránh redirect khi chưa check token
 
-  if (currentUser?.role === "admin") {
+  if (currentUser?.role === "ADMIN") {
     return <Navigate to="/admin/dashboard" replace />;
   }
   return <Navigate to="/home" replace />;
@@ -71,7 +71,7 @@ const router = createBrowserRouter([
       { path: "payment/bank", element: <QRPayment /> },
       {
         path: "admin",
-        element: <AdminRoute />,
+        element: <AdminRoute/>,
         children: [
           { index: true, element: <Navigate to="dashboard" replace /> },
           { path: "dashboard", element: <AdminDashboard /> },

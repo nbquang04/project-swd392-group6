@@ -30,7 +30,7 @@ const CategorySection = ({ categories, onSelectCategory, selectedCategory }) => 
                 }`}
               >
                 <img
-                  src={category.image}
+                  src={category.imageUrl}
                   alt={category.name}
                   className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-300"
                 />

@@ -1,9 +1,9 @@
 package com.shop.flowershop.controller;
 
-import com.shop.flowershop.domain.Order;
-import com.shop.flowershop.domain.OrderItem;
 import com.shop.flowershop.dto.order.CreateOrderRequest;
 import com.shop.flowershop.dto.order.OrderResponse;
+import com.shop.flowershop.entity.Order;
+import com.shop.flowershop.entity.OrderItem;
 import com.shop.flowershop.service.IdGenerator;
 import com.shop.flowershop.service.OrderService;
 import org.slf4j.Logger;
@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.math.BigDecimal;
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/api/orders")
@@ -37,8 +38,7 @@ public class OrderController {
     @GetMapping("/{orderId}")
     public ResponseEntity<OrderResponse> getById(
             @PathVariable String orderId,
-            @RequestHeader("X-User-Id") String userId
-    ) {
+            @RequestHeader("X-User-Id") String userId) {
         OrderResponse order = orderService.getByIdAndUser(orderId, userId);
         if (order == null) {
             log.warn("⚠️ [GET] Order {} not found for user {}", orderId, userId);
@@ -52,8 +52,7 @@ public class OrderController {
     @PostMapping("/me")
     public ResponseEntity<OrderResponse> place(
             @RequestHeader("X-User-Id") String userId,
-            @RequestBody CreateOrderRequest req
-    ) {
+            @RequestBody CreateOrderRequest req) {
         // ✅ Tạo đối tượng Order mới
         Order order = new Order();
         order.setId(IdGenerator.timeId("ORD"));
@@ -96,8 +95,7 @@ public class OrderController {
     @DeleteMapping("/{orderId}")
     public ResponseEntity<?> cancel(
             @PathVariable String orderId,
-            @RequestHeader("X-User-Id") String userId
-    ) {
+            @RequestHeader("X-User-Id") String userId) {
         boolean cancelled = orderService.cancelOrder(orderId, userId);
         if (!cancelled) {
             log.warn("❌ [DELETE] Failed to cancel order {} for user {}", orderId, userId);
@@ -106,4 +104,36 @@ public class OrderController {
         log.info("🗑️ [DELETE] Order {} cancelled by user {}", orderId, userId);
         return ResponseEntity.ok().body("Order cancelled successfully");
     }
+
+    @PatchMapping("/{orderId}/status")
+    public ResponseEntity<?> updateStatus(
+            @PathVariable String orderId,
+            @RequestBody Map<String, String> body) {
+        String newStatus = body.get("status");
+
+        // 🧠 Kiểm tra input
+        if (newStatus == null || newStatus.isBlank()) {
+            return ResponseEntity.badRequest().body("Missing 'status' field");
+        }
+
+        // 🔄 Gọi service để cập nhật trạng thái
+        OrderResponse updatedOrder = orderService.updateStatus(orderId, newStatus);
+
+        if (updatedOrder == null) {
+            log.warn("⚠️ [PATCH] Cannot update status for order {} -> not found", orderId);
+            return ResponseEntity.notFound().build();
+        }
+
+        log.info("🔄 [PATCH] Order {} updated to status '{}'", orderId, newStatus);
+        return ResponseEntity.ok(updatedOrder);
+    }
+
+    // 🧾 Lấy tất cả đơn hàng (Admin)
+    @GetMapping
+    public ResponseEntity<List<OrderResponse>> getAllOrders() {
+        List<OrderResponse> list = orderService.getAll();
+        log.info("📦 [GET] /api/orders -> Found {} orders (admin)", list.size());
+        return ResponseEntity.ok(list);
+    }
+
 }

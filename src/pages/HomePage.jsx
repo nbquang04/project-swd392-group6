@@ -57,7 +57,7 @@ const Home = () => {
         onSelectCategory={handleCategorySelect} 
       />
       <FeaturedProducts products={featuredProducts} />
-      <NewsletterSection />
+      {/* <NewsletterSection /> */}
     </main>
   );
 };

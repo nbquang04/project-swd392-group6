@@ -1,6 +1,6 @@
 package com.shop.flowershop.service;
 
-import com.shop.flowershop.domain.User;
+import com.shop.flowershop.entity.User;
 import com.shop.flowershop.repository.UserRepository;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -28,6 +28,13 @@ public class UserService {
 
   public Optional<User> findByEmail(String email) {
     return repo.findByEmail(email);
+  }
+
+  public User updateRole(String userId, String newRole) {
+    User user = repo.findById(userId)
+        .orElseThrow(() -> new IllegalArgumentException("User not found"));
+    user.setRole(newRole.toUpperCase());
+    return repo.save(user);
   }
 
   public User register(String email, String rawPassword, String fullName, String role) {

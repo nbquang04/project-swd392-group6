@@ -4,12 +4,14 @@ import Header from "../../components/Header1";
 import { ShoesShopContext } from "../../context/ShoeShopContext";
 import { getMyCart, updateCartItem, removeFromCart } from "../../service/cart";
 import { Image } from "react-bootstrap";
+import { fetchProduct } from "../../service/product";
 
 const CartPage = () => {
   const navigate = useNavigate();
   const {
     cart,
     setCart,
+    setProduct,
     products,
     selectedItems,
     setSelectedItems,
@@ -68,6 +70,26 @@ const CartPage = () => {
       showError("Không thể xóa sản phẩm!");
     }
   };
+  useEffect(() => {
+    const loadCartAndProducts = async () => {
+      try {
+        // tải cả giỏ hàng và sản phẩm song song
+        const [cartData, productData] = await Promise.all([
+          getMyCart(),
+          fetchProduct()
+        ]);
+        setCart(cartData);
+        if (Array.isArray(productData)) setProduct(productData);
+      } catch (error) {
+        console.error("Error loading cart or products:", error);
+        showError("Không thể tải dữ liệu giỏ hàng hoặc sản phẩm!");
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    loadCartAndProducts();
+  }, [setCart, setProduct, showError]);
 
   // ⏳ Loading
   if (loading)
@@ -126,15 +148,14 @@ const CartPage = () => {
               {/* DANH SÁCH ITEMS */}
               <div>
                 {cart.items.map((item, index) => {
-                  const product = products.find((p) => p.id === item.productId);
+                  const product = products.find((p) => String(p.id) === String(item.productId)) || {};
                   const isSelected = selectedItems.includes(item.id);
 
                   return (
                     <div
                       key={item.id || index}
-                      className={`px-8 py-8 border-b border-red-100 transition-colors duration-200 ${
-                        isSelected ? "bg-red-50" : "bg-white"
-                      }`}
+                      className={`px-8 py-8 border-b border-red-100 transition-colors duration-200 ${isSelected ? "bg-red-50" : "bg-white"
+                        }`}
                     >
                       <div className="flex items-center space-x-6">
                         {/* Checkbox */}
@@ -174,6 +195,7 @@ const CartPage = () => {
 
                             <div className="text-sm text-gray-600 mb-3 space-x-4">
                               <span>Biến thể: {item.variantId || "Default"}</span>
+                              <span>Size: {product.size || "Default"}</span>
                               <span>Số lượng: {item.quantity}</span>
                             </div>
 
@@ -273,11 +295,10 @@ const CartPage = () => {
                     <button
                       onClick={() => navigate("/payment")}
                       disabled={selectedItems.length === 0}
-                      className={`w-full py-4 px-6 rounded-xl text-base font-semibold transition-all duration-200 ${
-                        selectedItems.length > 0
-                          ? "bg-red-500 hover:bg-red-600 text-white shadow-lg hover:shadow-xl"
-                          : "bg-gray-300 text-gray-500 cursor-not-allowed"
-                      }`}
+                      className={`w-full py-4 px-6 rounded-xl text-base font-semibold transition-all duration-200 ${selectedItems.length > 0
+                        ? "bg-red-500 hover:bg-red-600 text-white shadow-lg hover:shadow-xl"
+                        : "bg-gray-300 text-gray-500 cursor-not-allowed"
+                        }`}
                     >
                       {selectedItems.length > 0
                         ? "🚀 Thanh toán"

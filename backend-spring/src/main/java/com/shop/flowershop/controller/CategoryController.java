@@ -1,6 +1,6 @@
 package com.shop.flowershop.controller;
 
-import com.shop.flowershop.domain.Category;
+import com.shop.flowershop.entity.Category;
 import com.shop.flowershop.repository.CategoryRepository;
 import com.shop.flowershop.service.IdGenerator;
 import org.springframework.http.ResponseEntity;
@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping({"/api/categories", "/categories"})
+@RequestMapping({ "/api/categories", "/categories" })
 public class CategoryController {
 
     private final CategoryRepository categoryRepository;
@@ -48,6 +48,7 @@ public class CategoryController {
         return categoryRepository.findById(id)
                 .map(existing -> {
                     existing.setName(updated.getName());
+                    existing.setImageUrl(updated.getImageUrl()); // 🔹 cập nhật ảnh
                     return ResponseEntity.ok(categoryRepository.save(existing));
                 })
                 .orElse(ResponseEntity.notFound().build());

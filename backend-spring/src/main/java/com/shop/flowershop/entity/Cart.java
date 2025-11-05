@@ -1,4 +1,4 @@
-package com.shop.flowershop.domain;
+package com.shop.flowershop.entity;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;

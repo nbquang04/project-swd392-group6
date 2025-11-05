@@ -1,8 +1,9 @@
 
 package com.shop.flowershop.repository;
 
-import com.shop.flowershop.domain.Cart;
 import org.springframework.data.jpa.repository.JpaRepository;
+
+import com.shop.flowershop.entity.Cart;
 
 import java.util.Optional;
 

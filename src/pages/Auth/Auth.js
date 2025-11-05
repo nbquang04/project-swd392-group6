@@ -71,8 +71,17 @@ const Auth = () => {
       if (currentTab === 'login') {
         const res = await handleSubmitLogin({ email: data.email, password: data.password });
         if (res?.status) {
+          const user = res.user;
+         
           setMessage({ type: 'success', text: 'Đăng nhập thành công!' });
-          setTimeout(() => navigate('/', { replace: true }), 800);
+
+          setTimeout(() => {
+            if (user?.role === 'ADMIN') {
+              navigate('/admin/dashboard', { replace: true });
+            } else {
+              navigate('/', { replace: true });
+            }
+          }, 800);
         } else {
           setMessage({ type: 'error', text: 'Sai email hoặc mật khẩu!' });
         }
@@ -236,17 +245,15 @@ const Auth = () => {
         <div className="flex mb-6 bg-gray-100 rounded-xl p-1">
           <button
             onClick={() => setCurrentTab('login')}
-            className={`flex-1 py-2 rounded-lg text-sm font-medium ${
-              currentTab === 'login' ? 'bg-red-600 text-white' : 'text-gray-600 hover:text-gray-900'
-            }`}
+            className={`flex-1 py-2 rounded-lg text-sm font-medium ${currentTab === 'login' ? 'bg-red-600 text-white' : 'text-gray-600 hover:text-gray-900'
+              }`}
           >
             Đăng nhập
           </button>
           <button
             onClick={() => setCurrentTab('register')}
-            className={`flex-1 py-2 rounded-lg text-sm font-medium ${
-              currentTab === 'register' ? 'bg-red-600 text-white' : 'text-gray-600 hover:text-gray-900'
-            }`}
+            className={`flex-1 py-2 rounded-lg text-sm font-medium ${currentTab === 'register' ? 'bg-red-600 text-white' : 'text-gray-600 hover:text-gray-900'
+              }`}
           >
             Đăng ký
           </button>
@@ -257,9 +264,8 @@ const Auth = () => {
 
         {message.text && (
           <div
-            className={`mt-6 p-4 rounded-xl text-sm font-medium ${
-              message.type === 'success' ? 'bg-green-50 text-green-700' : 'bg-red-50 text-red-700'
-            }`}
+            className={`mt-6 p-4 rounded-xl text-sm font-medium ${message.type === 'success' ? 'bg-green-50 text-green-700' : 'bg-red-50 text-red-700'
+              }`}
           >
             {message.text}
           </div>

@@ -30,7 +30,7 @@ public class SecurityConfig {
         .cors(cors -> cors.configurationSource(request -> {
           var config = new CorsConfiguration();
           config.setAllowedOrigins(List.of("http://localhost:5173", "http://localhost:3000", "http://localhost:9999"));
-          config.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "OPTIONS"));
+          config.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "OPTIONS","PATCH"));
           config.setAllowedHeaders(List.of("*"));
           config.setAllowCredentials(true);
           return config;
@@ -39,7 +39,7 @@ public class SecurityConfig {
         .authorizeHttpRequests(auth -> auth
             .requestMatchers("/api/auth/**").permitAll()
             .requestMatchers(HttpMethod.GET, "/api/**").permitAll()
-            .requestMatchers(HttpMethod.DELETE, "/api/**").permitAll()
+            .requestMatchers(HttpMethod.POST, "/api/**").permitAll()
             .requestMatchers(HttpMethod.OPTIONS, "/api/**").permitAll()
             .anyRequest().authenticated())
         .addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class);

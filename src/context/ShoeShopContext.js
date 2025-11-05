@@ -21,6 +21,7 @@ import {
   cancelOrder,
 } from "../service/order";
 
+
 import {
   getMyCart,
   addToCart,
@@ -31,6 +32,7 @@ import {
 
 import { loginUser as login, registerUser as register } from "../service/auth";
 import { fetchUsers, updateUser } from "../service/users";
+import axios from "axios";
 // import { getReviewsByProductId } from "../service/reviews"; // (chưa dùng, có thể bật lại khi cần)
 
 export const ShoesShopContext = createContext();
@@ -54,6 +56,7 @@ const ShoesProvider = ({ children }) => {
   const [category, setCat] = useState(0); // id danh mục đang filter
   const [size, setSize] = useState(0);
   const [priceF, setPriceFilter] = useState(true);
+  console.log("🧩 fetchOrders type:", typeof fetchOrders);
 
   // Phân trang
   const [pages, setPages] = useState([]);
@@ -118,12 +121,15 @@ const ShoesProvider = ({ children }) => {
       const res = await login(payload);
       const { token, user } = res || {};
       if (!token || !user) throw new Error("Invalid login response");
+
       setToken(token);
       localStorage.setItem("user", JSON.stringify(user));
       setCurrentUser(user);
       setIsAuthenticated(true);
       showSuccess("Đăng nhập thành công!");
-      return { status: true };
+
+      // ✅ Trả về cả user để component Auth biết vai trò
+      return { status: true, user };
     } catch (err) {
       console.error("Login error:", err);
       showError("Sai tài khoản hoặc mật khẩu!");
@@ -178,17 +184,18 @@ const ShoesProvider = ({ children }) => {
   };
 
   const reloadOrders = async () => {
-  try {
-    const user = getCurrentUser();
-    if (!user) return;
-    const data = await fetchOrders();
-    console.log("📦 [reloadOrders] user orders:", data); // 👈 Thêm dòng này
-    setOrder(Array.isArray(data) ? data : []);
-  } catch (e) {
-    console.error("❌ reloadOrders error:", e);
-    showError("Không thể tải danh sách đơn hàng!");
-  }
-};
+    try {
+      const user = getCurrentUser();
+      if (!user) return;
+      const data = await fetchOrders();
+      console.log("📦 [reloadOrders] user orders:", data); // 👈 Thêm dòng này
+      setOrder(Array.isArray(data) ? data : []);
+      return data;
+    } catch (e) {
+      console.error("❌ reloadOrders error:", e);
+      showError("Không thể tải danh sách đơn hàng!");
+    }
+  };
 
 
   const reloadCarts = async () => {
@@ -397,27 +404,108 @@ const ShoesProvider = ({ children }) => {
 
   const handleCreateOrder = async (paymentMethod = "cod", addressInput) => {
     let items = [];
+
     try {
+      // 🧩 Chuẩn bị dữ liệu đơn hàng
       items = buildOrderItemsFromSelection();
       const payload = { address: addressInput, paymentMethod, items };
 
+      // 🧾 Gửi yêu cầu tạo đơn hàng
       const res = await createOrder(payload);
+      console.log(res.id);
 
-      if (res && (res.id || res === true)) {
-        showSuccess(" Đã thanh toán thành công!");
-        await updateProductStockBatch(items);
-        await handleClearCart();
-        await reloadOrders();
-        setSelectedItems([]);
-        return true;
+      // 🔹 Kiểm tra phản hồi từ backend
+      if (res && (res.id || res.orderID)) {
+        const orderID = res.id || res.orderID;
+        const total = getTotal() + (selectedItems.length > 0 ? 30000 : 0);
+        const user = getCompleteUserData();
+
+        // 💰 Nếu là COD → xử lý tại chỗ
+        if (paymentMethod === "cod") {
+          showSuccess("✅ Đặt hàng thành công! Cảm ơn bạn đã mua sắm.");
+          await updateProductStockBatch(items);
+
+          // 🧹 Xóa chỉ những sản phẩm đã chọn khỏi giỏ hàng
+          await removeItemsFromCart(
+            cart.items.filter(i => selectedItems.includes(i.id)),
+            cart
+          );
+
+
+          await reloadCarts();
+          await reloadOrders();
+          setSelectedItems([]);
+          return true;
+        }
+
+        // 🏧 Nếu là thanh toán ngân hàng → chuyển sang QRPayment
+        if (paymentMethod === "bank") {
+          // 🧹 Cũng xóa chỉ những sản phẩm đã chọn khỏi giỏ hàng
+          await removeItemsFromCart(
+            cart.items.filter(i => selectedItems.includes(i.id)),
+            cart
+          );
+
+
+          await reloadCarts();
+
+          // 🔁 Điều hướng sang trang thanh toán QR
+          navigate("/payment/bank", {
+            state: {
+              orderID,
+              total,
+              name: user?.name,
+              phone: user?.phone,
+              address: addressInput,
+              orderItems: items,
+            },
+          });
+          return true;
+        }
       }
 
       return false;
     } catch (err) {
-      console.error("❌ createOrder error:", err.message);
+      console.error("❌ Lỗi khi tạo đơn hàng:", err);
+      showWarning("⚠️ Không thể tạo đơn hàng, vui lòng thử lại.");
       return false;
     }
   };
+
+
+  const confirmPayment = async (orderID) => {
+    try {
+      const res = await axios.put(`/api/orders/${orderID}/confirm-payment`, {}, {
+        headers: { "X-User-Id": currentUser?.id },
+      });
+      return res.status === 200;
+    } catch (err) {
+      console.error("❌ confirmPayment error:", err);
+      return false;
+    }
+  };
+
+  // ✅ Xóa những item đã mua khỏi giỏ hàng (sau khi đặt hàng thành công)
+  const removeItemsFromCart = async (selectedItems, currentCart) => {
+    try {
+      if (!Array.isArray(selectedItems) || selectedItems.length === 0) return;
+
+      for (const item of selectedItems) {
+        const id = item.id || item.cartItemId || item.productId;
+        if (id) {
+          await removeFromCart(id); // 🔹 gọi API backend xóa từng item
+        }
+      }
+
+      // Sau khi xóa hết — reload lại giỏ hàng
+      await reloadCarts();
+      console.log("🗑️ Removed selected items from cart:", selectedItems.map(i => i.id));
+    } catch (err) {
+      console.error("❌ Lỗi khi xóa sản phẩm khỏi giỏ hàng:", err);
+    }
+  };
+
+
 
   const handleCancelOrder = async (orderId) => {
     try {
@@ -725,12 +813,13 @@ const ShoesProvider = ({ children }) => {
         handleClearCart,
         handleCheckboxChange,
         getTotal,
-
+        removeItemsFromCart,
         // ===== ORDER =====
         handleCreateOrder,
         handleCancelOrder,
         handleClickConfirm,
-
+        fetchOrders,
+        confirmPayment,
         // ===== USER =====
         searchUserByName,
         sortUsersByNameAsc,

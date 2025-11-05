@@ -68,11 +68,26 @@ const Payment = () => {
       return;
     }
 
-    const success = await handleCreateOrder(paymentMethod, formData.address);
-    if (success) {
-      navigate("/profile"); // ✅ chỉ navigate — không hiện lại thông báo trùng
+    if (paymentMethod === "bank") {
+      // ✅ Chưa tạo đơn → chỉ chuyển sang trang QR
+      const total = getTotal() + (selectedItems.length > 0 ? 30000 : 0);
+      navigate("/payment/bank", {
+        state: {
+          total,
+          name: formData.name,
+          phone: formData.phone,
+          address: formData.address,
+          orderItems: selectedItems,
+        },
+      });
+      return;
     }
+
+    // 🧾 Với COD thì vẫn tạo đơn như bình thường
+    const success = await handleCreateOrder("cod", formData.address);
+    if (success) navigate("/profile");
   };
+
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-red-50 via-white to-red-50">

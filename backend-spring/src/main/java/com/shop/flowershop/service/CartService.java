@@ -1,8 +1,8 @@
 package com.shop.flowershop.service;
 
-import com.shop.flowershop.domain.Cart;
-import com.shop.flowershop.domain.CartItem;
 import com.shop.flowershop.repository.CartRepository;
+import com.shop.flowershop.entity.Cart;
+import com.shop.flowershop.entity.CartItem;
 import com.shop.flowershop.repository.CartItemRepository;
 import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;

@@ -1,10 +1,10 @@
 
 package com.shop.flowershop.controller;
 
-import com.shop.flowershop.domain.User;
 import com.shop.flowershop.dto.auth.AuthResponse;
 import com.shop.flowershop.dto.auth.LoginRequest;
 import com.shop.flowershop.dto.auth.RegisterRequest;
+import com.shop.flowershop.entity.User;
 import com.shop.flowershop.security.JwtTokenProvider;
 import com.shop.flowershop.service.UserService;
 
@@ -62,6 +62,20 @@ public class AuthController {
     return users.findById(userId)
         .map(ResponseEntity::ok)
         .orElse(ResponseEntity.status(404).build());
+  }
+
+  @PutMapping("/role/{id}")
+  public ResponseEntity<User> updateUserRole(
+      @PathVariable String id,
+      @RequestBody Map<String, String> body) {
+
+    String newRole = body.get("role");
+    if (newRole == null || newRole.isBlank()) {
+      return ResponseEntity.badRequest().build();
+    }
+
+    User updated = users.updateRole(id, newRole);
+    return ResponseEntity.ok(updated);
   }
 
 }

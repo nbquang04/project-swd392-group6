@@ -1,6 +1,6 @@
 package com.shop.flowershop.controller;
 
-import com.shop.flowershop.domain.Cart;
+import com.shop.flowershop.entity.Cart;
 import com.shop.flowershop.service.CartService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

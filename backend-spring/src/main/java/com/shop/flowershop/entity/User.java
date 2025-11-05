@@ -1,5 +1,5 @@
 
-package com.shop.flowershop.domain;
+package com.shop.flowershop.entity;
 
 import jakarta.persistence.*;
 import lombok.Getter;

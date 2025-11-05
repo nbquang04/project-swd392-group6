@@ -18,7 +18,7 @@ const AdminRoute = () => {
     }
 
     // Không phải admin
-    if (currentUser?.role !== "admin") {
+    if (currentUser?.role !== "ADMIN") {
         return <Navigate to="/403" replace />;
     }
 

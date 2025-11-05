@@ -27,7 +27,9 @@ const QRPayment = () => {
     carts,
     setSelectedItems,
     createOrder,
-    updateProductStock
+    updateProductStock,
+    confirmPayment,
+    handleCreateOrder
   } = useContext(ShoesShopContext);
 
   const navigate = useNavigate();
@@ -41,16 +43,11 @@ const QRPayment = () => {
 
   // Debug log
   useEffect(() => {
-    console.log("Location state:", locationState);
-    console.log("OrderID:", orderID);
-    console.log("Total from state:", totalFromState);
-
-    // Nếu không có orderID, redirect về payment page
-    if (!orderID) {
-      console.warn("No orderID found in location state!");
-      navigate('/payment', { replace: true });
+    if (!location.state) {
+      console.warn("⚠️ No location.state found, redirecting back to payment page!");
+      navigate("/payment", { replace: true });
     }
-  }, [orderID, totalFromState, locationState, navigate]);
+  }, [location.state, navigate]);
 
   const [total, setTotal] = useState(totalFromState || 0);
   const [isProcessing, setIsProcessing] = useState(false);
@@ -63,47 +60,35 @@ const QRPayment = () => {
   }, [totalFromState, selectedItems, getTotal]);
 
   const handleBankSuccess = async () => {
-    if (isProcessing) return; // Prevent double click
-
+    if (isProcessing) return;
     setIsProcessing(true);
 
     try {
-      // Tạo order với payment method là "bank"
-      const orderResult = await createOrder("bank", name, phone, address, orderID);
+      // 🧾 Tạo đơn hàng qua context (dùng lại logic chuẩn)
+      const success = await handleCreateOrder("bank", address);
 
-      if (orderResult.success) {
-        // Cập nhật stock
-        const orderItemsToUpdate = orderItems || selectedItems.map(sel => {
-          const cart = carts.find(c => c.id === sel.cartId);
-          const item = cart?.items.find(i => i.variant_sku === sel.variantSku);
-          return item;
-        }).filter(Boolean);
-
-        await updateProductStock(orderItemsToUpdate, setProduct);
-
-        // Xóa items từ cart
-        await removeItemsFromCart(selectedItems, carts);
-
-        // Reset selected items
-        setSelectedItems([]);
-
-        alert(`✅ Cảm ơn bạn! Đơn hàng #${orderID} sẽ được xác nhận sau khi shop kiểm tra giao dịch.`);
-        navigate("/products");
+      if (success) {
+        alert("✅ Cảm ơn bạn! Đơn hàng đã được ghi nhận và chờ xác nhận thanh toán.");
+        navigate("/profile");
+      } else {
+        alert("⚠️ Không thể tạo đơn hàng, vui lòng thử lại!");
       }
     } catch (error) {
       console.error("❌ Lỗi khi xử lý thanh toán:", error);
-      alert("⚠️ Có lỗi xảy ra, vui lòng thử lại!");
+      alert("⚠️ Có lỗi xảy ra khi tạo đơn hàng!");
     } finally {
       setIsProcessing(false);
     }
   };
+
+
 
   const handleBackToPayment = () => {
     navigate('/payment');
   };
 
   // Loading state nếu chưa có dữ liệu
-  if (!locationState || !orderID) {
+  if (!location.state || !location.state.total) {
     return (
       <div className="min-h-screen bg-gradient-to-br from-red-50 to-white py-8 px-4">
         <div className="max-w-4xl mx-auto">

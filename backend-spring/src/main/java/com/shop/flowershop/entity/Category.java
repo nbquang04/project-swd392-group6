@@ -1,5 +1,5 @@
 
-package com.shop.flowershop.domain;
+package com.shop.flowershop.entity;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
@@ -13,4 +13,5 @@ public class Category extends BaseEntity {
   @Id
   private String id;
   private String name;
+  private String imageUrl;
 }

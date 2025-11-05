@@ -1,77 +1,43 @@
-import React, { useContext, useMemo, useEffect, useState } from 'react';
-import axios from 'axios';
-import { Link } from 'react-router-dom';
-import SideBarAdmin from '../../components/SideBarAdmin';
-import { ShoesShopContext } from '../../context/ShoeShopContext';
-import MonthlyRevenueChart from '../../components/Chart';
-import { getDashboardStats, getRevenueStats, getBestSellingProducts, getTopCustomers } from '../../service/analytics.js';
-
-
+import React from "react";
+import SideBarAdmin from "../../components/SideBarAdmin";
+import MonthlyRevenueChart from "../../components/Chart";
 import {
   UserIcon,
   ShoppingCartIcon,
   CreditCardIcon,
   PackageCheckIcon,
-  LayoutDashboardIcon,
-  UsersIcon,
-  PackageIcon,
-  LockIcon,
-  BarChart3Icon,
-} from 'lucide-react';
+} from "lucide-react";
 
+// === Mock data cố định ===
+const totalUsers = 128;
+const totalOrders = 320;
+const totalRevenue = 125000000;
+const totalProducts = 45;
 
+const chartData = [
+  { month: "Jan", sales: 10000000, users: 10, orders: 20 },
+  { month: "Feb", sales: 12000000, users: 12, orders: 25 },
+  { month: "Mar", sales: 8000000, users: 8, orders: 15 },
+  { month: "Apr", sales: 15000000, users: 15, orders: 28 },
+  { month: "May", sales: 13000000, users: 13, orders: 22 },
+  { month: "Jun", sales: 11000000, users: 11, orders: 18 },
+];
 
+const recentActivities = [
+  { icon: "🟢", title: "Order completed", desc: "Order #1001 total 2.000.000 VND", time: "5 minutes ago" },
+  { icon: "🧑‍💻", title: "New user registered", desc: "Nguyen Van A joined", time: "10 minutes ago" },
+  { icon: "🔵", title: "Order processing", desc: "Order #1002 total 3.500.000 VND", time: "15 minutes ago" },
+  { icon: "🟢", title: "Order completed", desc: "Order #1003 total 1.200.000 VND", time: "1 hour ago" },
+  { icon: "🧑‍💻", title: "New user registered", desc: "Tran Thi B joined", time: "2 hours ago" },
+  { icon: "⚪", title: "Order placed", desc: "Order #1004 total 4.800.000 VND", time: "3 hours ago" },
+];
 
-
-const formatTimeAgo = (dateString) => {
-  const date = new Date(dateString);
-  const now = new Date();
-  const seconds = Math.floor((now - date) / 1000);
-  const minutes = Math.floor(seconds / 60);
-  const hours = Math.floor(minutes / 60);
-  const days = Math.floor(hours / 24);
-
-  if (days > 0) return `${days} day${days > 1 ? 's' : ''} ago`;
-  if (hours > 0) return `${hours} hour${hours > 1 ? 's' : ''} ago`;
-  if (minutes > 0) return `${minutes} minute${minutes > 1 ? 's' : ''} ago`;
-  return 'just now';
-};
-const getMonthlyData = (orders, users) => {
-  const months = Array.from({ length: 12 }, (_, i) => {
-    const date = new Date();
-    date.setMonth(date.getMonth() - i);
-    return date.toLocaleString('en-US', { month: 'short' });
-  }).reverse();
-
-  const monthlyData = months.map(month => {
-    const monthOrders = orders.filter(order => {
-      const orderDate = new Date(order.created_at);
-      return orderDate.toLocaleString('en-US', { month: 'short' }) === month;
-    });
-
-    const monthUsers = users.filter(user => {
-      const userDate = new Date(user.created_at);
-      return userDate.toLocaleString('en-US', { month: 'short' }) === month;
-    });
-
-    return {
-      month,
-      sales: monthOrders.reduce((sum, order) => sum + order.total, 0),
-      users: monthUsers.length,
-      orders: monthOrders.length
-    };
-  });
-
-  return monthlyData;
-};
-
-const StatCard = ({ title, value, change, icon, color }) => (
+const StatCard = ({ title, value, icon, color }) => (
   <div className="bg-white rounded-lg shadow p-4">
     <div className="flex justify-between items-center">
       <div>
         <p className="text-gray-500 text-sm font-medium">{title}</p>
         <h3 className="text-2xl font-bold mt-1">{value}</h3>
-        {change && <p className="text-xs mt-1 text-green-600">{change}</p>}
       </div>
       <div className={`text-white p-2 rounded-full bg-opacity-20 ${color}`}>
         {icon}
@@ -80,117 +46,41 @@ const StatCard = ({ title, value, change, icon, color }) => (
   </div>
 );
 
-const getRecentActivities = (orders, users, maxItems = 6) => {
-  const activities = [
-    // Map orders to activities
-    ...orders.map(order => ({
-      icon: order.status === 'delivered' ? '🟢' : order.status === 'processing' ? '🔵' : '⚪',
-      title: `Order ${order.status === 'delivered' ? 'completed' : order.status === 'processing' ? 'processing' : 'placed'}`,
-      desc: `Order #${order.id} for ${order.total.toLocaleString()} VND`,
-      time: new Date(order.created_at).getTime(),
-      rawTime: order.created_at
-    })),
-    // Map user registrations to activities
-    ...users.map(user => ({
-      icon: '�',
-      title: 'New user registered',
-      desc: `${user.name} joined the platform`,
-      time: new Date(user.created_at).getTime(),
-      rawTime: user.created_at
-    }))
-  ]
-  .sort((a, b) => b.time - a.time) // Sort by most recent
-  .slice(0, maxItems) // Limit to maxItems
-  .map(activity => ({
-    ...activity,
-    time: formatTimeAgo(activity.rawTime)
-  }));
-
-  return activities;
-};
-
 export default function AdminDashboard() {
-  const { 
-    usersRaw, 
-    orders, 
-    adminOrder, 
-    productsRoot,
-    setOrder,
-    setUser
-  } = useContext(ShoesShopContext);
-  
-  const [analyticsData, setAnalyticsData] = useState({
-    dashboardStats: null,
-    revenueStats: null,
-    bestSellingProducts: [],
-    topCustomers: []
-  });
-  
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        // Fetch basic data
-        await axios.get("http://localhost:8080/orders").then(res => setOrder(res.data));
-        await axios.get("http://localhost:8080/user").then(res => setUser(res.data));
-        
-        // Fetch analytics data
-        try {
-          const [dashboardStats, revenueStats, bestSellingProducts, topCustomers] = await Promise.all([
-            getDashboardStats(),
-            getRevenueStats(),
-            getBestSellingProducts(5),
-            getTopCustomers(5)
-          ]);
-          
-          setAnalyticsData({
-            dashboardStats,
-            revenueStats,
-            bestSellingProducts,
-            topCustomers
-          });
-        } catch (analyticsError) {
-          console.warn("Analytics data not available:", analyticsError);
-        }
-      } catch (error) {
-        console.error("Error fetching data:", error);
-      }
-    };
-
-    // Initial fetch
-    fetchData();
-    
-    // Refresh data every 30 seconds
-    const interval = setInterval(fetchData, 30000);
-
-    return () => clearInterval(interval);
-  }, []);
-
-  const ordersSource = Array.isArray(adminOrder) && adminOrder.length ? adminOrder : orders;
-
-  const totalUsers = useMemo(() => (Array.isArray(usersRaw) ? usersRaw.length : 0), [usersRaw]);
-  const totalOrders = useMemo(() => (Array.isArray(ordersSource) ? ordersSource.length : 0), [ordersSource]);
-  const totalRevenue = useMemo(() => {
-    if (!Array.isArray(ordersSource)) return 0;
-    return ordersSource.reduce((sum, o) => sum + (Number(o.total) || 0), 0);
-  }, [ordersSource]);
-  const totalProducts = useMemo(() => (Array.isArray(productsRoot) ? productsRoot.length : 0), [productsRoot]);
-
-  const chartData = useMemo(() => getMonthlyData(ordersSource, usersRaw), [ordersSource, usersRaw]);
-  const recentActivities = useMemo(() => getRecentActivities(ordersSource, usersRaw), [ordersSource, usersRaw]);
-
   return (
     <div className="min-h-screen bg-gray-50">
       <div className="flex gap-6">
         {/* Sidebar */}
         <SideBarAdmin />
-        {/* Main */}
+
+        {/* Main content */}
         <main className="flex-1 space-y-6 p-6">
           {/* Stat Cards */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-            <StatCard title="Total Users" value={totalUsers.toLocaleString()} change={null} icon={<UserIcon className="w-5 h-5" />} color="text-blue-600" />
-            <StatCard title="Total Revenue" value={`${totalRevenue.toLocaleString()} VND`} change={null} icon={<CreditCardIcon className="w-5 h-5" />} color="text-green-600" />
-            <StatCard title="Total Orders" value={totalOrders.toLocaleString()} change={null} icon={<ShoppingCartIcon className="w-5 h-5" />} color="text-purple-600" />
-            <StatCard title="Products" value={totalProducts.toLocaleString()} change={null} icon={<PackageCheckIcon className="w-5 h-5" />} color="text-orange-600" />
+            <StatCard
+              title="Total Users"
+              value={totalUsers.toLocaleString()}
+              icon={<UserIcon className="w-5 h-5" />}
+              color="text-blue-600"
+            />
+            <StatCard
+              title="Total Revenue"
+              value={`${totalRevenue.toLocaleString()} VND`}
+              icon={<CreditCardIcon className="w-5 h-5" />}
+              color="text-green-600"
+            />
+            <StatCard
+              title="Total Orders"
+              value={totalOrders.toLocaleString()}
+              icon={<ShoppingCartIcon className="w-5 h-5" />}
+              color="text-purple-600"
+            />
+            <StatCard
+              title="Products"
+              value={totalProducts.toLocaleString()}
+              icon={<PackageCheckIcon className="w-5 h-5" />}
+              color="text-orange-600"
+            />
           </div>
 
           {/* Chart & Activity */}
@@ -204,7 +94,7 @@ export default function AdminDashboard() {
             {/* Recent Activity */}
             <div className="bg-white rounded-lg shadow p-4">
               <div className="flex justify-between items-center mb-2">
-                <h3 className="text-lg font-semibold">Hoạt động gần đây</h3>
+                <h3 className="text-lg font-semibold">Recent Activities</h3>
               </div>
               <ul className="space-y-4">
                 {recentActivities.map((act, idx) => (

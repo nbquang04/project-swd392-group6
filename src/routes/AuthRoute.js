@@ -11,7 +11,7 @@ const AuthRoute = () => {
   }
 
   if (isAuthenticated) {
-    if (currentUser?.role === "admin") {
+    if (currentUser?.role === "ADMIN") {
       return <Navigate to="/admin/dashboard" replace />;
     }
     return <Navigate to="/home" replace />;

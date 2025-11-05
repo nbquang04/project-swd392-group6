@@ -1,8 +1,8 @@
 package com.shop.flowershop.dto.order;
 
-import com.shop.flowershop.domain.Order;
-import com.shop.flowershop.domain.OrderItem;
 import com.shop.flowershop.dto.order.OrderResponse.OrderItemDto;
+import com.shop.flowershop.entity.Order;
+import com.shop.flowershop.entity.OrderItem;
 
 import java.math.BigDecimal;
 import java.util.List;
